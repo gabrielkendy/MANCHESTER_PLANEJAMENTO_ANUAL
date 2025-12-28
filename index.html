@@ -3,105 +3,93 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-v="1766926231">MANCHESTER Content Studio 2026</title>
+    <title>MANCHESTER Content Studio 2026</title>
     <style>
-        :root{--vermelho:#C41E3A;--vermelho-dark:#9B1830;--dourado:#C9A227;--preto:#0a0a0a;--preto2:#111;--preto3:#1a1a1a;--preto4:#222;--branco:#fff;--cinza:#888;--cinza2:#555;--verde:#22c55e;--azul:#3b82f6;--roxo:#a855f7;--laranja:#f97316}
+        :root{--vermelho:#C41E3A;--dourado:#C9A227;--preto:#0a0a0a;--preto2:#111;--preto3:#1a1a1a;--preto4:#222;--branco:#fff;--cinza:#888;--verde:#22c55e}
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--preto);color:var(--branco);min-height:100vh}
-        .header{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:linear-gradient(135deg,var(--preto2),var(--preto));border-bottom:1px solid #222;position:sticky;top:0;z-index:100}
+        
+        .header{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:var(--preto2);border-bottom:1px solid #333;position:sticky;top:0;z-index:100}
         .logo{display:flex;align-items:center;gap:12px}
-        .logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--vermelho),var(--vermelho-dark));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;font-style:italic}
-        .logo-text{font-size:20px;font-weight:900;letter-spacing:3px}
-        .logo-sub{font-size:9px;color:var(--cinza);letter-spacing:1px}
-        .header-actions{display:flex;gap:10px}
-        .header-btn{padding:8px 16px;background:var(--preto3);border:1px solid #333;border-radius:6px;color:var(--branco);font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
-        .header-btn:hover{border-color:var(--vermelho);background:rgba(196,30,58,0.1)}
-        .header-btn.primary{background:var(--vermelho);border-color:var(--vermelho)}
+        .logo-icon{width:42px;height:42px;background:var(--vermelho);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900}
+        .logo-text{font-size:18px;font-weight:900;letter-spacing:2px}
+        .logo-sub{font-size:9px;color:var(--cinza)}
+        .header-btns{display:flex;gap:10px}
+        .btn{padding:8px 16px;background:var(--preto3);border:1px solid #444;border-radius:6px;color:#fff;font-size:12px;cursor:pointer}
+        .btn:hover{border-color:var(--vermelho)}
+        .btn-primary{background:var(--vermelho);border-color:var(--vermelho)}
+        
         .layout{display:flex;height:calc(100vh - 72px)}
-        .sidebar{width:280px;background:var(--preto2);border-right:1px solid #222;overflow-y:auto;padding:0}
-        .month-filter{padding:20px;border-bottom:1px solid #222;background:var(--preto3)}
-        .month-filter-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px}
-        .month-selector{position:relative;width:100%}
-        .month-selector-btn{width:100%;padding:15px 20px;background:var(--preto4);border:2px solid #333;border-radius:12px;color:var(--branco);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
-        .month-selector-btn:hover{border-color:var(--vermelho)}
-        .month-selector-left{display:flex;align-items:center;gap:15px}
-        .month-selector-num{font-size:28px;font-weight:900;color:var(--vermelho)}
-        .month-selector-info h3{font-size:18px;font-weight:700}
-        .month-selector-info span{font-size:11px;color:var(--cinza)}
-        .month-dropdown{position:absolute;top:100%;left:0;width:100%;background:var(--preto3);border:2px solid var(--vermelho);border-top:none;border-radius:0 0 12px 12px;display:none;z-index:50;max-height:300px;overflow-y:auto}
-        .month-dropdown.open{display:block}
-        .month-dropdown-item{display:flex;align-items:center;gap:15px;padding:12px 20px;cursor:pointer;transition:all .2s;border-bottom:1px solid #222}
-        .month-dropdown-item:hover{background:rgba(196,30,58,0.1)}
-        .month-dropdown-item.active{background:rgba(196,30,58,0.2)}
-        .month-dropdown-num{font-size:18px;font-weight:900;color:var(--vermelho);width:30px}
-        .month-dropdown-info h4{font-size:13px;font-weight:600}
-        .month-dropdown-info span{font-size:10px;color:var(--cinza)}
-        .month-quick-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px}
-        .month-quick-btn{padding:10px 5px;background:var(--preto4);border:1px solid #333;border-radius:8px;color:var(--cinza);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
-        .month-quick-btn:hover{border-color:var(--vermelho);color:var(--branco)}
-        .month-quick-btn.active{background:var(--vermelho);border-color:var(--vermelho);color:var(--branco)}
-        .sidebar-info{padding:20px}
-        .sidebar-info-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px}
-        .month-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
-        .month-stat-card{background:var(--preto3);border:1px solid #222;border-radius:10px;padding:15px;text-align:center}
-        .month-stat-value{font-size:28px;font-weight:900;color:var(--vermelho)}
-        .month-stat-label{font-size:9px;color:var(--cinza);text-transform:uppercase;letter-spacing:1px}
-        .month-theme-card{background:linear-gradient(135deg,rgba(196,30,58,0.1),var(--preto3));border:1px solid #333;border-radius:12px;padding:20px}
-        .month-theme-label{font-size:9px;color:var(--vermelho);letter-spacing:2px;margin-bottom:8px}
-        .month-theme-title{font-size:22px;font-weight:900;margin-bottom:10px}
-        .month-theme-desc{font-size:12px;color:var(--cinza);line-height:1.6}
-        .main{flex:1;overflow-y:auto;padding:25px 30px}
-        .main-header{margin-bottom:25px;padding-bottom:20px;border-bottom:1px solid #222}
-        .main-title{font-size:28px;font-weight:900;letter-spacing:2px}
+        
+        .sidebar{width:280px;background:var(--preto2);border-right:1px solid #333;overflow-y:auto;padding:20px}
+        .sidebar-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px}
+        .month-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:20px}
+        .month-btn{padding:12px 5px;background:var(--preto3);border:1px solid #333;border-radius:8px;color:var(--cinza);font-size:10px;font-weight:600;cursor:pointer;text-align:center}
+        .month-btn:hover{border-color:var(--vermelho);color:#fff}
+        .month-btn.active{background:var(--vermelho);border-color:var(--vermelho);color:#fff}
+        .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:20px}
+        .stat{background:var(--preto3);border-radius:10px;padding:15px;text-align:center}
+        .stat-num{font-size:28px;font-weight:900;color:var(--vermelho)}
+        .stat-label{font-size:9px;color:var(--cinza);text-transform:uppercase}
+        .theme-box{background:var(--preto3);border-radius:10px;padding:20px;border:1px solid #333}
+        .theme-label{font-size:9px;color:var(--vermelho);margin-bottom:5px}
+        .theme-name{font-size:20px;font-weight:900;margin-bottom:8px}
+        .theme-desc{font-size:12px;color:var(--cinza);line-height:1.5}
+        
+        .main{flex:1;overflow-y:auto;padding:25px}
+        .main-title{font-size:26px;font-weight:900;margin-bottom:20px;padding-bottom:15px;border-bottom:1px solid #333}
         .main-title span{color:var(--vermelho)}
-        .posts-list{display:flex;flex-direction:column;gap:12px}
-        .post-card{display:flex;align-items:center;gap:20px;padding:18px 20px;background:var(--preto2);border:1px solid #222;border-radius:12px;cursor:pointer;transition:all .25s}
-        .post-card:hover{border-color:var(--vermelho);transform:translateX(8px)}
-        .post-date{background:var(--preto3);border-radius:8px;padding:10px 12px;text-align:center;min-width:55px}
-        .post-date-day{font-size:22px;font-weight:900;color:var(--vermelho)}
-        .post-date-month{font-size:9px;color:var(--cinza);text-transform:uppercase}
+        
+        .posts{display:flex;flex-direction:column;gap:10px}
+        .post{display:flex;align-items:center;gap:20px;padding:18px;background:var(--preto2);border:1px solid #333;border-radius:12px;cursor:pointer;transition:all .2s}
+        .post:hover{border-color:var(--vermelho);transform:translateX(5px)}
+        .post-date{background:var(--preto3);border-radius:8px;padding:10px;text-align:center;min-width:50px}
+        .post-day{font-size:20px;font-weight:900;color:var(--vermelho)}
+        .post-month{font-size:9px;color:var(--cinza)}
         .post-info{flex:1}
-        .post-type{font-size:10px;color:var(--dourado);font-weight:700;letter-spacing:1px;margin-bottom:5px}
-        .post-title{font-weight:600;font-size:15px;margin-bottom:4px}
-        .post-desc{font-size:12px;color:var(--cinza)}
+        .post-type{font-size:10px;color:var(--dourado);font-weight:700;margin-bottom:4px}
+        .post-title{font-size:14px;font-weight:600;margin-bottom:3px}
+        .post-desc{font-size:11px;color:var(--cinza)}
         .post-format{background:var(--preto3);padding:6px 12px;border-radius:6px;font-size:10px;color:var(--cinza)}
-        .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;overflow-y:auto}
-        .modal-overlay.show{display:flex;justify-content:center;align-items:flex-start;padding:20px}
-        .modal{width:100%;max-width:900px;background:var(--preto2);border-radius:16px;border:1px solid #333}
-        .modal-header{padding:25px 30px;background:var(--preto3);border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:flex-start}
-        .modal-header-left{flex:1}
-        .modal-badge{display:inline-block;padding:4px 12px;background:rgba(196,30,58,0.2);border:1px solid var(--vermelho);border-radius:20px;font-size:10px;color:var(--vermelho);font-weight:700;margin-bottom:12px}
-        .modal-title-row{display:flex;align-items:center;gap:15px;margin-bottom:8px;flex-wrap:wrap}
-        .modal-date-input{background:var(--preto4);border:1px solid #444;border-radius:6px;padding:8px 12px;color:var(--branco);font-size:14px;width:140px}
-        .modal-title-input{flex:1;min-width:200px;background:transparent;border:none;border-bottom:2px solid #333;color:var(--branco);font-size:18px;font-weight:700;padding:5px 0}
-        .modal-title-input:focus{outline:none;border-bottom-color:var(--vermelho)}
-        .modal-desc{font-size:13px;color:var(--cinza)}
-        .modal-close{width:40px;height:40px;background:var(--preto4);border:1px solid #444;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;transition:all .2s}
-        .modal-close:hover{border-color:var(--vermelho);color:var(--vermelho)}
-        .modal-tabs{display:flex;background:var(--preto3);border-bottom:1px solid #333;flex-wrap:wrap}
-        .modal-tab{flex:1;min-width:100px;padding:15px 10px;background:transparent;border:none;color:var(--cinza);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent}
-        .modal-tab:hover{color:var(--branco)}
-        .modal-tab.active{color:var(--vermelho);border-bottom-color:var(--vermelho);background:rgba(196,30,58,0.05)}
-        .modal-body{padding:25px 30px;max-height:60vh;overflow-y:auto}
-        .content-section{background:var(--preto3);border-radius:12px;overflow:hidden}
-        .section-header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:var(--preto4);border-bottom:1px solid #333}
-        .section-title{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--dourado)}
-        .copy-btn{padding:8px 16px;background:var(--preto2);border:1px solid #444;border-radius:6px;color:var(--branco);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+        
+        .overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.9);z-index:1000;justify-content:center;align-items:flex-start;padding:30px;overflow-y:auto}
+        .overlay.show{display:flex}
+        .modal{width:100%;max-width:900px;background:var(--preto2);border-radius:12px;border:1px solid #333}
+        .modal-head{padding:20px;background:var(--preto3);border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:flex-start}
+        .modal-left{flex:1}
+        .modal-badge{display:inline-block;padding:4px 12px;background:rgba(196,30,58,0.2);border:1px solid var(--vermelho);border-radius:20px;font-size:10px;color:var(--vermelho);font-weight:700;margin-bottom:10px}
+        .modal-inputs{display:flex;gap:15px;align-items:center;flex-wrap:wrap;margin-bottom:8px}
+        .modal-date{background:var(--preto4);border:1px solid #444;border-radius:6px;padding:8px;color:#fff;font-size:13px}
+        .modal-title{flex:1;min-width:200px;background:transparent;border:none;border-bottom:2px solid #444;color:#fff;font-size:16px;font-weight:700;padding:5px 0}
+        .modal-title:focus{outline:none;border-color:var(--vermelho)}
+        .modal-desc{font-size:12px;color:var(--cinza)}
+        .close-btn{width:36px;height:36px;background:var(--preto4);border:1px solid #444;border-radius:50%;color:#fff;font-size:16px;cursor:pointer}
+        .close-btn:hover{border-color:var(--vermelho);color:var(--vermelho)}
+        
+        .tabs{display:flex;background:var(--preto3);border-bottom:1px solid #333}
+        .tab{flex:1;padding:15px;background:transparent;border:none;color:var(--cinza);font-size:11px;font-weight:600;cursor:pointer;border-bottom:3px solid transparent}
+        .tab:hover{color:#fff}
+        .tab.active{color:var(--vermelho);border-color:var(--vermelho)}
+        
+        .modal-body{padding:20px;max-height:55vh;overflow-y:auto}
+        .section{background:var(--preto3);border-radius:10px;overflow:hidden}
+        .section-head{display:flex;justify-content:space-between;align-items:center;padding:12px 15px;background:var(--preto4);border-bottom:1px solid #333}
+        .section-title{font-size:12px;font-weight:700;color:var(--dourado)}
+        .copy-btn{padding:6px 14px;background:var(--preto2);border:1px solid #444;border-radius:6px;color:#fff;font-size:10px;cursor:pointer}
         .copy-btn:hover{background:var(--vermelho);border-color:var(--vermelho)}
-        .copy-btn.copied{background:var(--verde);border-color:var(--verde)}
-        .section-body{padding:20px}
-        .content-text{font-size:13px;line-height:1.8;white-space:pre-wrap;color:#ddd;font-family:'Courier New',monospace;background:var(--preto);padding:15px;border-radius:8px;max-height:400px;overflow-y:auto}
-        .prompt-block{margin-bottom:15px;background:var(--preto);border-radius:10px;border:1px solid #333;overflow:hidden}
-        .prompt-block-header{display:flex;justify-content:space-between;align-items:center;padding:12px 15px;background:var(--preto4);border-bottom:1px solid #333}
-        .prompt-block-num{width:28px;height:28px;background:var(--vermelho);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:10px}
-        .prompt-block-title{font-size:12px;font-weight:600;color:var(--dourado);flex:1}
-        .prompt-block-content{padding:15px;font-size:12px;line-height:1.7;white-space:pre-wrap;color:#ccc;font-family:'Courier New',monospace;max-height:200px;overflow-y:auto}
-        .toast{position:fixed;bottom:30px;right:30px;padding:15px 25px;background:var(--verde);color:#fff;border-radius:10px;font-weight:600;font-size:13px;transform:translateY(100px);opacity:0;transition:all .3s;z-index:2000}
-        .toast.show{transform:translateY(0);opacity:1}
-        .empty-state{text-align:center;padding:80px 40px;color:var(--cinza)}
-        .empty-state h3{font-size:20px;margin-bottom:10px}
-        .backup-info{padding:15px;background:var(--preto3);border-radius:8px;margin-top:15px;font-size:11px;color:var(--cinza)}
-        .backup-info strong{color:var(--verde)}
+        .section-content{padding:15px;font-size:12px;line-height:1.7;white-space:pre-wrap;color:#ccc;font-family:monospace;background:var(--preto);max-height:350px;overflow-y:auto}
+        
+        .block{margin-bottom:12px;background:var(--preto);border-radius:8px;border:1px solid #333;overflow:hidden}
+        .block-head{display:flex;justify-content:space-between;align-items:center;padding:10px 15px;background:var(--preto4)}
+        .block-num{width:24px;height:24px;background:var(--vermelho);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;margin-right:10px}
+        .block-title{font-size:11px;font-weight:600;color:var(--dourado);flex:1}
+        .block-content{padding:12px 15px;font-size:11px;line-height:1.6;white-space:pre-wrap;color:#bbb;font-family:monospace;max-height:180px;overflow-y:auto}
+        
+        .toast{position:fixed;bottom:30px;right:30px;padding:12px 24px;background:var(--verde);color:#fff;border-radius:8px;font-weight:600;font-size:13px;opacity:0;transform:translateY(20px);transition:all .3s;z-index:2000}
+        .toast.show{opacity:1;transform:translateY(0)}
+        
+        .empty{text-align:center;padding:60px;color:var(--cinza)}
+        
         @media(max-width:768px){.sidebar{display:none}.main{padding:15px}}
     </style>
 </head>
@@ -115,514 +103,395 @@
             <div class="logo-sub">Content Studio 2026</div>
         </div>
     </div>
-    <div class="header-actions">
-        <button class="header-btn" onclick="exportData()">💾 Backup</button>
-        <button class="header-btn" onclick="document.getElementById('importFile').click()">📂 Importar</button>
-        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
-        <button class="header-btn primary" onclick="saveData()">✓ Salvar</button>
+    <div class="header-btns">
+        <button class="btn" id="btnBackup">💾 Backup</button>
+        <button class="btn" id="btnImport">📂 Importar</button>
+        <input type="file" id="fileInput" accept=".json" style="display:none">
+        <button class="btn btn-primary" id="btnSave">✓ Salvar</button>
     </div>
 </header>
 
 <div class="layout">
     <aside class="sidebar">
-        <div class="month-filter">
-            <div class="month-filter-title">SELECIONAR MÊS</div>
-            <div class="month-selector">
-                <button class="month-selector-btn" onclick="toggleDropdown()">
-                    <div class="month-selector-left">
-                        <div class="month-selector-num" id="selectorNum">01</div>
-                        <div class="month-selector-info">
-                            <h3 id="selectorName">Janeiro</h3>
-                            <span id="selectorTheme">Planejamento</span>
-                        </div>
-                    </div>
-                    <span>▼</span>
-                </button>
-                <div class="month-dropdown" id="monthDropdown"></div>
-            </div>
-            <div class="month-quick-nav" id="monthQuickNav"></div>
+        <div class="sidebar-title">SELECIONAR MÊS</div>
+        <div class="month-grid" id="monthGrid"></div>
+        <div class="sidebar-title">ESTATÍSTICAS</div>
+        <div class="stats">
+            <div class="stat"><div class="stat-num" id="statPosts">0</div><div class="stat-label">Posts</div></div>
+            <div class="stat"><div class="stat-num" id="statStories">0</div><div class="stat-label">Stories</div></div>
         </div>
-        <div class="sidebar-info">
-            <div class="sidebar-info-title">VISÃO GERAL</div>
-            <div class="month-stats">
-                <div class="month-stat-card">
-                    <div class="month-stat-value" id="statPosts">13</div>
-                    <div class="month-stat-label">Posts</div>
-                </div>
-                <div class="month-stat-card">
-                    <div class="month-stat-value" id="statStories">3</div>
-                    <div class="month-stat-label">Stories</div>
-                </div>
-            </div>
-            <div class="month-theme-card">
-                <div class="month-theme-label">TEMA DO MÊS</div>
-                <div class="month-theme-title" id="themeTitle">Planejamento</div>
-                <div class="month-theme-desc" id="themeDesc">Foco em organização e preparação.</div>
-            </div>
-            <div class="backup-info">
-                <strong>✓ Auto-save ativo</strong><br>
-                Dados salvos automaticamente.
-            </div>
+        <div class="theme-box">
+            <div class="theme-label">TEMA DO MÊS</div>
+            <div class="theme-name" id="themeName">-</div>
+            <div class="theme-desc" id="themeDesc">-</div>
         </div>
     </aside>
     
     <main class="main">
-        <div class="main-header">
-            <h1 class="main-title" id="mainTitle">JANEIRO — <span>Planejamento</span></h1>
-        </div>
-        <div class="posts-list" id="postsList"></div>
+        <h1 class="main-title" id="mainTitle">-</h1>
+        <div class="posts" id="postsList"></div>
     </main>
 </div>
 
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+<div class="overlay" id="overlay">
     <div class="modal">
-        <div class="modal-header">
-            <div class="modal-header-left">
-                <div class="modal-badge" id="modalBadge">POST #01</div>
-                <div class="modal-title-row">
-                    <input type="date" class="modal-date-input" id="modalDate" onchange="updateDate()">
-                    <input type="text" class="modal-title-input" id="modalTitle" onchange="updateTitle()">
+        <div class="modal-head">
+            <div class="modal-left">
+                <div class="modal-badge" id="modalBadge">POST</div>
+                <div class="modal-inputs">
+                    <input type="date" class="modal-date" id="modalDate">
+                    <input type="text" class="modal-title" id="modalTitle" placeholder="Título...">
                 </div>
                 <div class="modal-desc" id="modalDesc"></div>
             </div>
-            <button class="modal-close" onclick="closeModal()">✕</button>
+            <button class="close-btn" id="closeBtn">✕</button>
         </div>
-        <div class="modal-tabs" id="modalTabs"></div>
+        <div class="tabs" id="tabsContainer"></div>
         <div class="modal-body" id="modalBody"></div>
     </div>
 </div>
 
-<div class="toast" id="toast">✓ Copiado!</div>
+<div class="toast" id="toast"></div>
 
 <script>
-var MONTHS = [
-    {id:1,name:'Janeiro',theme:'Planejamento',posts:13,stories:3,desc:'Organização e preparação para o ano.'},
-    {id:2,name:'Fevereiro',theme:'Segurança',posts:11,stories:5,desc:'EPIs, normas e prevenção.'},
-    {id:3,name:'Março',theme:'Mulheres',posts:12,stories:0,desc:'Dia da Mulher na construção.'},
-    {id:4,name:'Abril',theme:'Mês do Aço',posts:13,stories:6,desc:'Dia Nacional do Aço.'},
-    {id:5,name:'Maio',theme:'Indústria',posts:13,stories:3,desc:'Dia da Indústria.'},
-    {id:6,name:'Junho',theme:'Sustentável',posts:12,stories:3,desc:'Meio ambiente.'},
-    {id:7,name:'Julho',theme:'Construção',posts:13,stories:0,desc:'Técnicas construtivas.'},
-    {id:8,name:'Agosto',theme:'Soldador',posts:13,stories:0,desc:'Dia do Soldador.'},
-    {id:9,name:'Setembro',theme:'Set. Amarelo',posts:13,stories:3,desc:'Saúde mental.'},
-    {id:10,name:'Outubro',theme:'Out. Rosa',posts:13,stories:3,desc:'Conscientização.'},
-    {id:11,name:'Novembro',theme:'Black Friday',posts:13,stories:6,desc:'Promoções.'},
-    {id:12,name:'Dezembro',theme:'Retrospectiva',posts:13,stories:5,desc:'Balanço do ano.'}
-];
-
-var POSTS_DATA = {
-    1: [
-        {
-            id: 1,
-            date: '2026-01-01',
-            type: 'DATA ESPECIAL',
-            format: 'Carrossel 5 slides',
-            title: '🎆 Feliz 2026! O ano de construir grandes projetos',
-            desc: 'Mensagem de ano novo + retrospectiva Manchester',
-            narrativa: 'SLIDE 1 — CAPA\n═══════════════════\nTEXTO: "2026 CHEGOU!"\nSUBTEXTO: "E com ele, novas fundações."\n\nSLIDE 2 — RETROSPECTIVA\n═══════════════════\nTEXTO: "Em 2025, entregamos mais de 500 toneladas de aço."\nNÚMEROS:\n• 500+ toneladas\n• 200+ obras\n• 30+ anos\n\nSLIDE 3 — AGRADECIMENTO\n═══════════════════\nTEXTO: "Obrigado a cada engenheiro, construtora e parceiro."\n\nSLIDE 4 — COMPROMISSO\n═══════════════════\nTEXTO: "Em 2026, seguimos com o mesmo compromisso:"\n✓ Qualidade certificada\n✓ Prazo respeitado\n✓ Preço justo\n\nSLIDE 5 — CTA\n═══════════════════\nTEXTO: "Bora construir juntos?"\nCTA: "Comenta aqui 👇"',
-            imagem: 'PROMPT SLIDE 1 — CAPA\n═══════════════════\nUltra-realistic commercial photography of New Year 2026 celebration for steel company.\n\nCOMPOSITION:\n- Golden fireworks in dark night sky\n- Silhouette of buildings under construction\n- Steel bars forming "2026"\n- Manchester logo bottom-right\n\nCOLOR: Red (#C41E3A), Black (#0a0a0a), Gold (#C9A227)\nCAMERA: Sony A7R IV, 35mm f/1.8\nSTYLE: Cinematic, epic, premium\nASPECT: 1:1 Instagram\n\n---\n\nPROMPT SLIDE 2 — RETROSPECTIVA\n═══════════════════\nClean infographic for construction retrospective.\n\nLAYOUT:\n- Dark background with grid\n- Large "500+" in red\n- Secondary stats below\n\nTYPOGRAPHY: Bold sans-serif\nSTYLE: Modern corporate infographic\n\n---\n\nPROMPT SLIDE 3 — AGRADECIMENTO\n═══════════════════\nEmotional collage of construction professionals.\n\nSUBJECTS:\n- Engineers with tablets\n- Workers smiling\n- Team handshakes\n\nLIGHTING: Golden hour\nMOOD: Gratitude, pride\n\n---\n\nPROMPT SLIDE 5 — CTA\n═══════════════════\nStrong call-to-action slide.\n\nBACKGROUND: Solid red (#C41E3A)\nTEXT: White, centered\nLOGO: Manchester branding\nSTYLE: Bold, action-oriented',
-            video: 'DIREÇÃO DE VÍDEO — 15 SEGUNDOS\n═══════════════════\n\nTAKE 1 (0:00-0:03) — ABERTURA\n━━━━━━━━━━━━━━━━━\nVISUAL: Drone shot rising over construction at dawn\nCAMERA: Slow push-up, gimbal stabilized\nSOUND: Epic orchestral swell\n\n---\n\nTAKE 2 (0:03-0:08) — MONTAGEM\n━━━━━━━━━━━━━━━━━\nSEQUENCE:\n1. Sparks from welding\n2. CNC cutting steel\n3. Manchester truck\n4. Steel framework crane\n5. Worker thumbs up\n\nTRANSITIONS: Quick cuts synced to beat\n\n---\n\nTAKE 3 (0:08-0:12) — EQUIPE\n━━━━━━━━━━━━━━━━━\nVISUAL: Slow-mo team members smiling\nCAMERA: 50mm portrait, f/1.8\nTEXT: "OBRIGADO POR CONSTRUIR COM A GENTE"\n\n---\n\nTAKE 4 (0:12-0:15) — FECHAMENTO\n━━━━━━━━━━━━━━━━━\nVISUAL: Manchester logo reveal\nTEXT: "2026 — Construindo o futuro"\nSOUND: Music resolves',
-            tela: 'SLIDE 1:\n"2026 CHEGOU!"\n"E com ele, novas fundações."\n\nSLIDE 2:\n"500+ toneladas entregues"\n"200+ obras atendidas"\n\nSLIDE 3:\n"OBRIGADO"\n\nSLIDE 4:\n"✓ Qualidade certificada"\n"✓ Prazo respeitado"\n"✓ Preço justo"\n\nSLIDE 5:\n"Qual é seu maior projeto para 2026?"\n"Comenta aqui 👇"',
-            legenda: '🎆 FELIZ 2026!\n\nMais um ano começa e com ele a certeza de que vamos continuar construindo juntos.\n\nEm 2025, entregamos mais de 500 toneladas de aço para obras por todo Rio de Janeiro.\n\nObrigado a cada engenheiro, arquiteto e parceiro que confiou na Manchester.\n\nE você? Qual é o seu maior projeto para 2026?\n\nConta pra gente nos comentários! 👇\n\n📞 (21) 3214-1300\n\n#Manchester #AnoNovo2026 #ConstruçãoCivil #Aço'
-        },
-        {
-            id: 2,
-            date: '2026-01-05',
-            type: 'PROBLEMA → SOLUÇÃO',
-            format: 'Reels 30s',
-            title: '😤 "Comprei aço e veio com medida errada"',
-            desc: 'Problema comum de obra resolvido',
-            narrativa: 'ROTEIRO REELS 30s\n═══════════════════\n\n[0:00-0:03] HOOK\n━━━━━━━━━━━━━━━━━\nÁUDIO: "Cara, o aço chegou errado."\nTEXTO: "ISSO JÁ ACONTECEU COM VOCÊ?"\n\n[0:03-0:10] PROBLEMA\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Pediu 10mm, veio 8mm."\nTEXTO: "2 SEMANAS PERDIDAS"\n\n[0:10-0:13] TRANSIÇÃO\n━━━━━━━━━━━━━━━━━\nTEXTO: "E SE DESSE PRA EVITAR?"\n\n[0:13-0:23] SOLUÇÃO\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Na Manchester, conferimos seu projeto inteiro."\nTEXTO: "CONFERÊNCIA → CORTE → ENTREGA"\n\n[0:23-0:30] CTA\n━━━━━━━━━━━━━━━━━\nTEXTO: "ZERO ERRO. ZERO ATRASO."\nLOGO: Manchester',
-            imagem: 'PROMPT THUMBNAIL\n═══════════════════\nSplit comparison BEFORE vs AFTER.\n\nLEFT (PROBLEM):\n- Messy construction site\n- Wrong steel bars\n- Frustrated engineer\n- Cold, desaturated colors\n- Text: "MEDIDA ERRADA"\n\nRIGHT (SOLUTION):\n- Clean, organized site\n- Labeled steel bars\n- Satisfied engineer\n- Warm, vibrant colors\n- Text: "MEDIDA CERTA"\n\nSTYLE: Before/after, high contrast\nASPECT: 9:16 for Reels',
-            video: 'DIREÇÃO REELS 30s\n═══════════════════\n\nCENA 1 — HOOK (0:00-0:03)\n━━━━━━━━━━━━━━━━━\nVISUAL: Close-up engineer frustrated\nCAMERA: 85mm, shallow DOF\nSOUND: Dramatic hit\n\n---\n\nCENA 2 — PROBLEMA (0:03-0:10)\n━━━━━━━━━━━━━━━━━\nSHOTS:\n- Drone over idle site\n- Wrong measurements\n- Workers waiting\nCOLOR: Desaturated, cold\n\n---\n\nCENA 3 — TRANSIÇÃO (0:10-0:13)\n━━━━━━━━━━━━━━━━━\nVISUAL: Fade to black\nTEXT: Types on character by character\n\n---\n\nCENA 4 — SOLUÇÃO (0:13-0:23)\n━━━━━━━━━━━━━━━━━\nSHOTS:\n- Computer analysis\n- CNC cutting (slow-mo)\n- Labeling\n- Organized bundles\nCOLOR: Warm, vibrant\n\n---\n\nCENA 5 — CTA (0:23-0:30)\n━━━━━━━━━━━━━━━━━\nVISUAL: Satisfied engineer\nTEXT: "ZERO ERRO"\nLOGO: Manchester',
-            tela: '[0:00-0:03]\n"ISSO JÁ ACONTECEU COM VOCÊ?"\n\n[0:03-0:10]\n"2 SEMANAS PERDIDAS"\n\n[0:10-0:13]\n"E SE DESSE PRA EVITAR?"\n\n[0:13-0:23]\n"CONFERÊNCIA → CORTE → ENTREGA"\n\n[0:23-0:30]\n"ZERO ERRO. ZERO ATRASO."',
-            legenda: '😤 "O aço chegou errado. Minha obra parou."\n\nQuantas vezes você já viveu isso?\n\nPediu 10mm, veio 8mm.\nResultado? 2 semanas perdidas.\n\nNa Manchester é diferente.\n\nAntes de cortar UMA barra:\n✅ Conferimos seu projeto\n✅ Validamos medida por medida\n✅ Identificamos cada peça\n\nZero erro. Zero atraso.\n\n📞 (21) 3214-1300\n\n#Manchester #ConstruçãoCivil #BelgoPronto'
-        },
-        {
-            id: 3,
-            date: '2026-01-07',
-            type: 'EDUCATIVO',
-            format: 'Carrossel 8 slides',
-            title: '📋 Checklist: Como planejar compra de aço 2026',
-            desc: '5 passos essenciais',
-            narrativa: 'CARROSSEL 8 SLIDES\n═══════════════════\n\nSLIDE 1 — CAPA\n━━━━━━━━━━━━━━━━━\nTÍTULO: "CHECKLIST 2026"\nBADGE: "SALVA ESSE POST 📌"\n\nSLIDE 2 — PASSO 1\n━━━━━━━━━━━━━━━━━\n📐 REVISAR PROJETO ESTRUTURAL\n💡 "Peça o arquivo .dwg atualizado"\n\nSLIDE 3 — PASSO 2\n━━━━━━━━━━━━━━━━━\n🧮 CALCULAR QUANTITATIVOS\n💡 "Erro no quantitativo = prejuízo"\n\nSLIDE 4 — PASSO 3\n━━━━━━━━━━━━━━━━━\n📅 PRAZO DE ENTREGA\n• Corte/dobra: 3-7 dias\n• Armadura: 5-10 dias\n\nSLIDE 5 — PASSO 4\n━━━━━━━━━━━━━━━━━\n✅ NORMAS TÉCNICAS\n• NBR 7480\n• Certificação\n\nSLIDE 6 — PASSO 5\n━━━━━━━━━━━━━━━━━\n🔄 ALINHAR CRONOGRAMA\n💡 "Entregas programadas"\n\nSLIDE 7 — DICA BÔNUS\n━━━━━━━━━━━━━━━━━\n💡 ANTECIPE A COMPRA\n"Preço do aço varia"\n\nSLIDE 8 — CTA\n━━━━━━━━━━━━━━━━━\n"PRECISA DE AJUDA?"\n📞 (21) 3214-1300',
-            imagem: 'PROMPT SLIDE 1 — CAPA\n═══════════════════\nClean infographic cover.\n\nCOMPOSITION:\n- Checklist icon (white on dark)\n- Title "CHECKLIST 2026" bold\n- Badge "SALVA ESSE POST"\n\nBACKGROUND: Red to black gradient\nSTYLE: Modern corporate\n\n---\n\nPROMPT SLIDES 2-6 — TEMPLATE\n═══════════════════\nConsistent infographic design.\n\nLAYOUT:\n- Dark background\n- Step number: Large, red\n- Icon: White outline\n- Title: Bold white\n- Tip box: Darker bg\n\n---\n\nPROMPT SLIDE 7 — BÔNUS\n═══════════════════\nSpecial highlight slide.\n\nBACKGROUND: Dark + gold accent\nICON: Lightbulb\nLABEL: "DICA BÔNUS" gold\n\n---\n\nPROMPT SLIDE 8 — CTA\n═══════════════════\nBACKGROUND: Solid red\nTEXT: White, centered\nLOGO: Manchester',
-            video: 'ALTERNATIVA REELS 25s\n═══════════════════\n\n[0:00-0:02] HOOK\n━━━━━━━━━━━━━━━━━\nTEXT: "5 PASSOS pra não errar"\n\n[0:02-0:05] PASSO 1\n━━━━━━━━━━━━━━━━━\nICON: Blueprint\nTEXT: "01 REVISE O PROJETO"\n\n[0:05-0:08] PASSO 2\n━━━━━━━━━━━━━━━━━\nICON: Calculator\nTEXT: "02 CALCULE QUANTITATIVOS"\n\n[0:08-0:11] PASSO 3\n━━━━━━━━━━━━━━━━━\nICON: Calendar\nTEXT: "03 CONSIDERE PRAZO"\n\n[0:11-0:14] PASSO 4\n━━━━━━━━━━━━━━━━━\nICON: Certificate\nTEXT: "04 VERIFIQUE NORMAS"\n\n[0:14-0:17] PASSO 5\n━━━━━━━━━━━━━━━━━\nICON: Sync\nTEXT: "05 ALINHE CRONOGRAMA"\n\n[0:17-0:22] BÔNUS\n━━━━━━━━━━━━━━━━━\nICON: Lightbulb\nTEXT: "💡 ANTECIPE A COMPRA"\n\n[0:22-0:25] CTA\n━━━━━━━━━━━━━━━━━\nTEXT: "SALVA ESSE VÍDEO 📌"',
-            tela: 'SLIDE 1:\n"CHECKLIST 2026"\n"SALVA ESSE POST 📌"\n\nSLIDE 2:\n"01 📐 REVISAR PROJETO"\n\nSLIDE 3:\n"02 🧮 CALCULAR QUANTITATIVOS"\n\nSLIDE 4:\n"03 📅 PRAZO DE ENTREGA"\n\nSLIDE 5:\n"04 ✅ NORMAS TÉCNICAS"\n\nSLIDE 6:\n"05 🔄 ALINHAR CRONOGRAMA"\n\nSLIDE 7:\n"💡 DICA BÔNUS: ANTECIPE"\n\nSLIDE 8:\n"📞 (21) 3214-1300"',
-            legenda: '📋 CHECKLIST 2026: Como planejar compra de aço\n\n✅ PASSO 1: REVISE O PROJETO\n✅ PASSO 2: CALCULE QUANTITATIVOS\n✅ PASSO 3: CONSIDERE O PRAZO\n✅ PASSO 4: VERIFIQUE NORMAS\n✅ PASSO 5: ALINHE CRONOGRAMA\n\n💡 DICA: ANTECIPE A COMPRA\n\nSALVA ESSE POST! 📌\n\n📞 (21) 3214-1300\n\n#Manchester #Checklist #PlanejamentoDeObra'
-        },
-        {
-            id: 4,
-            date: '2026-01-10',
-            type: 'DATA ESPECIAL',
-            format: 'Vídeo 30s',
-            title: '👷 Dia do Engenheiro Civil',
-            desc: 'Homenagem 10/01',
-            narrativa: 'ROTEIRO 30s\n═══════════════════\n\n[0:00-0:05] ABERTURA\n━━━━━━━━━━━━━━━━━\nVISUAL: Obras icônicas\nTEXT: "10 DE JANEIRO"\nMUSIC: Emocional\n\n[0:05-0:15] HOMENAGEM\n━━━━━━━━━━━━━━━━━\nVISUAL: Engenheiros trabalhando\nTEXT: "Vocês transformam"\n"números em estruturas"\n\n[0:15-0:25] MANCHESTER\n━━━━━━━━━━━━━━━━━\nVISUAL: Parceria\nTEXT: "30 anos construindo juntos"\n\n[0:25-0:30] FECHAMENTO\n━━━━━━━━━━━━━━━━━\nLOGO: Manchester\nTEXT: "FELIZ DIA! 👷"',
-            imagem: 'PROMPT IMAGEM\n═══════════════════\nInspirational tribute image.\n\nCOMPOSITION:\n- Engineer in foreground\n- Construction site background\n- Golden hour lighting\n\nSUBJECT:\n- Engineer 35-50 years\n- Safety vest, hard hat\n- Proud expression\n\nLIGHTING: Golden hour, heroic\nSTYLE: Cinematic commercial\nASPECT: 1:1 and 9:16',
-            video: 'DIREÇÃO 30s\n═══════════════════\n\n[0:00-0:05] ABERTURA\n━━━━━━━━━━━━━━━━━\n- Drone shots Brazilian construction\n- Time-lapse building rising\n- Music: Emotional piano\n\n[0:05-0:15] MONTAGEM\n━━━━━━━━━━━━━━━━━\n- Engineers reviewing plans\n- Site supervision\n- Team coordination\n\n[0:15-0:25] PARCERIA\n━━━━━━━━━━━━━━━━━\n- Manchester delivery\n- Handshake\n\n[0:25-0:30] FECHAMENTO\n━━━━━━━━━━━━━━━━━\n- Logo reveal\n- "FELIZ DIA!"',
-            tela: '[0:00-0:05]\n"10 DE JANEIRO"\n"DIA DO ENGENHEIRO CIVIL"\n\n[0:05-0:15]\n"Vocês transformam"\n"números em estruturas"\n\n[0:15-0:25]\n"30 anos construindo juntos"\n\n[0:25-0:30]\n"FELIZ DIA! 👷"',
-            legenda: '👷 FELIZ DIA DO ENGENHEIRO CIVIL!\n\n10 de janeiro.\n\nVocês transformam:\n📐 Números em estruturas\n📋 Projetos em realidade\n🏗️ Sonhos em concreto\n\nA Manchester tem orgulho de estar ao lado de vocês há 30 anos.\n\nFELIZ DIA! 🎉\n\n📞 (21) 3214-1300\n\n#DiaDoEngenheiroCivil #Manchester'
-        }
-    ],
-    2: [
-        {
-            id: 1,
-            date: '2026-02-02',
-            type: 'PROBLEMA → SOLUÇÃO',
-            format: 'Reels 30s',
-            title: '😰 "Operário caiu da laje. Não tinha linha de vida."',
-            desc: 'Segurança no canteiro',
-            narrativa: 'ROTEIRO 30s\n═══════════════════\n\n[0:00-0:03] HOOK\n━━━━━━━━━━━━━━━━━\nTEXTO: "ISSO ACONTECEU ONTEM"\nVISUAL: Tela preta\nSOM: Sirene sutil\n\n[0:03-0:10] PROBLEMA\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Operário na laje. Sem cinto."\nTEXTO: "SEM LINHA DE VIDA"\n\n[0:10-0:15] CONSEQUÊNCIA\n━━━━━━━━━━━━━━━━━\nTEXTO: "Fraturas múltiplas"\n"6 meses afastado"\n\n[0:15-0:23] SOLUÇÃO\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Segurança é investimento"\nTEXTO: "✓ LINHA DE VIDA"\n\n[0:23-0:30] CTA\n━━━━━━━━━━━━━━━━━\nTEXTO: "SUA OBRA TEM?"\nLOGO: Manchester',
-            imagem: 'PROMPT THUMBNAIL\n═══════════════════\nSafety awareness split image.\n\nLEFT (DANGER):\n- Worker near edge, no protection\n- Red warning tint\n- Text: "SEM PROTEÇÃO"\n\nRIGHT (SAFE):\n- Worker with PPE and safety line\n- Normal colors, green accent\n- Text: "COM PROTEÇÃO"\n\nSTYLE: Commercial safety campaign\nASPECT: 9:16',
-            video: 'DIREÇÃO 30s\n═══════════════════\n\nCENA 1 — HOOK (0:00-0:03)\n━━━━━━━━━━━━━━━━━\nVISUAL: Tela preta, texto surge\nSOUND: Sirene, impacto\n\nCENA 2 — PROBLEMA (0:03-0:10)\n━━━━━━━━━━━━━━━━━\nVISUAL: B-roll canteiro, altura\nCOLOR: Desaturado, frio\n\nCENA 3 — CONSEQUÊNCIA (0:10-0:15)\n━━━━━━━━━━━━━━━━━\nVISUAL: Capacete no chão\nMOOD: Emocional\n\nCENA 4 — SOLUÇÃO (0:15-0:23)\n━━━━━━━━━━━━━━━━━\nVISUAL: Obra organizada, EPIs\nCOLOR: Vibrante, positivo\n\nCENA 5 — CTA (0:23-0:30)\n━━━━━━━━━━━━━━━━━\nTEXT: "SUA OBRA TEM?"\nLOGO: Manchester',
-            tela: '[0:00-0:03]\n"ISSO ACONTECEU ONTEM"\n\n[0:03-0:10]\n"SEM CINTO"\n"SEM LINHA DE VIDA"\n\n[0:10-0:15]\n"Fraturas múltiplas"\n"6 meses afastado"\n\n[0:15-0:23]\n"✓ LINHA DE VIDA"\n"✓ CINTO"\n"✓ TREINAMENTO"\n\n[0:23-0:30]\n"SUA OBRA TEM?"',
-            legenda: '😰 Isso aconteceu ontem em uma obra.\n\nOperário na laje.\nSem cinto. Sem linha de vida.\nQueda de 4 metros.\n\nResultado:\n💔 Fraturas múltiplas\n⏰ 6 meses afastado\n\nIsso NÃO precisava acontecer.\n\nSegurança não é custo. É INVESTIMENTO.\n\n✅ Linha de vida\n✅ Cinto obrigatório\n✅ Treinamento\n\nSUA OBRA TEM?\n\n#SegurançaNoTrabalho #NR18 #Manchester'
-        }
-    ]
-};
-
-var currentMonth = 1;
-var currentTab = 'narrativa';
-var currentPost = null;
-var dropdownOpen = false;
-var allPosts = {};
-
-function init() {
-    loadData();
-    renderMonthNav();
-    renderPosts();
-}
-
-function loadData() {
-    try {
-        var saved = localStorage.getItem('manchester_v3');
-        if (saved) {
-            allPosts = JSON.parse(saved);
-        } else {
-            allPosts = JSON.parse(JSON.stringify(POSTS_DATA));
-        }
-    } catch(e) {
-        allPosts = JSON.parse(JSON.stringify(POSTS_DATA));
-    }
-}
-
-function saveData() {
-    try {
-        localStorage.setItem('manchester_v3', JSON.stringify(allPosts));
-        showToast('✓ Salvo!');
-    } catch(e) {
-        showToast('Erro ao salvar');
-    }
-}
-
-function exportData() {
-    var data = {version: '3.0', date: new Date().toISOString(), posts: allPosts};
-    var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    a.href = url;
-    a.download = 'manchester_backup_' + new Date().toISOString().split('T')[0] + '.json';
-    a.click();
-    showToast('✓ Backup exportado!');
-}
-
-function importData(event) {
-    var file = event.target.files[0];
-    if (!file) return;
-    var reader = new FileReader();
-    reader.onload = function(e) {
-        try {
-            var data = JSON.parse(e.target.result);
-            if (data.posts) {
-                allPosts = data.posts;
-                localStorage.setItem('manchester_v3', JSON.stringify(allPosts));
-                renderPosts();
-                showToast('✓ Importado!');
-            }
-        } catch(err) {
-            showToast('Arquivo inválido');
-        }
-    };
-    reader.readAsText(file);
-}
-
-function renderMonthNav() {
-    var month = MONTHS[currentMonth - 1];
-    document.getElementById('selectorNum').textContent = String(month.id).padStart(2, '0');
-    document.getElementById('selectorName').textContent = month.name;
-    document.getElementById('selectorTheme').textContent = month.theme;
-    document.getElementById('statPosts').textContent = month.posts;
-    document.getElementById('statStories').textContent = month.stories;
-    document.getElementById('themeTitle').textContent = month.theme;
-    document.getElementById('themeDesc').textContent = month.desc;
-    
-    var dropdownHtml = '';
-    for (var i = 0; i < MONTHS.length; i++) {
-        var m = MONTHS[i];
-        dropdownHtml += '<div class="month-dropdown-item' + (m.id === currentMonth ? ' active' : '') + '" onclick="selectMonth(' + m.id + ')">' +
-            '<div class="month-dropdown-num">' + String(m.id).padStart(2, '0') + '</div>' +
-            '<div class="month-dropdown-info"><h4>' + m.name + '</h4><span>' + m.theme + '</span></div>' +
-            '</div>';
-    }
-    document.getElementById('monthDropdown').innerHTML = dropdownHtml;
-    
-    var quickHtml = '';
-    for (var i = 0; i < MONTHS.length; i++) {
-        var m = MONTHS[i];
-        quickHtml += '<button class="month-quick-btn' + (m.id === currentMonth ? ' active' : '') + '" onclick="selectMonth(' + m.id + ')">' +
-            m.name.substring(0, 3).toUpperCase() + '</button>';
-    }
-    document.getElementById('monthQuickNav').innerHTML = quickHtml;
-}
-
-function toggleDropdown() {
-    dropdownOpen = !dropdownOpen;
-    document.getElementById('monthDropdown').classList.toggle('open', dropdownOpen);
-}
-
-function selectMonth(id) {
-    currentMonth = id;
-    dropdownOpen = false;
-    document.getElementById('monthDropdown').classList.remove('open');
-    renderMonthNav();
-    renderPosts();
-}
-
-function renderPosts() {
-    var month = MONTHS[currentMonth - 1];
-    document.getElementById('mainTitle').innerHTML = month.name.toUpperCase() + ' — <span>' + month.theme + '</span>';
-    
-    var posts = allPosts[currentMonth] || [];
-    var container = document.getElementById('postsList');
-    
-    if (posts.length === 0) {
-        container.innerHTML = '<div class="empty-state"><h3>🚧 Em desenvolvimento</h3><p>Posts de ' + month.name + ' serão adicionados.</p></div>';
-        return;
-    }
-    
-    posts.sort(function(a, b) { return new Date(a.date) - new Date(b.date); });
-    
-    var monthNames = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
-    var html = '';
-    
-    for (var i = 0; i < posts.length; i++) {
-        var p = posts[i];
-        var d = new Date(p.date);
-        html += '<div class="post-card" onclick="openModal(' + p.id + ')">' +
-            '<div class="post-date">' +
-            '<div class="post-date-day">' + String(d.getDate()).padStart(2, '0') + '</div>' +
-            '<div class="post-date-month">' + monthNames[d.getMonth()] + '</div>' +
-            '</div>' +
-            '<div class="post-info">' +
-            '<div class="post-type">' + p.type + '</div>' +
-            '<div class="post-title">' + p.title + '</div>' +
-            '<div class="post-desc">' + p.desc + '</div>' +
-            '</div>' +
-            '<div class="post-format">' + p.format + '</div>' +
-            '</div>';
-    }
-    
-    container.innerHTML = html;
-}
-
-function openModal(id) {
-    var posts = allPosts[currentMonth] || [];
-    currentPost = null;
-    for (var i = 0; i < posts.length; i++) {
-        if (posts[i].id === id) {
-            currentPost = posts[i];
-            break;
-        }
-    }
-    if (!currentPost) return;
-    
-    document.getElementById('modalBadge').textContent = 'POST #' + String(currentPost.id).padStart(2, '0') + ' · ' + currentPost.format.toUpperCase();
-    document.getElementById('modalDate').value = currentPost.date;
-    document.getElementById('modalTitle').value = currentPost.title;
-    document.getElementById('modalDesc').textContent = currentPost.desc;
-    
-    var tabs = [
-        {key: 'narrativa', icon: '📝', label: 'NARRATIVA'},
-        {key: 'imagem', icon: '🖼️', label: 'IMAGEM'},
-        {key: 'video', icon: '🎬', label: 'VÍDEO'},
-        {key: 'tela', icon: '📺', label: 'TELA'},
-        {key: 'legenda', icon: '📱', label: 'LEGENDA'}
+(function() {
+    // ========== DADOS ==========
+    var MONTHS = [
+        {id:1,name:'Janeiro',short:'JAN',theme:'Planejamento',posts:13,stories:3,desc:'Organização para o ano.'},
+        {id:2,name:'Fevereiro',short:'FEV',theme:'Segurança',posts:11,stories:5,desc:'EPIs e prevenção.'},
+        {id:3,name:'Março',short:'MAR',theme:'Mulheres',posts:12,stories:0,desc:'Dia da Mulher.'},
+        {id:4,name:'Abril',short:'ABR',theme:'Mês do Aço',posts:13,stories:6,desc:'Dia Nacional do Aço.'},
+        {id:5,name:'Maio',short:'MAI',theme:'Indústria',posts:13,stories:3,desc:'Dia da Indústria.'},
+        {id:6,name:'Junho',short:'JUN',theme:'Sustentável',posts:12,stories:3,desc:'Meio ambiente.'},
+        {id:7,name:'Julho',short:'JUL',theme:'Construção',posts:13,stories:0,desc:'Técnicas.'},
+        {id:8,name:'Agosto',short:'AGO',theme:'Soldador',posts:13,stories:0,desc:'Dia do Soldador.'},
+        {id:9,name:'Setembro',short:'SET',theme:'Set. Amarelo',posts:13,stories:3,desc:'Saúde mental.'},
+        {id:10,name:'Outubro',short:'OUT',theme:'Out. Rosa',posts:13,stories:3,desc:'Conscientização.'},
+        {id:11,name:'Novembro',short:'NOV',theme:'Black Friday',posts:13,stories:6,desc:'Promoções.'},
+        {id:12,name:'Dezembro',short:'DEZ',theme:'Retrospectiva',posts:13,stories:5,desc:'Balanço do ano.'}
     ];
-    
-    var tabsHtml = '';
-    for (var i = 0; i < tabs.length; i++) {
-        var t = tabs[i];
-        tabsHtml += '<button class="modal-tab' + (t.key === currentTab ? ' active' : '') + '" onclick="switchTab(\'' + t.key + '\')">' +
-            t.icon + ' ' + t.label + '</button>';
-    }
-    document.getElementById('modalTabs').innerHTML = tabsHtml;
-    
-    renderTabContent();
-    document.getElementById('modalOverlay').classList.add('show');
-}
 
-function closeModal() {
-    document.getElementById('modalOverlay').classList.remove('show');
-}
+    var INITIAL_DATA = {
+        1: [
+            {id:1,date:'2026-01-01',type:'DATA ESPECIAL',format:'Carrossel',title:'🎆 Feliz 2026!',desc:'Ano novo Manchester',
+            narrativa:'SLIDE 1 — CAPA\n══════════════\nTEXTO: "2026 CHEGOU!"\nSUBTEXTO: "Novas fundações"\n\n---\n\nSLIDE 2 — RETRO\n══════════════\nTEXTO: "500+ toneladas"\nNÚMEROS: 200+ obras\n\n---\n\nSLIDE 3 — THANKS\n══════════════\nTEXTO: "Obrigado parceiros"',
+            imagem:'PROMPT SLIDE 1\n══════════════\nNew Year celebration, steel company\nFireworks, construction silhouette\nColor: Red #C41E3A, Gold\nCamera: Sony A7R IV, 35mm\n\n---\n\nPROMPT SLIDE 2\n══════════════\nInfographic dark background\nLarge numbers "500+"\nClean typography\n\n---\n\nPROMPT SLIDE 3\n══════════════\nTeam collage, golden hour\nEngineers smiling\nWarm emotional mood',
+            video:'TAKE 1 (0:00-0:03)\n══════════════\nDrone rising over construction\nGolden hour lighting\nText: "2026"\n\n---\n\nTAKE 2 (0:03-0:08)\n══════════════\nMontage: welding, CNC, truck\nQuick cuts synced to music\n\n---\n\nTAKE 3 (0:08-0:12)\n══════════════\nTeam slow motion\nSmiling faces\n\n---\n\nTAKE 4 (0:12-0:15)\n══════════════\nLogo reveal\n"Construindo o futuro"',
+            tela:'SLIDE 1:\n"2026 CHEGOU!"\n\nSLIDE 2:\n"500+ toneladas"\n\nSLIDE 3:\n"OBRIGADO"',
+            legenda:'🎆 FELIZ 2026!\n\nMais um ano construindo juntos.\n\n500+ toneladas entregues.\n200+ obras atendidas.\n\nObrigado parceiros!\n\n📞 (21) 3214-1300\n\n#Manchester #2026'},
+            
+            {id:2,date:'2026-01-05',type:'PROBLEMA → SOLUÇÃO',format:'Reels 30s',title:'😤 Aço veio errado',desc:'Medida errada resolvida',
+            narrativa:'[0:00-0:03] HOOK\n══════════════\nÁudio: "Aço chegou errado"\nTexto: "ACONTECEU COM VOCÊ?"\n\n---\n\n[0:03-0:10] PROBLEMA\n══════════════\nNarração: "Pediu 10mm, veio 8mm"\nTexto: "2 SEMANAS PERDIDAS"\n\n---\n\n[0:10-0:23] SOLUÇÃO\n══════════════\nNarração: "Na Manchester conferimos tudo"\nTexto: "CONFERÊNCIA → CORTE → ENTREGA"\n\n---\n\n[0:23-0:30] CTA\n══════════════\nTexto: "ZERO ERRO"\nLogo Manchester',
+            imagem:'PROMPT THUMBNAIL\n══════════════\nSplit comparison Before/After\n\nLEFT - PROBLEM:\nMessy site, wrong bars\nCold desaturated colors\nText: "ERRADO"\n\n---\n\nRIGHT - SOLUTION:\nOrganized site, labeled bars\nWarm vibrant colors\nText: "CERTO"',
+            video:'CENA 1 — HOOK\n══════════════\nClose-up frustrated engineer\n85mm lens, shallow DOF\nDramatic sound hit\n\n---\n\nCENA 2 — PROBLEMA\n══════════════\nDrone over idle site\nWrong measurements shown\nCold blue color grade\n\n---\n\nCENA 3 — SOLUÇÃO\n══════════════\nCNC cutting (slow-mo)\nLabeling process\nWarm vibrant colors\n\n---\n\nCENA 4 — CTA\n══════════════\nSatisfied engineer\nLogo Manchester\nContact info',
+            tela:'[0:00-0:03]\n"ACONTECEU COM VOCÊ?"\n\n[0:03-0:10]\n"2 SEMANAS PERDIDAS"\n\n[0:23-0:30]\n"ZERO ERRO"',
+            legenda:'😤 Aço chegou errado?\n\nPediu 10mm, veio 8mm.\n2 semanas perdidas.\n\nNa Manchester:\n✅ Conferimos projeto\n✅ Validamos medidas\n✅ Zero erro\n\n📞 (21) 3214-1300\n\n#Manchester #BelgoPronto'},
+            
+            {id:3,date:'2026-01-07',type:'EDUCATIVO',format:'Carrossel 8',title:'📋 Checklist compra aço',desc:'5 passos essenciais',
+            narrativa:'SLIDE 1 — CAPA\n══════════════\nTítulo: "CHECKLIST 2026"\nBadge: "SALVA 📌"\n\n---\n\nSLIDE 2 — PASSO 1\n══════════════\n📐 REVISAR PROJETO\nDica: "Peça .dwg atualizado"\n\n---\n\nSLIDE 3 — PASSO 2\n══════════════\n🧮 CALCULAR QUANTITATIVOS\nDica: "Chutar sai caro"\n\n---\n\nSLIDE 4 — PASSO 3\n══════════════\n📅 PRAZO ENTREGA\n3-7 dias corte/dobra\n\n---\n\nSLIDE 5 — CTA\n══════════════\n"PRECISA DE AJUDA?"\n📞 (21) 3214-1300',
+            imagem:'PROMPT CAPA\n══════════════\nChecklist icon, dark bg\nTitle "CHECKLIST 2026"\nRed to black gradient\n\n---\n\nPROMPT SLIDES 2-4\n══════════════\nInfographic template\nStep number large red\nIcon white outline\nTip box darker bg\n\n---\n\nPROMPT CTA\n══════════════\nSolid red background\nWhite centered text\nManchester logo',
+            video:'[0:00-0:02] HOOK\n══════════════\nText: "5 PASSOS"\n\n---\n\n[0:02-0:15] PASSOS\n══════════════\nAnimated icons\nStep numbers\n\n---\n\n[0:15-0:20] CTA\n══════════════\n"SALVA 📌"',
+            tela:'SLIDE 1: "CHECKLIST 2026"\nSLIDE 2: "01 REVISAR PROJETO"\nSLIDE 3: "02 CALCULAR"\nSLIDE 4: "03 PRAZO"\nSLIDE 5: "📞 3214-1300"',
+            legenda:'📋 CHECKLIST 2026\n\n✅ Revisar projeto\n✅ Calcular quantitativos\n✅ Considerar prazo\n✅ Verificar normas\n✅ Alinhar cronograma\n\n💡 ANTECIPE A COMPRA!\n\nSALVA 📌\n\n#Manchester #Checklist'},
+            
+            {id:4,date:'2026-01-10',type:'DATA ESPECIAL',format:'Vídeo 30s',title:'👷 Dia do Engenheiro',desc:'Homenagem 10/01',
+            narrativa:'[0:00-0:05] ABERTURA\n══════════════\nObras icônicas\nText: "10 DE JANEIRO"\n\n---\n\n[0:05-0:15] HOMENAGEM\n══════════════\nEngenheiros trabalhando\nText: "Vocês transformam números em estruturas"\n\n---\n\n[0:15-0:25] MANCHESTER\n══════════════\nParceria\nText: "30 anos juntos"\n\n---\n\n[0:25-0:30] FECHAMENTO\n══════════════\nLogo\nText: "FELIZ DIA! 👷"',
+            imagem:'PROMPT PRINCIPAL\n══════════════\nEngineer heroic pose\nConstruction background\nGolden hour lighting\nCinematic commercial style',
+            video:'[0:00-0:05]\n══════════════\nDrone shots\nTime-lapse building\nEmotional piano\n\n---\n\n[0:05-0:15]\n══════════════\nEngineers montage\nReviewing plans\nTeam coordination\n\n---\n\n[0:15-0:30]\n══════════════\nManchester delivery\nLogo reveal\nFELIZ DIA!',
+            tela:'[0:00] "10 DE JANEIRO"\n[0:05] "Vocês transformam"\n[0:15] "30 anos juntos"\n[0:25] "FELIZ DIA! 👷"',
+            legenda:'👷 FELIZ DIA DO ENGENHEIRO CIVIL!\n\nVocês transformam:\n📐 Números em estruturas\n📋 Projetos em realidade\n\n30 anos construindo juntos!\n\n#DiaDoEngenheiro #Manchester'}
+        ],
+        2: [
+            {id:1,date:'2026-02-02',type:'PROBLEMA → SOLUÇÃO',format:'Reels 30s',title:'😰 Operário caiu da laje',desc:'Segurança no canteiro',
+            narrativa:'[0:00-0:03] HOOK\n══════════════\nTexto: "ACONTECEU ONTEM"\nVisual: Tela preta\n\n---\n\n[0:03-0:10] PROBLEMA\n══════════════\nNarração: "Sem cinto, sem linha de vida"\nTexto: "QUEDA DE 4 METROS"\n\n---\n\n[0:10-0:15] CONSEQUÊNCIA\n══════════════\nTexto: "6 meses afastado"\n\n---\n\n[0:15-0:23] SOLUÇÃO\n══════════════\nTexto: "✓ LINHA DE VIDA"\n"✓ CINTO"\n\n---\n\n[0:23-0:30] CTA\n══════════════\n"SUA OBRA TEM?"',
+            imagem:'PROMPT THUMBNAIL\n══════════════\nSafety split image\n\nLEFT - DANGER:\nWorker no protection\nRed warning tint\n\n---\n\nRIGHT - SAFE:\nWorker with PPE\nGreen accent',
+            video:'CENA 1 — HOOK\n══════════════\nBlack screen, text appears\nSiren sound\n\n---\n\nCENA 2 — PROBLEMA\n══════════════\nConstruction b-roll\nCold desaturated\n\n---\n\nCENA 3 — SOLUÇÃO\n══════════════\nOrganized site with PPE\nWarm positive colors\n\n---\n\nCENA 4 — CTA\n══════════════\nLogo Manchester\n"Segurança primeiro"',
+            tela:'[0:00] "ACONTECEU ONTEM"\n[0:03] "SEM PROTEÇÃO"\n[0:10] "6 MESES AFASTADO"\n[0:23] "SUA OBRA TEM?"',
+            legenda:'😰 Aconteceu ontem.\n\nOperário na laje.\nSem cinto. Sem linha de vida.\nQueda de 4 metros.\n\n💔 6 meses afastado\n\nSegurança é INVESTIMENTO:\n✅ Linha de vida\n✅ Cinto obrigatório\n✅ Treinamento\n\nSUA OBRA TEM?\n\n#Segurança #NR18 #Manchester'}
+        ]
+    };
 
-function switchTab(tab) {
-    currentTab = tab;
-    var tabs = document.querySelectorAll('.modal-tab');
-    for (var i = 0; i < tabs.length; i++) {
-        tabs[i].classList.remove('active');
-        if (tabs[i].textContent.toLowerCase().indexOf(tab) > -1 || 
-            (tab === 'narrativa' && tabs[i].textContent.indexOf('NARRATIVA') > -1) ||
-            (tab === 'imagem' && tabs[i].textContent.indexOf('IMAGEM') > -1) ||
-            (tab === 'video' && tabs[i].textContent.indexOf('VÍDEO') > -1) ||
-            (tab === 'tela' && tabs[i].textContent.indexOf('TELA') > -1) ||
-            (tab === 'legenda' && tabs[i].textContent.indexOf('LEGENDA') > -1)) {
-            tabs[i].classList.add('active');
+    var TABS = [
+        {key:'narrativa',icon:'📝',label:'NARRATIVA'},
+        {key:'imagem',icon:'🖼️',label:'IMAGEM'},
+        {key:'video',icon:'🎬',label:'VÍDEO'},
+        {key:'tela',icon:'📺',label:'TELA'},
+        {key:'legenda',icon:'📱',label:'LEGENDA'}
+    ];
+
+    // ========== ESTADO ==========
+    var state = {
+        month: 1,
+        tab: 'narrativa',
+        post: null,
+        data: null
+    };
+
+    // ========== ELEMENTOS ==========
+    var els = {};
+
+    // ========== FUNÇÕES ==========
+    function $(id) { return document.getElementById(id); }
+    
+    function load() {
+        try {
+            var saved = localStorage.getItem('manchester_v4');
+            state.data = saved ? JSON.parse(saved) : JSON.parse(JSON.stringify(INITIAL_DATA));
+        } catch(e) {
+            state.data = JSON.parse(JSON.stringify(INITIAL_DATA));
         }
     }
-    
-    var allTabs = document.querySelectorAll('.modal-tab');
-    for (var i = 0; i < allTabs.length; i++) {
-        allTabs[i].classList.remove('active');
-    }
-    allTabs[['narrativa','imagem','video','tela','legenda'].indexOf(tab)].classList.add('active');
-    
-    renderTabContent();
-}
 
-function renderTabContent() {
-    var content = currentPost[currentTab] || 'Conteúdo não disponível';
-    var body = document.getElementById('modalBody');
-    
-    var titles = {
-        narrativa: '📝 NARRATIVA / ROTEIRO',
-        imagem: '🖼️ PROMPTS DE IMAGEM',
-        video: '🎬 DIREÇÃO DE VÍDEO',
-        tela: '📺 TEXTO NA TELA',
-        legenda: '📱 LEGENDA INSTAGRAM'
-    };
-    
-    // Para imagem e vídeo, separar blocos
-    if ((currentTab === 'imagem' || currentTab === 'video') && content.length > 100) {
-        var blocks = splitIntoBlocks(content);
-        
-        if (blocks.length > 1) {
-            var html = '<div class="content-section"><div class="section-header">' +
-                '<div class="section-title">' + titles[currentTab] + ' (' + blocks.length + ' blocos)</div>' +
-                '<button class="copy-btn" onclick="copyAll()">📋 Copiar Tudo</button></div></div>';
-            
-            for (var i = 0; i < blocks.length; i++) {
-                html += '<div class="prompt-block">' +
-                    '<div class="prompt-block-header">' +
-                    '<div style="display:flex;align-items:center">' +
-                    '<div class="prompt-block-num">' + (i + 1) + '</div>' +
-                    '<div class="prompt-block-title">' + blocks[i].title + '</div>' +
-                    '</div>' +
-                    '<button class="copy-btn" onclick="copyBlock(' + i + ')">📋 Copiar</button>' +
-                    '</div>' +
-                    '<div class="prompt-block-content" id="block' + i + '">' + escapeHtml(blocks[i].content) + '</div>' +
-                    '</div>';
+    function save() {
+        try {
+            localStorage.setItem('manchester_v4', JSON.stringify(state.data));
+            toast('✓ Salvo!');
+        } catch(e) {
+            toast('Erro ao salvar');
+        }
+    }
+
+    function backup() {
+        var blob = new Blob([JSON.stringify({v:'4',d:new Date().toISOString(),data:state.data}, null, 2)], {type:'application/json'});
+        var a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'manchester_' + new Date().toISOString().split('T')[0] + '.json';
+        a.click();
+        toast('✓ Backup!');
+    }
+
+    function importFile(e) {
+        var file = e.target.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function(ev) {
+            try {
+                var d = JSON.parse(ev.target.result);
+                state.data = d.data || d.posts || d;
+                save();
+                renderPosts();
+                toast('✓ Importado!');
+            } catch(err) {
+                toast('Arquivo inválido');
             }
-            
-            body.innerHTML = html;
+        };
+        reader.readAsText(file);
+    }
+
+    function renderMonths() {
+        var html = '';
+        for (var i = 0; i < MONTHS.length; i++) {
+            var m = MONTHS[i];
+            var cls = m.id === state.month ? 'month-btn active' : 'month-btn';
+            html += '<button class="' + cls + '" data-month="' + m.id + '">' + m.short + '</button>';
+        }
+        $('monthGrid').innerHTML = html;
+    }
+
+    function updateSidebar() {
+        var m = MONTHS[state.month - 1];
+        $('statPosts').textContent = m.posts;
+        $('statStories').textContent = m.stories;
+        $('themeName').textContent = m.theme;
+        $('themeDesc').textContent = m.desc;
+    }
+
+    function renderPosts() {
+        var m = MONTHS[state.month - 1];
+        $('mainTitle').innerHTML = m.name.toUpperCase() + ' — <span>' + m.theme + '</span>';
+        
+        var posts = state.data[state.month] || [];
+        if (!posts.length) {
+            $('postsList').innerHTML = '<div class="empty"><h3>🚧 Em desenvolvimento</h3></div>';
             return;
         }
+        
+        posts.sort(function(a,b) { return new Date(a.date) - new Date(b.date); });
+        
+        var html = '';
+        for (var i = 0; i < posts.length; i++) {
+            var p = posts[i];
+            var d = new Date(p.date);
+            var day = String(d.getDate()).padStart(2,'0');
+            var mon = MONTHS[d.getMonth()].short;
+            
+            html += '<div class="post" data-id="' + p.id + '">' +
+                '<div class="post-date"><div class="post-day">' + day + '</div><div class="post-month">' + mon + '</div></div>' +
+                '<div class="post-info"><div class="post-type">' + p.type + '</div><div class="post-title">' + p.title + '</div><div class="post-desc">' + p.desc + '</div></div>' +
+                '<div class="post-format">' + p.format + '</div></div>';
+        }
+        $('postsList').innerHTML = html;
     }
-    
-    // Renderização padrão
-    body.innerHTML = '<div class="content-section">' +
-        '<div class="section-header">' +
-        '<div class="section-title">' + titles[currentTab] + '</div>' +
-        '<button class="copy-btn" onclick="copyAll()">📋 Copiar</button>' +
-        '</div>' +
-        '<div class="section-body">' +
-        '<div class="content-text" id="contentText">' + escapeHtml(content) + '</div>' +
-        '</div></div>';
-}
 
-function splitIntoBlocks(content) {
-    var blocks = [];
-    var parts = content.split(/\n---\n|\n={10,}\n/);
-    
-    for (var i = 0; i < parts.length; i++) {
-        var part = parts[i].trim();
-        if (part.length > 20) {
-            var lines = part.split('\n');
-            var title = lines[0].replace(/[═━─]/g, '').trim() || 'BLOCO ' + (i + 1);
-            if (title.length > 50) title = title.substring(0, 50) + '...';
-            blocks.push({title: title, content: part});
+    function openModal(id) {
+        var posts = state.data[state.month] || [];
+        state.post = null;
+        for (var i = 0; i < posts.length; i++) {
+            if (posts[i].id === id) {
+                state.post = posts[i];
+                break;
+            }
+        }
+        if (!state.post) return;
+
+        $('modalBadge').textContent = 'POST #' + String(state.post.id).padStart(2,'0') + ' · ' + state.post.format;
+        $('modalDate').value = state.post.date;
+        $('modalTitle').value = state.post.title;
+        $('modalDesc').textContent = state.post.desc;
+
+        state.tab = 'narrativa';
+        renderTabs();
+        renderContent();
+        $('overlay').classList.add('show');
+    }
+
+    function closeModal() {
+        $('overlay').classList.remove('show');
+    }
+
+    function renderTabs() {
+        var html = '';
+        for (var i = 0; i < TABS.length; i++) {
+            var t = TABS[i];
+            var cls = t.key === state.tab ? 'tab active' : 'tab';
+            html += '<button class="' + cls + '" data-tab="' + t.key + '">' + t.icon + ' ' + t.label + '</button>';
+        }
+        $('tabsContainer').innerHTML = html;
+    }
+
+    function splitBlocks(content) {
+        var blocks = [];
+        var parts = content.split(/\n---\n/);
+        for (var i = 0; i < parts.length; i++) {
+            var p = parts[i].trim();
+            if (p.length > 10) {
+                var lines = p.split('\n');
+                var title = lines[0].replace(/[═━─\[\]]/g, '').trim() || 'BLOCO ' + (i+1);
+                blocks.push({title: title.substring(0, 40), content: p});
+            }
+        }
+        if (!blocks.length) blocks.push({title: 'CONTEÚDO', content: content});
+        return blocks;
+    }
+
+    function esc(text) {
+        var d = document.createElement('div');
+        d.textContent = text;
+        return d.innerHTML;
+    }
+
+    function renderContent() {
+        var content = state.post[state.tab] || 'Sem conteúdo';
+        var body = $('modalBody');
+
+        if ((state.tab === 'imagem' || state.tab === 'video' || state.tab === 'narrativa') && content.indexOf('---') > -1) {
+            var blocks = splitBlocks(content);
+            var html = '<div class="section"><div class="section-head"><div class="section-title">' + TABS.find(function(t){return t.key===state.tab}).icon + ' ' + blocks.length + ' BLOCOS</div><button class="copy-btn" data-copy="all">📋 Copiar Tudo</button></div></div>';
+            
+            for (var i = 0; i < blocks.length; i++) {
+                html += '<div class="block"><div class="block-head"><div class="block-num">' + (i+1) + '</div><div class="block-title">' + esc(blocks[i].title) + '</div><button class="copy-btn" data-copy="' + i + '">📋</button></div><div class="block-content" id="block' + i + '">' + esc(blocks[i].content) + '</div></div>';
+            }
+            body.innerHTML = html;
+        } else {
+            body.innerHTML = '<div class="section"><div class="section-head"><div class="section-title">' + TABS.find(function(t){return t.key===state.tab}).icon + ' CONTEÚDO</div><button class="copy-btn" data-copy="all">📋 Copiar</button></div><div class="section-content" id="mainContent">' + esc(content) + '</div></div>';
         }
     }
-    
-    if (blocks.length === 0) {
-        blocks.push({title: 'CONTEÚDO', content: content});
-    }
-    
-    return blocks;
-}
 
-function escapeHtml(text) {
-    var div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-}
-
-function copyBlock(index) {
-    var el = document.getElementById('block' + index);
-    if (el) {
-        navigator.clipboard.writeText(el.textContent).then(function() {
-            showToast('✓ Bloco ' + (index + 1) + ' copiado!');
+    function copyText(index) {
+        var text;
+        if (index === 'all') {
+            text = state.post[state.tab];
+        } else {
+            var el = $('block' + index);
+            text = el ? el.textContent : '';
+        }
+        navigator.clipboard.writeText(text).then(function() {
+            toast('✓ Copiado!');
         });
     }
-}
 
-function copyAll() {
-    var content = currentPost[currentTab];
-    navigator.clipboard.writeText(content).then(function() {
-        showToast('✓ Copiado!');
-    });
-}
+    function toast(msg) {
+        var t = $('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(function() { t.classList.remove('show'); }, 2000);
+    }
 
-function updateDate() {
-    var newDate = document.getElementById('modalDate').value;
-    if (currentPost && newDate) {
-        currentPost.date = newDate;
-        saveData();
+    // ========== EVENTOS ==========
+    function init() {
+        load();
+        renderMonths();
+        updateSidebar();
         renderPosts();
+
+        $('btnBackup').onclick = backup;
+        $('btnImport').onclick = function() { $('fileInput').click(); };
+        $('fileInput').onchange = importFile;
+        $('btnSave').onclick = save;
+        $('closeBtn').onclick = closeModal;
+
+        $('monthGrid').onclick = function(e) {
+            if (e.target.dataset.month) {
+                state.month = parseInt(e.target.dataset.month);
+                renderMonths();
+                updateSidebar();
+                renderPosts();
+            }
+        };
+
+        $('postsList').onclick = function(e) {
+            var post = e.target.closest('.post');
+            if (post && post.dataset.id) {
+                openModal(parseInt(post.dataset.id));
+            }
+        };
+
+        $('tabsContainer').onclick = function(e) {
+            if (e.target.dataset.tab) {
+                state.tab = e.target.dataset.tab;
+                renderTabs();
+                renderContent();
+            }
+        };
+
+        $('modalBody').onclick = function(e) {
+            if (e.target.dataset.copy !== undefined) {
+                copyText(e.target.dataset.copy);
+            }
+        };
+
+        $('overlay').onclick = function(e) {
+            if (e.target === $('overlay')) closeModal();
+        };
+
+        $('modalDate').onchange = function() {
+            if (state.post) {
+                state.post.date = this.value;
+                save();
+                renderPosts();
+            }
+        };
+
+        $('modalTitle').onchange = function() {
+            if (state.post) {
+                state.post.title = this.value;
+                save();
+                renderPosts();
+            }
+        };
+
+        document.onkeydown = function(e) {
+            if (e.key === 'Escape') closeModal();
+        };
     }
-}
 
-function updateTitle() {
-    var newTitle = document.getElementById('modalTitle').value;
-    if (currentPost && newTitle) {
-        currentPost.title = newTitle;
-        saveData();
-        renderPosts();
+    // ========== START ==========
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', init);
+    } else {
+        init();
     }
-}
-
-function showToast(msg) {
-    var toast = document.getElementById('toast');
-    toast.textContent = msg;
-    toast.classList.add('show');
-    setTimeout(function() {
-        toast.classList.remove('show');
-    }, 2000);
-}
-
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeModal();
-});
-
-document.addEventListener('click', function(e) {
-    if (dropdownOpen && !e.target.closest('.month-selector')) {
-        dropdownOpen = false;
-        document.getElementById('monthDropdown').classList.remove('open');
-    }
-});
-
-init();
+})();
 </script>
-
 </body>
 </html>
