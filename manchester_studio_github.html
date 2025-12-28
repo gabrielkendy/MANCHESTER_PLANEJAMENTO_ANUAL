@@ -1,0 +1,1976 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MANCHESTER Content Studio 2026</title>
+    <style>
+        :root{--vermelho:#C41E3A;--vermelho-dark:#9B1830;--dourado:#C9A227;--preto:#0a0a0a;--preto2:#111;--preto3:#1a1a1a;--preto4:#222;--branco:#fff;--cinza:#888;--cinza2:#555;--verde:#22c55e;--azul:#3b82f6;--roxo:#a855f7;--laranja:#f97316}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--preto);color:var(--branco);min-height:100vh}
+        .header{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:linear-gradient(135deg,var(--preto2),var(--preto));border-bottom:1px solid #222;position:sticky;top:0;z-index:100}
+        .logo{display:flex;align-items:center;gap:12px}
+        .logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--vermelho),var(--vermelho-dark));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;font-style:italic;box-shadow:0 4px 15px rgba(196,30,58,0.3)}
+        .logo-text{font-size:20px;font-weight:900;letter-spacing:3px}
+        .logo-sub{font-size:9px;color:var(--cinza);letter-spacing:1px}
+        .header-actions{display:flex;gap:10px}
+        .header-btn{padding:8px 16px;background:var(--preto3);border:1px solid #333;border-radius:6px;color:var(--branco);font-size:12px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:6px}
+        .header-btn:hover{border-color:var(--vermelho);background:rgba(196,30,58,0.1)}
+        .header-btn.primary{background:var(--vermelho);border-color:var(--vermelho)}
+        .layout{display:flex;height:calc(100vh - 72px)}
+        .sidebar{width:280px;background:var(--preto2);border-right:1px solid #222;overflow-y:auto;padding:0}
+        .month-filter{padding:20px;border-bottom:1px solid #222;background:var(--preto3)}
+        .month-filter-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px;display:flex;align-items:center;gap:8px}
+        .month-filter-title::before{content:'';width:20px;height:2px;background:var(--vermelho)}
+        .month-selector-btn{width:100%;padding:15px 20px;background:linear-gradient(135deg,var(--preto4),var(--preto3));border:2px solid #333;border-radius:12px;color:var(--branco);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+        .month-selector-btn:hover,.month-selector-btn.open{border-color:var(--vermelho)}
+        .month-selector-left{display:flex;align-items:center;gap:15px}
+        .month-selector-num{font-size:28px;font-weight:900;color:var(--vermelho);line-height:1}
+        .month-selector-info h3{font-size:18px;font-weight:700}
+        .month-selector-info span{font-size:11px;color:var(--cinza)}
+        .month-selector-arrow{font-size:12px;color:var(--cinza);transition:transform .3s}
+        .month-selector-btn.open .month-selector-arrow{transform:rotate(180deg)}
+        .month-dropdown{position:absolute;top:100%;left:0;width:100%;background:var(--preto3);border:2px solid var(--vermelho);border-top:none;border-radius:0 0 12px 12px;max-height:0;overflow:hidden;transition:max-height .3s;z-index:50}
+        .month-dropdown.open{max-height:400px;overflow-y:auto}
+        .month-dropdown-item{display:flex;align-items:center;gap:15px;padding:12px 20px;cursor:pointer;transition:all .2s;border-bottom:1px solid #222}
+        .month-dropdown-item:hover{background:rgba(196,30,58,0.1)}
+        .month-dropdown-item.active{background:rgba(196,30,58,0.2)}
+        .month-dropdown-num{font-size:18px;font-weight:900;color:var(--vermelho);width:30px}
+        .month-dropdown-info h4{font-size:13px;font-weight:600}
+        .month-dropdown-info span{font-size:10px;color:var(--cinza)}
+        .month-dropdown-posts{margin-left:auto;background:var(--preto4);padding:4px 10px;border-radius:20px;font-size:10px;color:var(--cinza)}
+        .month-quick-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px}
+        .month-quick-btn{padding:10px 5px;background:var(--preto4);border:1px solid #333;border-radius:8px;color:var(--cinza);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
+        .month-quick-btn:hover{border-color:var(--vermelho);color:var(--branco)}
+        .month-quick-btn.active{background:var(--vermelho);border-color:var(--vermelho);color:var(--branco)}
+        .sidebar-info{padding:20px}
+        .sidebar-info-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px;display:flex;align-items:center;gap:8px}
+        .sidebar-info-title::before{content:'';width:20px;height:2px;background:var(--dourado)}
+        .month-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
+        .month-stat-card{background:var(--preto3);border:1px solid #222;border-radius:10px;padding:15px;text-align:center}
+        .month-stat-value{font-size:28px;font-weight:900;color:var(--vermelho)}
+        .month-stat-label{font-size:9px;color:var(--cinza);text-transform:uppercase;letter-spacing:1px}
+        .month-theme-card{background:linear-gradient(135deg,rgba(196,30,58,0.1),var(--preto3));border:1px solid #333;border-radius:12px;padding:20px}
+        .month-theme-label{font-size:9px;color:var(--vermelho);letter-spacing:2px;margin-bottom:8px}
+        .month-theme-title{font-size:22px;font-weight:900;margin-bottom:10px}
+        .month-theme-desc{font-size:12px;color:var(--cinza);line-height:1.6}
+        .month-selector{position:relative;width:100%}
+        .main{flex:1;overflow-y:auto;padding:25px 30px}
+        .main-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;padding-bottom:20px;border-bottom:1px solid #222}
+        .main-title{font-size:28px;font-weight:900;letter-spacing:2px}
+        .main-title span{color:var(--vermelho)}
+        .posts-list{display:flex;flex-direction:column;gap:12px}
+        .post-card{display:flex;align-items:center;gap:20px;padding:18px 20px;background:var(--preto2);border:1px solid #222;border-radius:12px;cursor:pointer;transition:all .25s}
+        .post-card:hover{border-color:var(--vermelho);transform:translateX(8px);box-shadow:0 5px 30px rgba(196,30,58,0.15)}
+        .post-date{background:var(--preto3);border-radius:8px;padding:10px 12px;text-align:center;min-width:55px}
+        .post-date-day{font-size:22px;font-weight:900;color:var(--vermelho)}
+        .post-date-month{font-size:9px;color:var(--cinza);text-transform:uppercase}
+        .post-info{flex:1}
+        .post-type{font-size:10px;color:var(--dourado);font-weight:700;letter-spacing:1px;margin-bottom:5px}
+        .post-title{font-weight:600;font-size:15px;margin-bottom:4px}
+        .post-desc{font-size:12px;color:var(--cinza)}
+        .post-format{background:var(--preto3);padding:6px 12px;border-radius:6px;font-size:10px;color:var(--cinza)}
+        .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;overflow-y:auto;backdrop-filter:blur(10px)}
+        .modal-overlay.show{display:block}
+        .modal{max-width:1000px;margin:20px auto;background:var(--preto2);border-radius:16px;border:1px solid #333;overflow:hidden}
+        .modal-header{padding:25px 30px;background:linear-gradient(135deg,var(--preto3),var(--preto2));border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:flex-start}
+        .modal-header-left{flex:1}
+        .modal-badge{display:inline-block;padding:4px 12px;background:rgba(196,30,58,0.2);border:1px solid var(--vermelho);border-radius:20px;font-size:10px;color:var(--vermelho);font-weight:700;letter-spacing:1px;margin-bottom:12px}
+        .modal-title-row{display:flex;align-items:center;gap:15px;margin-bottom:8px;flex-wrap:wrap}
+        .modal-date-input{background:var(--preto3);border:1px solid #444;border-radius:6px;padding:8px 12px;color:var(--branco);font-size:14px;width:140px}
+        .modal-title-input{flex:1;min-width:200px;background:transparent;border:none;border-bottom:2px solid #333;color:var(--branco);font-size:18px;font-weight:700;padding:5px 0}
+        .modal-title-input:focus{outline:none;border-bottom-color:var(--vermelho)}
+        .modal-desc{font-size:13px;color:var(--cinza)}
+        .modal-close{width:40px;height:40px;background:var(--preto3);border:1px solid #444;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;transition:all .2s}
+        .modal-close:hover{border-color:var(--vermelho);color:var(--vermelho);transform:rotate(90deg)}
+        .modal-tabs{display:flex;background:var(--preto3);border-bottom:1px solid #333;flex-wrap:wrap}
+        .modal-tab{flex:1;min-width:120px;padding:15px 10px;background:transparent;border:none;color:var(--cinza);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:3px solid transparent}
+        .modal-tab:hover{color:var(--branco);background:rgba(255,255,255,0.03)}
+        .modal-tab.active{color:var(--vermelho);border-bottom-color:var(--vermelho);background:rgba(196,30,58,0.05)}
+        .modal-tab-icon{font-size:14px}
+        .modal-body{padding:25px 30px;max-height:60vh;overflow-y:auto}
+        .content-section{margin-bottom:20px;background:var(--preto3);border-radius:12px;overflow:hidden}
+        .section-header{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--preto4);border-bottom:1px solid #333}
+        .section-title{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:1px}
+        .section-icon{font-size:14px}
+        .section-title.narrativa{color:var(--azul)}
+        .section-title.imagem{color:var(--roxo)}
+        .section-title.video{color:var(--laranja)}
+        .section-title.legenda{color:var(--verde)}
+        .section-title.tela{color:var(--dourado)}
+        .copy-btn{display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--preto2);border:1px solid #444;border-radius:6px;color:var(--branco);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s}
+        .copy-btn:hover{background:var(--vermelho);border-color:var(--vermelho)}
+        .copy-btn.copied{background:var(--verde);border-color:var(--verde)}
+        .section-body{padding:18px}
+        .content-text{font-size:13px;line-height:1.8;white-space:pre-wrap;color:#ddd;font-family:'Courier New',monospace;background:var(--preto);padding:15px;border-radius:8px;max-height:300px;overflow-y:auto}
+        .toast{position:fixed;bottom:30px;right:30px;padding:15px 25px;background:var(--verde);color:#fff;border-radius:10px;font-weight:600;font-size:13px;transform:translateY(100px);opacity:0;transition:all .3s;z-index:2000;display:flex;align-items:center;gap:10px;box-shadow:0 10px 40px rgba(34,197,94,0.3)}
+        .toast.show{transform:translateY(0);opacity:1}
+        .empty-state{text-align:center;padding:80px 40px;color:var(--cinza)}
+        .empty-state h3{font-size:20px;margin-bottom:10px;color:var(--cinza2)}
+        .backup-info{padding:15px;background:var(--preto3);border-radius:8px;margin-top:15px;font-size:11px;color:var(--cinza)}
+        .backup-info strong{color:var(--verde)}
+        ::-webkit-scrollbar{width:6px}
+        ::-webkit-scrollbar-track{background:var(--preto2)}
+        ::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+        ::-webkit-scrollbar-thumb:hover{background:var(--vermelho)}
+        @media(max-width:768px){.sidebar{display:none}.layout{flex-direction:column}.main{padding:15px}}
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="logo">
+        <div class="logo-icon">M</div>
+        <div>
+            <div class="logo-text">MANCHESTER</div>
+            <div class="logo-sub">Content Studio 2026</div>
+        </div>
+    </div>
+    <div class="header-actions">
+        <button class="header-btn" onclick="exportData()">💾 Backup</button>
+        <button class="header-btn" onclick="document.getElementById('importFile').click()">📂 Importar</button>
+        <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+        <button class="header-btn primary" onclick="saveToStorage()">✓ Salvar</button>
+    </div>
+</header>
+
+<div class="layout">
+    <aside class="sidebar">
+        <div class="month-filter">
+            <div class="month-filter-title">SELECIONAR MÊS</div>
+            <div class="month-selector">
+                <button class="month-selector-btn" id="monthSelectorBtn" onclick="toggleDropdown()">
+                    <div class="month-selector-left">
+                        <div class="month-selector-num" id="selectorNum">01</div>
+                        <div class="month-selector-info">
+                            <h3 id="selectorName">Janeiro</h3>
+                            <span id="selectorTheme">Planejamento</span>
+                        </div>
+                    </div>
+                    <div class="month-selector-arrow">▼</div>
+                </button>
+                <div class="month-dropdown" id="monthDropdown"></div>
+            </div>
+            <div class="month-quick-nav" id="monthQuickNav"></div>
+        </div>
+        <div class="sidebar-info">
+            <div class="sidebar-info-title">VISÃO GERAL</div>
+            <div class="month-stats">
+                <div class="month-stat-card">
+                    <div class="month-stat-value" id="statPosts">13</div>
+                    <div class="month-stat-label">Posts</div>
+                </div>
+                <div class="month-stat-card">
+                    <div class="month-stat-value" id="statStories">3</div>
+                    <div class="month-stat-label">Stories</div>
+                </div>
+            </div>
+            <div class="month-theme-card">
+                <div class="month-theme-label">TEMA DO MÊS</div>
+                <div class="month-theme-title" id="themeTitle">Planejamento</div>
+                <div class="month-theme-desc" id="themeDesc">Foco em organização e preparação para o ano.</div>
+            </div>
+            <div class="backup-info">
+                <strong>✓ Auto-save ativo</strong><br>
+                Dados salvos em localStorage.<br>
+                Use "Backup" para exportar JSON.
+            </div>
+        </div>
+    </aside>
+    
+    <main class="main">
+        <div class="main-header">
+            <h1 class="main-title" id="mainTitle">JANEIRO — <span>Planejamento</span></h1>
+        </div>
+        <div class="posts-list" id="postsList"></div>
+    </main>
+</div>
+
+<div class="modal-overlay" id="modalOverlay">
+    <div class="modal">
+        <div class="modal-header">
+            <div class="modal-header-left">
+                <div class="modal-badge" id="modalBadge">POST #01</div>
+                <div class="modal-title-row">
+                    <input type="date" class="modal-date-input" id="modalDate" onchange="updatePostDate()">
+                    <input type="text" class="modal-title-input" id="modalTitle" placeholder="Título..." onchange="updatePostTitle()">
+                </div>
+                <div class="modal-desc" id="modalDesc">Descrição</div>
+            </div>
+            <button class="modal-close" onclick="closeModal()">✕</button>
+        </div>
+        <div class="modal-tabs">
+            <button class="modal-tab active" data-tab="narrativa" onclick="switchTab('narrativa')"><span class="modal-tab-icon">📝</span> NARRATIVA</button>
+            <button class="modal-tab" data-tab="imagem" onclick="switchTab('imagem')"><span class="modal-tab-icon">🖼️</span> PROMPT IMAGEM</button>
+            <button class="modal-tab" data-tab="video" onclick="switchTab('video')"><span class="modal-tab-icon">🎬</span> PROMPT VÍDEO</button>
+            <button class="modal-tab" data-tab="tela" onclick="switchTab('tela')"><span class="modal-tab-icon">📺</span> TEXTO TELA</button>
+            <button class="modal-tab" data-tab="legenda" onclick="switchTab('legenda')"><span class="modal-tab-icon">📱</span> LEGENDA</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+</div>
+
+<div class="toast" id="toast">✓ Copiado!</div>
+
+<script>
+// ============== DATABASE COMPLETO ==============
+const MONTHS_DATA = [
+    {id:1,name:'Janeiro',theme:'Planejamento e Organização',shortTheme:'Planejamento',posts:13,stories:3,desc:'Foco em organização de obras, compra de materiais e preparação para o ano.'},
+    {id:2,name:'Fevereiro',theme:'Segurança no Canteiro',shortTheme:'Segurança',posts:11,stories:5,desc:'EPIs, normas de segurança, prevenção de acidentes e boas práticas.'},
+    {id:3,name:'Março',theme:'Mulheres na Construção',shortTheme:'Mulheres',posts:12,stories:0,desc:'Celebração do Dia da Mulher e destaque para profissionais femininas.'},
+    {id:4,name:'Abril',theme:'Mês Nacional do Aço',shortTheme:'Mês do Aço',posts:13,stories:6,desc:'Dia Nacional do Aço (09/04), Sexta Santa, Tiradentes.'},
+    {id:5,name:'Maio',theme:'Indústria e Produtividade',shortTheme:'Indústria',posts:13,stories:3,desc:'Dia da Indústria, Dia do Trabalho, processos produtivos.'},
+    {id:6,name:'Junho',theme:'Sustentabilidade',shortTheme:'Sustentável',posts:12,stories:3,desc:'Meio ambiente, Corpus Christi, reciclagem de aço.'},
+    {id:7,name:'Julho',theme:'Construção Civil',shortTheme:'Construção',posts:13,stories:0,desc:'Técnicas construtivas, inovações e tendências.'},
+    {id:8,name:'Agosto',theme:'Mês do Soldador',shortTheme:'Soldador',posts:13,stories:0,desc:'Dia do Soldador (25/08), homenagens e técnicas.'},
+    {id:9,name:'Setembro',theme:'Setembro Amarelo',shortTheme:'Set. Amarelo',posts:13,stories:3,desc:'Saúde mental, Independência do Brasil.'},
+    {id:10,name:'Outubro',theme:'Outubro Rosa',shortTheme:'Out. Rosa',posts:13,stories:3,desc:'Nossa Senhora Aparecida, conscientização.'},
+    {id:11,name:'Novembro',theme:'Black Friday',shortTheme:'Black Friday',posts:13,stories:6,desc:'Promoções, Finados, Consciência Negra.'},
+    {id:12,name:'Dezembro',theme:'Retrospectiva',shortTheme:'Retrospectiva',posts:13,stories:5,desc:'Balanço do ano, Natal, Ano Novo.'}
+];
+
+// POSTS JANEIRO COMPLETO
+const INITIAL_POSTS = {
+1: [
+{id:1,date:'2026-01-01',type:'DATA ESPECIAL',format:'Carrossel 5 slides',title:'🎆 Feliz 2026! O ano de construir grandes projetos',desc:'Mensagem de ano novo + retrospectiva Manchester',
+narrativa:`SLIDE 1 — CAPA (IMPACTO)
+═══════════════════════════════════════
+TEXTO PRINCIPAL:
+"2026 CHEGOU!"
+
+SUBTEXTO:
+"E com ele, novas fundações."
+
+INSTRUÇÃO VISUAL:
+Texto centralizado sobre fundo dramático com fogos de artifício dourados. Silhueta de obras ao fundo. Logo Manchester pequeno no canto inferior.
+
+SLIDE 2 — RETROSPECTIVA
+═══════════════════════════════════════
+TEXTO:
+"Em 2025, entregamos mais de 500 toneladas de aço."
+"Para obras em todo Rio de Janeiro e Minas Gerais."
+
+NÚMEROS EM DESTAQUE:
+• 500+ toneladas
+• 200+ obras atendidas
+• 30+ anos de mercado
+
+INSTRUÇÃO VISUAL:
+Números grandes em vermelho Manchester. Fotos de obras reais ao fundo em grade.
+
+SLIDE 3 — AGRADECIMENTO
+═══════════════════════════════════════
+TEXTO:
+"Obrigado a cada engenheiro, construtora e parceiro."
+"Vocês fazem a Manchester existir."
+
+INSTRUÇÃO VISUAL:
+Colagem de fotos: engenheiros, obras, equipe Manchester. Tom emocional, golden hour.
+
+SLIDE 4 — COMPROMISSO 2026
+═══════════════════════════════════════
+TEXTO:
+"Em 2026, seguimos com o mesmo compromisso:"
+
+CHECKLIST:
+✓ Qualidade certificada
+✓ Prazo respeitado
+✓ Preço justo
+
+INSTRUÇÃO VISUAL:
+Fundo vermelho gradiente. Ícones brancos ao lado de cada item.
+
+SLIDE 5 — CTA
+═══════════════════════════════════════
+TEXTO:
+"Bora construir juntos?"
+"Qual é seu maior projeto para 2026?"
+
+CTA:
+"Comenta aqui 👇"
+
+INSTRUÇÃO VISUAL:
+Fundo preto com logo Manchester grande. Texto dourado.`,
+imagem:`PROMPT SLIDE 1 — CAPA (MIDJOURNEY/DALL-E)
+═══════════════════════════════════════════════════════════════
+
+Ultra-realistic commercial photography of New Year 2026 celebration for steel/construction company.
+
+COMPOSITION:
+- Golden fireworks exploding in dark night sky
+- Silhouette of buildings under construction in background
+- Steel bars subtly forming "2026" number
+- Manchester logo positioned bottom-right corner
+- Negative space for text overlay in upper third
+
+COLOR PALETTE:
+- Primary: Deep red (#C41E3A)
+- Secondary: Black (#0a0a0a)
+- Accent: Gold (#C9A227)
+- Highlights: White sparks
+
+CAMERA SPECIFICATIONS:
+- Shot on Sony A7R IV, 35mm f/1.8 lens
+- Wide angle capturing full skyline
+- Shallow depth of field on fireworks
+- ISO 800, 1/250s shutter speed
+
+LIGHTING:
+- Natural firework illumination as key light
+- Dramatic rim light on building silhouettes
+- Golden hour warmth mixed with night sky
+- No artificial studio lighting
+
+STYLE & MOOD:
+- Cinematic, epic, celebratory
+- Premium corporate aesthetic
+- Inspirational and forward-looking
+- Professional advertising quality
+
+TECHNICAL REQUIREMENTS:
+- 1:1 aspect ratio for Instagram feed
+- Minimum 2048x2048 pixels
+- Clean edges for text overlay
+- No watermarks or artifacts
+
+MUST AVOID:
+- Generic stock photo appearance
+- Clipart or illustration elements
+- Overcrowded composition
+- Visible people or faces
+- Competing focal points
+
+═══════════════════════════════════════════════════════════════
+
+PROMPT SLIDE 2 — RETROSPECTIVA (INFOGRÁFICO)
+═══════════════════════════════════════════════════════════════
+
+Clean infographic-style commercial image for construction company retrospective.
+
+COMPOSITION:
+- Dark background with subtle geometric grid pattern
+- Large numbers "500+" prominently displayed in bold red
+- Secondary statistics arranged in clear visual hierarchy
+- Small construction photos in rounded rectangular frames
+- Ample white space for readability
+
+TYPOGRAPHY GUIDELINES:
+- Main numbers: Bold sans-serif (Bebas Neue style), 72pt equivalent
+- Body text: Clean sans-serif (Inter style), white
+- High contrast between text and background
+
+LAYOUT STRUCTURE:
+- Numbers occupy 60% of visual weight
+- Supporting text aligned left
+- Photo elements positioned right side
+- Bottom third reserved for Manchester branding
+
+COLOR PALETTE:
+- Background: #0a0a0a to #1a1a1a gradient
+- Primary text: White (#ffffff)
+- Accent numbers: Red (#C41E3A)
+- Subtle highlights: Gold (#C9A227)
+
+STYLE:
+- Modern corporate infographic
+- Data visualization aesthetic
+- Professional and trustworthy
+- Clean, minimal, impactful
+- 1:1 aspect ratio for Instagram
+
+═══════════════════════════════════════════════════════════════
+
+PROMPT SLIDE 3 — AGRADECIMENTO (EMOCIONAL)
+═══════════════════════════════════════════════════════════════
+
+Emotional collage photography celebrating construction professionals.
+
+COMPOSITION:
+- Grid layout of 4-6 candid professional photographs
+- Engineers, construction workers, team members
+- All shots captured in golden hour lighting
+- Warm, human, authentic emotional feeling
+- Subtle overlay connecting all images
+
+SUBJECTS TO INCLUDE:
+- Engineer analyzing tablet on construction site
+- Construction workers smiling during break
+- Professional handshake between partners
+- Team photo at completed project site
+- Close-up of hands working with blueprints
+
+MOOD & EMOTION:
+- Gratitude, pride, partnership
+- Warm emotional connection
+- Professional but deeply human
+- Celebratory achievement feeling
+
+LIGHTING REQUIREMENTS:
+- Golden hour throughout all images
+- Soft, flattering, warm light
+- Natural outdoor settings
+- Backlit rim effects on subjects
+
+COLOR GRADING:
+- Warm orange/gold dominant tones
+- Slight vintage film look
+- Unified color palette across all photos
+- Desaturated shadows, warm highlights
+
+STYLE:
+- Documentary photography approach
+- Authentic, not staged or posed
+- Editorial magazine quality
+- 1:1 aspect ratio for Instagram`,
+video:`DIREÇÃO DE VÍDEO — 15 SEGUNDOS COMPLETO
+═══════════════════════════════════════════════════════════════
+
+Ultra-realistic cinematic video for New Year 2026 construction company celebration.
+
+═══ TAKE 1 (0:00-0:03) — ABERTURA ÉPICA ═══
+
+VISUAL:
+- Drone shot rising slowly over construction site at dawn
+- Golden sunlight breaking over steel structures
+- Text "2026" fades in with metallic chrome texture
+- Dust particles floating in light beams
+
+CAMERA MOVEMENT:
+- Slow push-up combined with slight tilt down
+- Smooth gimbal stabilized movement
+- Speed: 15% slower than real-time (slight slow-mo)
+- Start wide, end medium-wide
+
+LIGHTING:
+- Golden hour, sun positioned at horizon line
+- Lens flare permitted and encouraged
+- Warm color temperature (5500K)
+- High dynamic range preserved
+
+SOUND DESIGN:
+- Epic orchestral swell building
+- Subtle construction site ambience underneath
+- Metallic shimmer on text reveal
+- Bass drop on "2026" appearance
+
+═══ TAKE 2 (0:03-0:08) — MONTAGEM DINÂMICA ═══
+
+VISUAL SEQUENCE:
+1. (0.8s) Sparks flying from welding - close-up
+2. (0.8s) CNC machine cutting steel - slow motion
+3. (1.0s) Manchester truck driving - tracking shot
+4. (1.2s) Steel framework being positioned by crane
+5. (0.7s) Worker giving thumbs up - medium shot
+
+CAMERA SPECIFICATIONS:
+- Mix of angles: close-up, medium, wide
+- All shots professionally stabilized
+- Consistent color grading throughout
+- 24fps with 180° shutter for cinema look
+
+TRANSITIONS:
+- Quick cuts synchronized to music beat
+- No fancy transitions (cuts only)
+- Each shot holds just long enough to register
+- Rhythm builds energy
+
+SOUND DESIGN:
+- Industrial sounds synced precisely to cuts
+- Music intensity builds throughout
+- Metallic impacts on each cut
+- Rising tension in audio
+
+═══ TAKE 3 (0:08-0:12) — EQUIPE HUMANA ═══
+
+VISUAL:
+- Slow motion montage of team members smiling
+- Multiple diverse workers represented
+- Pride and satisfaction visible in expressions
+- Natural, candid moments captured
+
+CAMERA:
+- 50mm portrait lens aesthetic
+- Shallow depth of field (f/1.8)
+- Slight slow push-in on each face
+- Eye-level, intimate framing
+
+LIGHTING:
+- Soft, flattering continuation of golden hour
+- Rim light separating subjects from background
+- Natural fill from environment
+
+TEXT OVERLAY:
+"OBRIGADO POR CONSTRUIR COM A GENTE"
+- Fade in smoothly, center screen
+- White text with subtle drop shadow
+- Hold for 2 seconds minimum
+
+═══ TAKE 4 (0:12-0:15) — FECHAMENTO PODEROSO ═══
+
+VISUAL:
+- Manchester logo reveal animation
+- Metallic/chrome texture on logo
+- Subtle gold particle effects rising
+- Clean black background
+
+CAMERA:
+- Static, perfectly centered
+- Logo fills 60% of frame
+- No movement (stability = confidence)
+
+TEXT:
+"2026 — Construindo o futuro"
+- Fade in below logo
+- Gold color (#C9A227)
+- Elegant serif or sans-serif font
+
+SOUND:
+- Music resolves to satisfying conclusion
+- Subtle whoosh on logo reveal
+- Final note holds and fades
+
+═══ CONSISTÊNCIA OBRIGATÓRIA ═══
+- Maintain exact color grading throughout entire video
+- No smoke effects, no vapor effects
+- All shots must feel connected as one story
+- Premium commercial advertising aesthetic
+- Export: 1080x1080 for Instagram, 1080x1920 for Stories`,
+tela:`TEXTO NA TELA — SLIDE A SLIDE
+═══════════════════════════════════════
+
+SLIDE 1:
+"2026 CHEGOU!"
+"E com ele, novas fundações."
+
+SLIDE 2:
+"500+ toneladas entregues"
+"200+ obras atendidas"
+"30+ anos de mercado"
+
+SLIDE 3:
+"OBRIGADO"
+"A cada engenheiro, construtora e parceiro"
+
+SLIDE 4:
+"Nosso compromisso:"
+"✓ Qualidade certificada"
+"✓ Prazo respeitado"
+"✓ Preço justo"
+
+SLIDE 5:
+"Bora construir juntos?"
+"Qual é seu maior projeto para 2026?"
+"Comenta aqui 👇"`,
+legenda:`🎆 FELIZ 2026!
+
+Mais um ano começa e com ele a certeza de que vamos continuar construindo juntos.
+
+Em 2025, entregamos mais de 500 toneladas de aço para obras por todo Rio de Janeiro e Minas Gerais.
+
+Cada barra cortada. Cada armadura montada. Cada entrega no prazo.
+
+Obrigado a cada engenheiro, arquiteto, mestre de obras e parceiro que confiou na Manchester.
+
+Em 2026, seguimos firmes:
+✅ Mesmo compromisso com qualidade
+✅ Mesmo foco em prazo
+✅ Mesmo preço justo
+
+E você? Qual é o seu maior projeto para 2026?
+
+Conta pra gente nos comentários! 👇
+
+📞 (21) 3214-1300
+📱 WhatsApp na bio
+
+#Manchester #AnoNovo2026 #ConstruçãoCivil #FelizAnoNovo #Aço #Engenharia #RioDeJaneiro #MinasGerais #Construção #ObraNovaAnoNovo #MetasConstrução`},
+
+{id:2,date:'2026-01-05',type:'PROBLEMA → SOLUÇÃO',format:'Reels 30s',title:'😤 "Comprei aço e veio com medida errada"',desc:'Problema comum de obra resolvido com conferência Manchester',
+narrativa:`ROTEIRO REELS 30 SEGUNDOS
+═══════════════════════════════════════
+
+[0:00-0:03] HOOK — CAPTURA ATENÇÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ÁUDIO/NARRAÇÃO:
+"Cara, o aço chegou errado. Minha obra parou."
+
+TEXTO NA TELA:
+"ISSO JÁ ACONTECEU COM VOCÊ?"
+
+INSTRUÇÃO:
+Close no rosto do engenheiro frustrado ao telefone. 
+Expressão muda de neutro para choque.
+Ambiente de escritório de obra/trailer.
+
+[0:03-0:10] PROBLEMA — DOR DO CLIENTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NARRAÇÃO:
+"Pediu 10mm, veio 8mm. Pediu 6 metros, veio 5.80."
+
+TEXTO NA TELA:
+"2 SEMANAS PERDIDAS"
+"R$ MILHARES EM PREJUÍZO"
+
+INSTRUÇÃO:
+B-roll do canteiro de obras parado.
+Materiais errados empilhados.
+Trabalhadores esperando sem fazer nada.
+Tom: urgência, frustração, prejuízo real.
+
+[0:10-0:13] TRANSIÇÃO — VIRADA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TEXTO NA TELA:
+"E SE EXISTISSE UMA FORMA DE EVITAR ISSO?"
+
+INSTRUÇÃO:
+Tela escurece gradualmente.
+Texto surge letra por letra (typewriter effect).
+Pausa dramática de 1 segundo.
+Som: silêncio + heartbeat sutil crescendo.
+
+[0:13-0:23] SOLUÇÃO — MANCHESTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NARRAÇÃO:
+"Na Manchester, antes de cortar uma barra sequer, 
+nossa equipe confere seu projeto inteiro. 
+Medida por medida. Bitola por bitola."
+
+TEXTO NA TELA:
+"CONFERÊNCIA → CORTE PRECISO → ENTREGA CERTA"
+
+INSTRUÇÃO VISUAL:
+Sequência rápida mostrando:
+1. Técnico analisando projeto no computador (2s)
+2. CNC cortando com precisão, faíscas (3s)
+3. Peças sendo etiquetadas individualmente (2s)
+4. Caminhão Manchester carregando (2s)
+
+Tom: confiança, solução, profissionalismo.
+Música: transição para beat positivo/confiante.
+
+[0:23-0:30] RESULTADO + CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NARRAÇÃO:
+"Zero erro. Zero atraso. Zero dor de cabeça."
+
+TEXTO NA TELA:
+"ZERO ERRO. ZERO ATRASO."
+
+CTA FINAL:
+Logo Manchester + "(21) 3214-1300"
+"Solicite seu orçamento"
+
+INSTRUÇÃO:
+Obra organizada, engenheiro satisfeito conferindo material.
+Sorriso de alívio/satisfação.
+Tom: resolução positiva, final feliz.`,
+imagem:`PROMPT THUMBNAIL/CAPA REELS
+═══════════════════════════════════════════════════════════════
+
+Split comparison image showing dramatic BEFORE vs AFTER for construction steel delivery.
+
+COMPOSITION:
+- Vertical split directly down the middle of frame
+- Left side: PROBLEM scenario (before Manchester)
+- Right side: SOLUTION scenario (after Manchester)
+- Bold red diagonal line separating both sides
+- Manchester logo centered on the dividing line
+- Text overlays on each side
+
+LEFT SIDE (PROBLEM):
+- Messy, chaotic construction site
+- Steel bars scattered incorrectly, wrong sizes visible
+- Frustrated engineer checking papers with confused expression
+- Color grading: cold, desaturated, blue/grey tint
+- Harsh shadows, unflattering lighting
+- Text overlay: "MEDIDA ERRADA" in red
+
+RIGHT SIDE (SOLUTION):
+- Clean, organized construction site
+- Steel bars properly arranged with visible labels/tags
+- Satisfied engineer giving thumbs up or checking tablet
+- Color grading: warm, vibrant, golden tint
+- Soft, professional lighting
+- Text overlay: "MEDIDA CERTA" in green
+
+CAMERA SPECIFICATIONS:
+- Wide angle to capture full scene comparison
+- Identical angle on both sides for fair comparison
+- Professional commercial photography quality
+- Sharp focus throughout
+
+LIGHTING CONTRAST:
+- Left: Overcast, flat, uninspiring, industrial
+- Right: Golden hour, warm, inviting, professional
+
+STYLE:
+- Before/after transformation format
+- High contrast between both sides
+- Professional commercial advertising aesthetic
+- 9:16 aspect ratio optimized for Reels cover
+
+TECHNICAL:
+- 1080x1920 pixels minimum
+- Clean edges for platform cropping
+- No text in safe zones that might be cut`,
+video:`DIREÇÃO COMPLETA — REELS 30 SEGUNDOS
+═══════════════════════════════════════════════════════════════
+
+Ultra-realistic commercial video showing problem-solution narrative for steel distribution company.
+
+═══ CENA 1 — HOOK (0:00-0:03) ═══
+
+VISUAL:
+- Extreme close-up on engineer's face
+- Phone pressed firmly to ear
+- Expression transitions from neutral to visible shock
+- Setting: construction office/trailer interior
+
+CAMERA SPECIFICATIONS:
+- 85mm portrait lens aesthetic
+- Shallow depth of field, background completely blurred
+- Slight slow push-in (dolly forward)
+- Handheld micro-movement for documentary realism
+- Eye-level framing
+
+LIGHTING:
+- Natural window light from camera left
+- Soft fill from right side
+- Realistic office/trailer lighting
+- Slight warmth in color temperature
+
+SOUND DESIGN:
+- Muffled phone conversation audio
+- Clear voice: "O aço chegou errado!"
+- Dramatic musical hit on reaction
+- Brief silence after shock
+
+ACTING DIRECTION:
+- Start neutral, professional
+- Slight confusion as information registers
+- Clear moment of realization/shock
+- Hold reaction for full impact
+
+═══ CENA 2 — PROBLEMA (0:03-0:10) ═══
+
+VISUAL SEQUENCE:
+Shot 1 (2s): Drone descending over idle construction site
+Shot 2 (1.5s): Close-up of steel bars with wrong measurements
+Shot 3 (1.5s): Workers standing around waiting, doing nothing
+Shot 4 (2s): Calendar pages flipping showing days passing
+
+CAMERA WORK:
+- Drone: Slow descending reveal shot
+- Ground shots: Steadicam or gimbal movement
+- Close-ups: Macro lens on measurement tape showing wrong numbers
+- Calendar: Time-lapse or animation effect
+
+COLOR GRADING:
+- Heavily desaturated, cold color tones
+- Blue/grey color cast throughout
+- Low contrast, flat, depressing look
+- Shadows pushed to black
+
+SOUND DESIGN:
+- Tense, building music underneath
+- Construction site ambience (quiet, idle, waiting)
+- Clock ticking sound effect
+- Subtle heartbeat building tension
+
+MOOD:
+- Frustration, loss, waste
+- Visual representation of money burning
+- Time slipping away feeling
+
+═══ CENA 3 — TRANSIÇÃO (0:10-0:13) ═══
+
+VISUAL:
+- Screen fades to solid black
+- Text types on character by character
+- "E SE DESSE PRA EVITAR?"
+- Brief pause on completed text
+- Slight glow/pulse on text
+
+CAMERA:
+- Static frame
+- Clean, professional typography
+- Centered composition
+
+TYPOGRAPHY:
+- Sans-serif, bold weight
+- White text on black
+- Typewriter animation effect
+- 1-2 second hold after complete
+
+SOUND DESIGN:
+- All music drops completely out
+- Single heartbeat sound
+- Key click sounds on each letter
+- Silence builds anticipation and tension
+
+═══ CENA 4 — SOLUÇÃO MANCHESTER (0:13-0:23) ═══
+
+VISUAL SEQUENCE:
+Shot 1 (2s): Computer screen showing project analysis software
+Shot 2 (2s): Technician carefully reviewing blueprints
+Shot 3 (3s): CNC machine cutting steel with precision (slow-mo sparks)
+Shot 4 (2s): Labeling machine applying identification tags
+Shot 5 (2s): Organized steel bundles ready for delivery
+
+CAMERA:
+- Professional mix of angles
+- All shots smooth and stabilized
+- Consistent framing style throughout
+- Motion matches positive energy
+
+COLOR GRADING:
+- Warm, vibrant, saturated tones
+- High contrast, punchy look
+- Professional commercial color
+- Golden highlights
+
+SOUND DESIGN:
+- Uplifting music builds throughout
+- Industrial sounds (satisfying cuts, machine precision)
+- Text whoosh effects
+- Building to crescendo
+
+MOOD:
+- Confidence, precision, professionalism
+- Problem being actively solved
+- Competence and expertise
+
+═══ CENA 5 — RESULTADO (0:23-0:30) ═══
+
+VISUAL:
+- Wide shot: beautifully organized construction site
+- Medium: engineer checking delivered material, visibly satisfied
+- Close: Manchester logo on professional packaging
+- End frame: Logo + contact information
+
+CAMERA:
+- Dolly/slider shot across organized materials
+- Rack focus to logo on packaging
+- Final static logo shot, perfectly centered
+
+TEXT OVERLAY:
+"ZERO ERRO. ZERO ATRASO."
+- Bold, confident typography
+- Fade in with slight scale animation
+- Manchester logo and phone number
+
+SOUND:
+- Music resolves to satisfying, confident conclusion
+- Subtle "success" chime sound effect
+- Logo reveal whoosh
+
+═══ CONSISTÊNCIA E REGRAS ═══
+- Maintain color grading continuity throughout
+- All transitions are clean cuts, no fancy effects
+- Professional commercial pacing
+- No smoke, vapor, or unrealistic effects
+- Realistic construction environments only
+- Export 1080x1920 for Reels, 1080x1080 for feed`,
+tela:`TEXTO NA TELA — REELS 30s
+═══════════════════════════════════════
+
+[0:00-0:03]
+"ISSO JÁ ACONTECEU COM VOCÊ?"
+
+[0:03-0:10]
+"2 SEMANAS PERDIDAS"
+"R$ MILHARES EM PREJUÍZO"
+
+[0:10-0:13]
+"E SE EXISTISSE UMA FORMA DE EVITAR ISSO?"
+
+[0:13-0:23]
+"CONFERÊNCIA → CORTE PRECISO → ENTREGA CERTA"
+
+[0:23-0:30]
+"ZERO ERRO. ZERO ATRASO."
+"(21) 3214-1300"`,
+legenda:`😤 "O aço chegou errado. Minha obra parou."
+
+Quantas vezes você já ouviu isso?
+Ou pior: quantas vezes você VIVEU isso?
+
+Pediu 10mm, veio 8mm.
+Pediu 6 metros, veio 5.80.
+Especificou CA-50, veio CA-60.
+
+Resultado?
+⏱️ 2 semanas de obra parada
+💸 Milhares em prejuízo
+😤 Estresse desnecessário
+
+Na Manchester é diferente.
+
+Antes de cortar UMA barra sequer, nossa equipe:
+✅ Confere seu projeto inteiro
+✅ Valida medida por medida
+✅ Verifica bitola por bitola
+✅ Identifica cada peça com etiqueta
+
+Zero erro. Zero atraso. Zero dor de cabeça.
+
+Já passou por isso? Conta sua história 👇
+
+📞 (21) 3214-1300
+📱 WhatsApp na bio
+
+#Manchester #ConstruçãoCivil #BelgoPronto #Engenharia #ObraParada #SoluçãoReal #AçoCorteDobra #RioDeJaneiro`},
+
+{id:3,date:'2026-01-07',type:'EDUCATIVO',format:'Carrossel 8 slides',title:'📋 Checklist: Como planejar a compra de aço para 2026',desc:'5 passos essenciais para não errar na compra de aço',
+narrativa:`CARROSSEL 8 SLIDES — CHECKLIST COMPRA DE AÇO
+═══════════════════════════════════════════════════════════════
+
+SLIDE 1 — CAPA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TÍTULO:
+"CHECKLIST 2026"
+
+SUBTÍTULO:
+"Como planejar a compra de aço sem erro"
+
+VISUAL:
+Ícone de checklist estilizado (clipboard com checks).
+Fundo gradiente vermelho (#C41E3A) para preto (#0a0a0a).
+Badge no canto: "SALVA ESSE POST 📌"
+Logo Manchester discreto no canto inferior.
+
+SLIDE 2 — PASSO 1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📐 REVISAR O PROJETO ESTRUTURAL
+
+TEXTO PRINCIPAL:
+"Projeto atualizado? Última revisão aprovada?
+Confira com o projetista antes de pedir orçamento."
+
+DICA DESTAQUE:
+💡 "Peça sempre o arquivo digital (.dwg) atualizado"
+
+VISUAL:
+Ícone de planta/blueprint.
+Fundo escuro com linha vermelha na lateral esquerda.
+Número "01" grande em vermelho.
+
+SLIDE 3 — PASSO 2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🧮 CALCULAR QUANTITATIVOS
+
+TEXTO PRINCIPAL:
+"Nada de chutar. Use software de cálculo 
+ou peça ao engenheiro projetista."
+
+DICA DESTAQUE:
+💡 "Erro no quantitativo = sobra ou falta de material"
+
+VISUAL:
+Ícone de calculadora.
+Número "02" grande em vermelho.
+
+SLIDE 4 — PASSO 3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📅 CONSIDERAR PRAZO DE ENTREGA
+
+PRAZOS MÉDIOS MANCHESTER:
+• Corte e dobra: 3-7 dias úteis
+• Armadura pronta: 5-10 dias úteis
+• Telas soldadas: 2-5 dias úteis
+
+DICA DESTAQUE:
+💡 "Sempre peça com antecedência. Urgência sai mais caro."
+
+VISUAL:
+Ícone de calendário.
+Número "03" grande em vermelho.
+
+SLIDE 5 — PASSO 4
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✅ VERIFICAR NORMAS TÉCNICAS
+
+EXIJA SEMPRE:
+• Conformidade com NBR 7480
+• Certificação de qualidade
+• Laudos de ensaio disponíveis
+
+DICA DESTAQUE:
+💡 "Aço sem certificação = risco estrutural"
+
+VISUAL:
+Ícone de certificado/selo.
+Número "04" grande em vermelho.
+
+SLIDE 6 — PASSO 5
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔄 ALINHAR CRONOGRAMA DE OBRA
+
+PERGUNTAS ESSENCIAIS:
+• Entrega única ou programada?
+• Onde armazenar na obra?
+• Quem vai receber o material?
+
+DICA DESTAQUE:
+💡 "Entregas programadas evitam acúmulo e desperdício"
+
+VISUAL:
+Ícone de sync/setas circulares.
+Número "05" grande em vermelho.
+
+SLIDE 7 — DICA BÔNUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 ANTECIPE A COMPRA
+
+TEXTO PRINCIPAL:
+"Preço do aço varia com o mercado. 
+Fechar antes garante melhor condição."
+
+VANTAGENS:
+• Trava preço atual
+• Garante prazo de entrega
+• Evita imprevistos de estoque
+
+VISUAL:
+Fundo com destaque dourado.
+Ícone de lâmpada/ideia.
+Design diferenciado dos outros slides para destacar.
+
+SLIDE 8 — CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TEXTO PRINCIPAL:
+"PRECISA DE AJUDA COM SEU PROJETO?"
+
+SUBTEXTO:
+"A Manchester confere seu projeto gratuitamente."
+
+CONTATO:
+📞 (21) 3214-1300
+📱 WhatsApp na bio
+
+AÇÃO:
+"SALVA ESSE POST! 📌"
+
+VISUAL:
+Fundo vermelho sólido.
+Texto branco, alto contraste.
+Logo Manchester grande.`,
+imagem:`PROMPTS DE IMAGEM — CARROSSEL 8 SLIDES
+═══════════════════════════════════════════════════════════════
+
+PROMPT SLIDE 1 — CAPA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Clean modern infographic cover slide for construction industry checklist.
+
+COMPOSITION:
+- Centered layout with strong visual hierarchy
+- Large checklist icon at top (white outline style on dark)
+- Title "CHECKLIST 2026" in bold, impactful typography
+- Subtitle smaller, lighter weight below
+- Badge "SALVA ESSE POST 📌" in corner
+
+BACKGROUND:
+- Gradient from red (#C41E3A) at top to black (#0a0a0a) at bottom
+- Subtle grid pattern overlay at 10% opacity
+- Clean, no clutter
+
+TYPOGRAPHY:
+- Title: Bold sans-serif (Bebas Neue style), white, extra large
+- Subtitle: Regular sans-serif (Inter style), light grey, smaller
+- High contrast, easy to read at any size
+
+ICON:
+- Clipboard with checkmarks
+- White outline style, minimal
+- Positioned center-top
+
+STYLE:
+- Modern corporate infographic
+- Professional but approachable
+- Instagram-optimized 1:1 aspect ratio
+- Minimum 1080x1080 pixels
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROMPT SLIDES 2-6 — CONTEÚDO (TEMPLATE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Consistent infographic slide design for educational checklist content.
+
+LAYOUT TEMPLATE:
+- Dark background (#0a0a0a to #111111)
+- Step number: Extra large, red (#C41E3A), positioned top-left
+- Icon: White outline style, positioned right of number
+- Title: Bold white text, below number
+- Body text: Light grey (#cccccc), readable size
+- Red accent line on left edge (4px width, full height)
+
+TYPOGRAPHY SPECIFICATIONS:
+- Step number: Bold display font, 72pt equivalent
+- Title: Sans-serif bold, 24pt equivalent
+- Body: Sans-serif regular, 16pt equivalent
+- Tips/highlights: Sans-serif light, 14pt, inside grey box
+
+ICONS FOR EACH SLIDE:
+- Slide 2: Blueprint/document icon (project review)
+- Slide 3: Calculator icon (quantities)
+- Slide 4: Calendar icon (delivery timeline)
+- Slide 5: Certificate/badge icon (quality standards)
+- Slide 6: Sync arrows icon (schedule alignment)
+
+TIP BOX STYLING:
+- Darker background (#1a1a1a)
+- Rounded corners (8px)
+- Lightbulb emoji prefix
+- Slightly smaller text
+
+CONSISTENCY RULES:
+- Identical layout across all content slides
+- Same spacing, margins, typography
+- Easy to read at thumbnail size
+- 1:1 aspect ratio for Instagram
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROMPT SLIDE 7 — DICA BÔNUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Special highlight slide for bonus tip, visually distinct from others.
+
+COMPOSITION:
+- Different visual treatment to stand out
+- Gold (#C9A227) accent color instead of red
+- Lightbulb icon prominently featured
+- "DICA BÔNUS" label at top
+
+BACKGROUND:
+- Dark with gold gradient accent
+- Subtle glow effect behind main content
+- More premium, special feeling
+
+TYPOGRAPHY:
+- "DICA BÔNUS" in gold, smaller label
+- Main tip in white, bold
+- Supporting text in grey
+
+STYLE:
+- Feels like a "secret" or exclusive tip
+- More visual emphasis than standard slides
+- Still maintains brand consistency
+- 1:1 aspect ratio
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PROMPT SLIDE 8 — CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Strong call-to-action closing slide for maximum engagement.
+
+COMPOSITION:
+- Solid red background (#C41E3A)
+- White text, centered layout
+- Manchester logo prominently displayed
+- Contact information clearly visible
+
+LAYOUT:
+- Question/headline at top (40% height)
+- Logo centered (30% height)
+- Contact info at bottom (30% height)
+
+TYPOGRAPHY:
+- Question: Bold sans-serif, white, large
+- Logo: Full Manchester branding
+- Contact: Regular weight, white, phone + WhatsApp icons
+
+ELEMENTS:
+- Phone icon with number
+- WhatsApp icon with "na bio" text
+- "SALVA ESSE POST 📌" reminder badge
+
+STYLE:
+- Bold, confident, action-oriented
+- Clear call-to-action
+- Brand-forward closing
+- 1:1 aspect ratio`,
+video:`ALTERNATIVA REELS — 25 SEGUNDOS
+═══════════════════════════════════════════════════════════════
+
+Quick-paced educational video presenting 5 essential steps for steel purchasing.
+
+═══ ESTRUTURA GERAL ═══
+Duração total: 25 segundos
+Ritmo: Rápido, informativo, energético
+Tom: Educativo, profissional, útil
+Música: Upbeat electronic/corporate
+
+═══ SEQUÊNCIA DETALHADA ═══
+
+[0:00-0:02] HOOK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Text animates in dramatically
+- "5 PASSOS" large, bold
+- Subtext: "pra não errar na compra de aço"
+- Quick zoom effect on text
+
+SOUND:
+- Attention-grabbing sound effect
+- Music starts
+
+[0:02-0:05] PASSO 1
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Blueprint icon animates in
+- "01 REVISE O PROJETO"
+- Quick cut to blueprint visual
+
+SOUND:
+- Whoosh on icon
+- Music continues
+
+[0:05-0:08] PASSO 2
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Calculator icon
+- "02 CALCULE QUANTITATIVOS"
+- Numbers animation
+
+SOUND:
+- Calculator click sounds
+
+[0:08-0:11] PASSO 3
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Calendar icon
+- "03 CONSIDERE O PRAZO"
+- Dates highlighting animation
+
+SOUND:
+- Page flip sound
+
+[0:11-0:14] PASSO 4
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Certificate/stamp icon
+- "04 VERIFIQUE NORMAS"
+- Checkmark animation
+
+SOUND:
+- Stamp sound effect
+
+[0:14-0:17] PASSO 5
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Sync arrows icon
+- "05 ALINHE CRONOGRAMA"
+- Timeline animation
+
+SOUND:
+- Sync/click sound
+
+[0:17-0:22] DICA BÔNUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Lightbulb icon with glow
+- "💡 ANTECIPE A COMPRA"
+- Graph showing price variation
+- Emphasis animation (pulse/glow)
+
+SOUND:
+- "Ding" revelation sound
+- Music builds
+
+[0:22-0:25] CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- "SALVA ESSE VÍDEO 📌"
+- Manchester logo
+- Contact info fade in
+
+SOUND:
+- Music resolves
+- Final whoosh
+
+═══ ESTILO VISUAL ═══
+- Dark background throughout (#0a0a0a)
+- Red accent color (#C41E3A)
+- Clean white text
+- Minimal, purposeful animations
+- Consistent typography
+- Professional motion graphics
+
+═══ ÁUDIO ═══
+- Upbeat electronic/corporate music
+- Whoosh sounds on transitions
+- Click/tap sounds on icons
+- No voiceover (text-driven for accessibility)`,
+tela:`TEXTO NA TELA — CARROSSEL
+═══════════════════════════════════════
+
+SLIDE 1:
+"CHECKLIST 2026"
+"Como planejar a compra de aço sem erro"
+"SALVA ESSE POST 📌"
+
+SLIDE 2:
+"01"
+"📐 REVISAR O PROJETO ESTRUTURAL"
+"Projeto atualizado? Confira antes de orçar."
+"💡 Peça o arquivo .dwg atualizado"
+
+SLIDE 3:
+"02"
+"🧮 CALCULAR QUANTITATIVOS"
+"Use software ou peça ao engenheiro."
+"💡 Chutar sai caro"
+
+SLIDE 4:
+"03"
+"📅 CONSIDERAR PRAZO"
+"Corte/dobra: 3-7 dias"
+"Armadura pronta: 5-10 dias"
+"💡 Antecedência evita urgência"
+
+SLIDE 5:
+"04"
+"✅ VERIFICAR NORMAS"
+"NBR 7480 | Certificação | Laudos"
+"💡 Sem certificação = risco"
+
+SLIDE 6:
+"05"
+"🔄 ALINHAR CRONOGRAMA"
+"Entrega única ou programada?"
+"💡 Programar evita acúmulo"
+
+SLIDE 7:
+"💡 DICA BÔNUS"
+"ANTECIPE A COMPRA"
+"Preço varia. Fechar antes garante condição."
+
+SLIDE 8:
+"PRECISA DE AJUDA?"
+"Conferimos seu projeto gratuitamente"
+"📞 (21) 3214-1300"
+"SALVA ESSE POST! 📌"`,
+legenda:`📋 CHECKLIST 2026: Como planejar a compra de aço
+
+Começou o ano e você já tem obras pra tocar?
+Antes de sair pedindo orçamento, confere essa lista:
+
+✅ PASSO 1: REVISE O PROJETO
+Versão atualizada? Pranchas completas? Confira com o projetista.
+
+✅ PASSO 2: CALCULE QUANTITATIVOS
+Use software ou peça ao engenheiro. Chutar sai caro.
+
+✅ PASSO 3: CONSIDERE O PRAZO
+• Corte e dobra: 3-7 dias úteis
+• Armadura pronta: 5-10 dias úteis
+• Telas soldadas: 2-5 dias úteis
+
+✅ PASSO 4: VERIFIQUE NORMAS
+NBR 7480, certificação, laudos. Exija sempre.
+
+✅ PASSO 5: ALINHE O CRONOGRAMA
+Entrega única ou programada? Onde armazenar?
+
+💡 DICA BÔNUS: ANTECIPE A COMPRA
+Preço do aço varia com o mercado. Fechar antes garante melhor condição e prazo.
+
+SALVA ESSE POST! 📌
+
+Precisa de ajuda com seu projeto?
+A Manchester confere gratuitamente.
+
+📞 (21) 3214-1300
+📱 WhatsApp na bio
+
+#Manchester #Checklist #PlanejamentoDeObra #Engenharia #Aço #ConstruçãoCivil #DicasDeObra #CompradeAço #BelgoPronto`},
+
+{id:4,date:'2026-01-10',type:'DATA ESPECIAL',format:'Vídeo 30s',title:'👷 Dia do Engenheiro Civil: Os arquitetos do Brasil',desc:'Homenagem ao Dia do Engenheiro Civil (10/01)',
+narrativa:`ROTEIRO VÍDEO 30s — DIA DO ENGENHEIRO CIVIL
+═══════════════════════════════════════════════════════════════
+
+[0:00-0:05] ABERTURA EMOCIONAL
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Montagem de obras icônicas brasileiras
+- Pontes, viadutos, prédios em construção
+- Time-lapse de construção acelerado
+
+TEXTO NA TELA:
+"10 DE JANEIRO"
+"DIA DO ENGENHEIRO CIVIL"
+
+NARRAÇÃO/ÁUDIO:
+Música emocional, inspiradora (piano + orquestra leve)
+
+[0:05-0:15] HOMENAGEM
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Engenheiros trabalhando em campo
+- Análise de projetos
+- Conferência de materiais
+- Supervisão de equipes
+
+TEXTO NA TELA:
+"Vocês transformam números em estruturas"
+"Projetos em realidade"
+"Sonhos em concreto"
+
+[0:15-0:25] MENSAGEM MANCHESTER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Parceria Manchester + engenheiros
+- Entrega de materiais
+- Satisfação do cliente
+
+TEXTO NA TELA:
+"A Manchester tem orgulho de construir 
+ao lado de vocês há mais de 30 anos"
+
+[0:25-0:30] FECHAMENTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+VISUAL:
+- Logo Manchester
+- Engenheiro sorrindo
+
+TEXTO NA TELA:
+"FELIZ DIA DO ENGENHEIRO CIVIL! 👷"
+"@grupomanchester"`,
+imagem:`PROMPT IMAGEM — DIA DO ENGENHEIRO
+═══════════════════════════════════════════════════════════════
+
+Inspirational tribute image celebrating Civil Engineer Day in Brazil.
+
+COMPOSITION:
+- Brazilian civil engineer in foreground (professional, confident pose)
+- Construction site background with impressive structure
+- Golden hour lighting creating heroic atmosphere
+- Text overlay space in upper portion
+
+SUBJECT:
+- Male or female engineer, 35-50 years old
+- Wearing safety vest, hard hat, holding blueprints or tablet
+- Professional, proud expression
+- Looking towards construction/future
+
+BACKGROUND:
+- Major construction project (bridge, building, infrastructure)
+- Cranes, steel structures visible
+- Clear sky with golden light
+- Depth and scale showing project magnitude
+
+LIGHTING:
+- Golden hour, backlit subject
+- Rim light creating heroic silhouette
+- Warm, inspiring color temperature
+- Lens flare permitted
+
+COLOR PALETTE:
+- Warm golds and oranges (sunset)
+- Manchester red accents
+- Steel grey structures
+- Blue sky elements
+
+MOOD:
+- Pride, achievement, inspiration
+- Heroic, aspirational
+- Professional celebration
+- Forward-looking optimism
+
+STYLE:
+- Cinematic commercial photography
+- Editorial magazine quality
+- 1:1 and 9:16 versions for feed/stories
+- Space for text overlays`,
+video:`DIREÇÃO DE VÍDEO — 30s HOMENAGEM
+═══════════════════════════════════════════════════════════════
+
+Emotional tribute video celebrating Civil Engineer Day.
+
+═══ ESTRUTURA ═══
+
+[0:00-0:05] ABERTURA
+- Drone shots of impressive Brazilian construction
+- Time-lapse of building rising
+- Text: "10 DE JANEIRO - DIA DO ENGENHEIRO CIVIL"
+- Music: Emotional piano building
+
+[0:05-0:15] MONTAGEM HOMENAGEM
+- Engineers reviewing plans (close-up hands)
+- Site supervision (medium shot)
+- Team coordination (wide shot)
+- Problem-solving moments (candid)
+- Text overlays: inspirational messages
+
+[0:15-0:25] PARCERIA
+- Manchester delivery arriving at site
+- Engineer receiving materials
+- Handshake between team members
+- Satisfaction moments
+
+[0:25-0:30] FECHAMENTO
+- Logo reveal
+- "FELIZ DIA DO ENGENHEIRO CIVIL!"
+- Contact info
+
+═══ ESTILO ═══
+- Documentary feel
+- Golden hour lighting throughout
+- Emotional, respectful tone
+- Professional editing`,
+tela:`TEXTO NA TELA — DIA DO ENGENHEIRO
+═══════════════════════════════════════
+
+[0:00-0:05]
+"10 DE JANEIRO"
+"DIA DO ENGENHEIRO CIVIL"
+
+[0:05-0:10]
+"Vocês transformam números em estruturas"
+
+[0:10-0:15]
+"Projetos em realidade"
+"Sonhos em concreto"
+
+[0:15-0:25]
+"A Manchester tem orgulho de construir"
+"ao lado de vocês há mais de 30 anos"
+
+[0:25-0:30]
+"FELIZ DIA DO ENGENHEIRO CIVIL! 👷"
+"@grupomanchester"`,
+legenda:`👷 FELIZ DIA DO ENGENHEIRO CIVIL!
+
+10 de janeiro.
+
+Hoje é o dia de celebrar quem transforma:
+📐 Números em estruturas
+📋 Projetos em realidade
+🏗️ Sonhos em concreto
+
+Vocês são os verdadeiros arquitetos do Brasil.
+
+A cada ponte construída.
+A cada prédio erguido.
+A cada obra entregue.
+
+A Manchester tem orgulho de estar ao lado de vocês há mais de 30 anos, fornecendo o aço que sustenta suas criações.
+
+Obrigado por confiar na gente. 
+Obrigado por construir o Brasil.
+
+FELIZ DIA DO ENGENHEIRO CIVIL! 🎉
+
+Marca aquele engenheiro que você admira 👇
+
+📞 (21) 3214-1300
+
+#DiaDoEngenheiroCivil #Engenharia #ConstruçãoCivil #Manchester #10DeJaneiro #EngenhariaDeVerdade #OrgulhoDeSerEngenheiro`}
+],
+2: [
+{id:1,date:'2026-02-02',type:'PROBLEMA → SOLUÇÃO',format:'Reels 30s',title:'😰 "Operário caiu da laje. Não tinha linha de vida."',desc:'Problema real de segurança → Solução: planejamento',
+narrativa:`ROTEIRO REELS 30s — ACIDENTE DE TRABALHO
+═══════════════════════════════════════════════════════════════
+
+[0:00-0:03] HOOK IMPACTANTE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TEXTO NA TELA:
+"ISSO ACONTECEU ONTEM EM UMA OBRA"
+
+VISUAL:
+Tela preta, texto surge dramaticamente.
+Som de sirene ao fundo (sutil).
+
+[0:03-0:10] O PROBLEMA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NARRAÇÃO:
+"Operário trabalhando na laje. Sem cinto. Sem linha de vida.
+Um passo em falso. Queda de 4 metros."
+
+TEXTO NA TELA:
+"SEM CINTO"
+"SEM LINHA DE VIDA"
+"QUEDA DE 4 METROS"
+
+VISUAL:
+B-roll de canteiro de obras (genérico, sem acidente real).
+Foco em altura, bordas de laje, ausência de proteção.
+
+[0:10-0:15] A CONSEQUÊNCIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TEXTO NA TELA:
+"Fraturas múltiplas"
+"6 meses afastado"
+"Família sem renda"
+
+VISUAL:
+Imagens sugestivas (sem mostrar acidente):
+- Capacete no chão
+- Família preocupada
+- Cama de hospital (sugestivo)
+
+[0:15-0:23] A SOLUÇÃO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+NARRAÇÃO:
+"Segurança não é custo. É investimento.
+Linha de vida. Cinto. Treinamento.
+Proteção coletiva primeiro."
+
+TEXTO NA TELA:
+"LINHA DE VIDA ✓"
+"CINTO DE SEGURANÇA ✓"
+"TREINAMENTO ✓"
+"PROTEÇÃO COLETIVA ✓"
+
+VISUAL:
+Obra organizada com todos EPCs e EPIs corretos.
+Trabalhadores usando equipamentos.
+
+[0:23-0:30] CTA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TEXTO NA TELA:
+"SUA OBRA TEM LINHA DE VIDA?"
+
+Logo Manchester
+"Segurança primeiro. Sempre."`,
+imagem:`PROMPT THUMBNAIL — SEGURANÇA
+═══════════════════════════════════════════════════════════════
+
+Impactful safety awareness thumbnail showing contrast between danger and protection.
+
+COMPOSITION:
+- Split screen or before/after format
+- Left: Dangerous situation (worker near edge without protection)
+- Right: Safe situation (same worker with full PPE and safety line)
+- Bold warning text overlay
+- High visual impact
+
+SUBJECT:
+- Construction worker on elevated structure
+- Clear visibility of safety equipment (or lack thereof)
+- Dramatic height perspective
+
+COLORS:
+- Danger side: Desaturated, red warning tint
+- Safe side: Normal colors, green accent
+- High contrast text
+
+MOOD:
+- Urgency, awareness, responsibility
+- Educational but impactful
+- Not graphic or disturbing
+
+STYLE:
+- Commercial safety campaign aesthetic
+- Clear message at thumbnail size
+- 9:16 for Reels cover`,
+video:`DIREÇÃO DE VÍDEO COMPLETA EM ARQUIVO NARRATIVA`,
+tela:`[0:00-0:03]
+"ISSO ACONTECEU ONTEM EM UMA OBRA"
+
+[0:03-0:10]
+"SEM CINTO"
+"SEM LINHA DE VIDA"
+"QUEDA DE 4 METROS"
+
+[0:10-0:15]
+"Fraturas múltiplas"
+"6 meses afastado"
+"Família sem renda"
+
+[0:15-0:23]
+"✓ LINHA DE VIDA"
+"✓ CINTO DE SEGURANÇA"
+"✓ TREINAMENTO"
+"✓ PROTEÇÃO COLETIVA"
+
+[0:23-0:30]
+"SUA OBRA TEM LINHA DE VIDA?"`,
+legenda:`😰 Isso aconteceu ontem em uma obra.
+
+Operário trabalhando na laje.
+Sem cinto. Sem linha de vida.
+Um passo em falso.
+Queda de 4 metros.
+
+Resultado:
+💔 Fraturas múltiplas
+⏰ 6 meses afastado
+👨‍👩‍👧 Família sem renda
+
+Isso NÃO precisava acontecer.
+
+Segurança não é custo. É INVESTIMENTO.
+
+✅ Linha de vida instalada
+✅ Cinto de segurança obrigatório
+✅ Treinamento antes de subir
+✅ Proteção coletiva primeiro
+
+Uma queda muda vidas. Todas as vidas.
+Do trabalhador. Da família. Do engenheiro responsável.
+
+SUA OBRA TEM LINHA DE VIDA?
+
+#SegurançaNoTrabalho #Construção #NR18 #Segurança #Manchester #ObraSegura`}
+]
+};
+
+// ============== VARIÁVEIS GLOBAIS ==============
+let currentMonth = 1;
+let currentTab = 'narrativa';
+let currentPost = null;
+let dropdownOpen = false;
+let POSTS = {};
+
+// ============== STORAGE ==============
+function loadFromStorage() {
+    try {
+        const saved = localStorage.getItem('manchester_posts_2026');
+        if (saved) {
+            POSTS = JSON.parse(saved);
+            console.log('✓ Dados carregados do localStorage');
+        } else {
+            POSTS = JSON.parse(JSON.stringify(INITIAL_POSTS));
+            saveToStorage();
+        }
+    } catch(e) {
+        console.error('Erro ao carregar:', e);
+        POSTS = JSON.parse(JSON.stringify(INITIAL_POSTS));
+    }
+}
+
+function saveToStorage() {
+    try {
+        localStorage.setItem('manchester_posts_2026', JSON.stringify(POSTS));
+        showToast('✓ Salvo!');
+    } catch(e) {
+        console.error('Erro ao salvar:', e);
+        showToast('❌ Erro ao salvar');
+    }
+}
+
+function exportData() {
+    const data = {
+        version: '1.0',
+        exportDate: new Date().toISOString(),
+        months: MONTHS_DATA,
+        posts: POSTS
+    };
+    const blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `manchester_backup_${new Date().toISOString().split('T')[0]}.json`;
+    a.click();
+    showToast('✓ Backup exportado!');
+}
+
+function importData(event) {
+    const file = event.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        try {
+            const data = JSON.parse(e.target.result);
+            if (data.posts) {
+                POSTS = data.posts;
+                saveToStorage();
+                renderPosts();
+                showToast('✓ Dados importados!');
+            }
+        } catch(err) {
+            showToast('❌ Arquivo inválido');
+        }
+    };
+    reader.readAsText(file);
+}
+
+// ============== RENDER ==============
+function renderMonthSelector() {
+    const month = MONTHS_DATA.find(m => m.id === currentMonth);
+    document.getElementById('selectorNum').textContent = String(month.id).padStart(2, '0');
+    document.getElementById('selectorName').textContent = month.name;
+    document.getElementById('selectorTheme').textContent = month.shortTheme;
+    
+    const dropdown = document.getElementById('monthDropdown');
+    dropdown.innerHTML = MONTHS_DATA.map(m => `
+        <div class="month-dropdown-item ${m.id === currentMonth ? 'active' : ''}" onclick="selectMonth(${m.id})">
+            <div class="month-dropdown-num">${String(m.id).padStart(2, '0')}</div>
+            <div class="month-dropdown-info"><h4>${m.name}</h4><span>${m.shortTheme}</span></div>
+            <div class="month-dropdown-posts">${m.posts} posts</div>
+        </div>
+    `).join('');
+    
+    const quickNav = document.getElementById('monthQuickNav');
+    quickNav.innerHTML = MONTHS_DATA.map(m => `
+        <button class="month-quick-btn ${m.id === currentMonth ? 'active' : ''}" onclick="selectMonth(${m.id})">
+            ${m.name.substring(0, 3).toUpperCase()}
+        </button>
+    `).join('');
+    
+    document.getElementById('statPosts').textContent = month.posts;
+    document.getElementById('statStories').textContent = month.stories;
+    document.getElementById('themeTitle').textContent = month.shortTheme;
+    document.getElementById('themeDesc').textContent = month.desc;
+}
+
+function toggleDropdown() {
+    dropdownOpen = !dropdownOpen;
+    document.getElementById('monthSelectorBtn').classList.toggle('open', dropdownOpen);
+    document.getElementById('monthDropdown').classList.toggle('open', dropdownOpen);
+}
+
+function selectMonth(id) {
+    currentMonth = id;
+    dropdownOpen = false;
+    document.getElementById('monthSelectorBtn').classList.remove('open');
+    document.getElementById('monthDropdown').classList.remove('open');
+    renderMonthSelector();
+    renderPosts();
+}
+
+function renderPosts() {
+    const month = MONTHS_DATA.find(m => m.id === currentMonth);
+    document.getElementById('mainTitle').innerHTML = `${month.name.toUpperCase()} — <span>${month.shortTheme}</span>`;
+    
+    const container = document.getElementById('postsList');
+    const posts = POSTS[currentMonth] || [];
+    
+    if (posts.length === 0) {
+        container.innerHTML = `<div class="empty-state"><h3>🚧 Em desenvolvimento</h3><p>Posts de ${month.name} serão adicionados em breve.</p></div>`;
+        return;
+    }
+    
+    const sorted = [...posts].sort((a, b) => new Date(a.date) - new Date(b.date));
+    const monthNames = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+    
+    container.innerHTML = sorted.map(p => {
+        const d = new Date(p.date);
+        return `
+            <div class="post-card" onclick="openModal(${p.id})">
+                <div class="post-date">
+                    <div class="post-date-day">${String(d.getDate()).padStart(2, '0')}</div>
+                    <div class="post-date-month">${monthNames[d.getMonth()]}</div>
+                </div>
+                <div class="post-info">
+                    <div class="post-type">${p.type}</div>
+                    <div class="post-title">${p.title}</div>
+                    <div class="post-desc">${p.desc}</div>
+                </div>
+                <div class="post-format">${p.format}</div>
+            </div>
+        `;
+    }).join('');
+}
+
+function openModal(id) {
+    const posts = POSTS[currentMonth] || [];
+    currentPost = posts.find(p => p.id === id);
+    if (!currentPost) return;
+    
+    document.getElementById('modalBadge').textContent = `POST #${String(currentPost.id).padStart(2, '0')} · ${currentPost.format.toUpperCase()}`;
+    document.getElementById('modalDate').value = currentPost.date;
+    document.getElementById('modalTitle').value = currentPost.title;
+    document.getElementById('modalDesc').textContent = currentPost.desc;
+    
+    currentTab = 'narrativa';
+    updateTabs();
+    renderTabContent();
+    
+    document.getElementById('modalOverlay').classList.add('show');
+}
+
+function closeModal() {
+    document.getElementById('modalOverlay').classList.remove('show');
+}
+
+function switchTab(tab) {
+    currentTab = tab;
+    updateTabs();
+    renderTabContent();
+}
+
+function updateTabs() {
+    document.querySelectorAll('.modal-tab').forEach(t => {
+        t.classList.toggle('active', t.dataset.tab === currentTab);
+    });
+}
+
+function renderTabContent() {
+    const body = document.getElementById('modalBody');
+    const content = currentPost[currentTab] || 'Conteúdo não disponível';
+    const titles = {narrativa:'NARRATIVA/ROTEIRO',imagem:'PROMPTS DE IMAGEM',video:'DIREÇÃO DE VÍDEO',tela:'TEXTO NA TELA',legenda:'LEGENDA INSTAGRAM'};
+    const icons = {narrativa:'📝',imagem:'🖼️',video:'🎬',tela:'📺',legenda:'📱'};
+    
+    body.innerHTML = `
+        <div class="content-section">
+            <div class="section-header">
+                <div class="section-title ${currentTab}"><span class="section-icon">${icons[currentTab]}</span> ${titles[currentTab]}</div>
+                <button class="copy-btn" onclick="copyContent()">📋 Copiar</button>
+            </div>
+            <div class="section-body">
+                <div class="content-text" id="contentText">${content}</div>
+            </div>
+        </div>
+    `;
+}
+
+function copyContent() {
+    const text = document.getElementById('contentText').textContent;
+    navigator.clipboard.writeText(text).then(() => {
+        const btn = document.querySelector('.copy-btn');
+        btn.classList.add('copied');
+        btn.innerHTML = '✓ Copiado!';
+        showToast('✓ Copiado!');
+        setTimeout(() => {
+            btn.classList.remove('copied');
+            btn.innerHTML = '📋 Copiar';
+        }, 2000);
+    });
+}
+
+function updatePostDate() {
+    const newDate = document.getElementById('modalDate').value;
+    if (currentPost && newDate) {
+        currentPost.date = newDate;
+        saveToStorage();
+        renderPosts();
+    }
+}
+
+function updatePostTitle() {
+    const newTitle = document.getElementById('modalTitle').value;
+    if (currentPost && newTitle) {
+        currentPost.title = newTitle;
+        saveToStorage();
+        renderPosts();
+    }
+}
+
+function showToast(msg) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2000);
+}
+
+// ============== INIT ==============
+document.addEventListener('DOMContentLoaded', () => {
+    loadFromStorage();
+    renderMonthSelector();
+    renderPosts();
+});
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target.id === 'modalOverlay') closeModal(); });
+document.addEventListener('click', e => {
+    if (!e.target.closest('.month-selector') && dropdownOpen) {
+        dropdownOpen = false;
+        document.getElementById('monthSelectorBtn').classList.remove('open');
+        document.getElementById('monthDropdown').classList.remove('open');
+    }
+});
+</script>
+</body>
+</html>
