@@ -10,7 +10,7 @@
         body{font-family:'Segoe UI',system-ui,sans-serif;background:var(--preto);color:var(--branco);min-height:100vh}
         .header{display:flex;justify-content:space-between;align-items:center;padding:15px 30px;background:linear-gradient(135deg,var(--preto2),var(--preto));border-bottom:1px solid #222;position:sticky;top:0;z-index:100}
         .logo{display:flex;align-items:center;gap:12px}
-        .logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--vermelho),var(--vermelho-dark));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;font-style:italic;box-shadow:0 4px 15px rgba(196,30,58,0.3)}
+        .logo-icon{width:42px;height:42px;background:linear-gradient(135deg,var(--vermelho),var(--vermelho-dark));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:24px;font-weight:900;font-style:italic}
         .logo-text{font-size:20px;font-weight:900;letter-spacing:3px}
         .logo-sub{font-size:9px;color:var(--cinza);letter-spacing:1px}
         .header-actions{display:flex;gap:10px}
@@ -20,32 +20,28 @@
         .layout{display:flex;height:calc(100vh - 72px)}
         .sidebar{width:280px;background:var(--preto2);border-right:1px solid #222;overflow-y:auto;padding:0}
         .month-filter{padding:20px;border-bottom:1px solid #222;background:var(--preto3)}
-        .month-filter-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px;display:flex;align-items:center;gap:8px}
-        .month-filter-title::before{content:'';width:20px;height:2px;background:var(--vermelho)}
-        .month-selector-btn{width:100%;padding:15px 20px;background:linear-gradient(135deg,var(--preto4),var(--preto3));border:2px solid #333;border-radius:12px;color:var(--branco);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
-        .month-selector-btn:hover,.month-selector-btn.open{border-color:var(--vermelho)}
+        .month-filter-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px}
+        .month-selector{position:relative;width:100%}
+        .month-selector-btn{width:100%;padding:15px 20px;background:var(--preto4);border:2px solid #333;border-radius:12px;color:var(--branco);cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:all .3s}
+        .month-selector-btn:hover{border-color:var(--vermelho)}
         .month-selector-left{display:flex;align-items:center;gap:15px}
-        .month-selector-num{font-size:28px;font-weight:900;color:var(--vermelho);line-height:1}
+        .month-selector-num{font-size:28px;font-weight:900;color:var(--vermelho)}
         .month-selector-info h3{font-size:18px;font-weight:700}
         .month-selector-info span{font-size:11px;color:var(--cinza)}
-        .month-selector-arrow{font-size:12px;color:var(--cinza);transition:transform .3s}
-        .month-selector-btn.open .month-selector-arrow{transform:rotate(180deg)}
-        .month-dropdown{position:absolute;top:100%;left:0;width:100%;background:var(--preto3);border:2px solid var(--vermelho);border-top:none;border-radius:0 0 12px 12px;max-height:0;overflow:hidden;transition:max-height .3s;z-index:50}
-        .month-dropdown.open{max-height:400px;overflow-y:auto}
+        .month-dropdown{position:absolute;top:100%;left:0;width:100%;background:var(--preto3);border:2px solid var(--vermelho);border-top:none;border-radius:0 0 12px 12px;display:none;z-index:50;max-height:300px;overflow-y:auto}
+        .month-dropdown.open{display:block}
         .month-dropdown-item{display:flex;align-items:center;gap:15px;padding:12px 20px;cursor:pointer;transition:all .2s;border-bottom:1px solid #222}
         .month-dropdown-item:hover{background:rgba(196,30,58,0.1)}
         .month-dropdown-item.active{background:rgba(196,30,58,0.2)}
         .month-dropdown-num{font-size:18px;font-weight:900;color:var(--vermelho);width:30px}
         .month-dropdown-info h4{font-size:13px;font-weight:600}
         .month-dropdown-info span{font-size:10px;color:var(--cinza)}
-        .month-dropdown-posts{margin-left:auto;background:var(--preto4);padding:4px 10px;border-radius:20px;font-size:10px;color:var(--cinza)}
         .month-quick-nav{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:15px}
         .month-quick-btn{padding:10px 5px;background:var(--preto4);border:1px solid #333;border-radius:8px;color:var(--cinza);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s;text-align:center}
         .month-quick-btn:hover{border-color:var(--vermelho);color:var(--branco)}
         .month-quick-btn.active{background:var(--vermelho);border-color:var(--vermelho);color:var(--branco)}
         .sidebar-info{padding:20px}
-        .sidebar-info-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px;display:flex;align-items:center;gap:8px}
-        .sidebar-info-title::before{content:'';width:20px;height:2px;background:var(--dourado)}
+        .sidebar-info-title{font-size:10px;color:var(--cinza);letter-spacing:2px;margin-bottom:15px}
         .month-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:20px}
         .month-stat-card{background:var(--preto3);border:1px solid #222;border-radius:10px;padding:15px;text-align:center}
         .month-stat-value{font-size:28px;font-weight:900;color:var(--vermelho)}
@@ -54,14 +50,13 @@
         .month-theme-label{font-size:9px;color:var(--vermelho);letter-spacing:2px;margin-bottom:8px}
         .month-theme-title{font-size:22px;font-weight:900;margin-bottom:10px}
         .month-theme-desc{font-size:12px;color:var(--cinza);line-height:1.6}
-        .month-selector{position:relative;width:100%}
         .main{flex:1;overflow-y:auto;padding:25px 30px}
-        .main-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px;padding-bottom:20px;border-bottom:1px solid #222}
+        .main-header{margin-bottom:25px;padding-bottom:20px;border-bottom:1px solid #222}
         .main-title{font-size:28px;font-weight:900;letter-spacing:2px}
         .main-title span{color:var(--vermelho)}
         .posts-list{display:flex;flex-direction:column;gap:12px}
         .post-card{display:flex;align-items:center;gap:20px;padding:18px 20px;background:var(--preto2);border:1px solid #222;border-radius:12px;cursor:pointer;transition:all .25s}
-        .post-card:hover{border-color:var(--vermelho);transform:translateX(8px);box-shadow:0 5px 30px rgba(196,30,58,0.15)}
+        .post-card:hover{border-color:var(--vermelho);transform:translateX(8px)}
         .post-date{background:var(--preto3);border-radius:8px;padding:10px 12px;text-align:center;min-width:55px}
         .post-date-day{font-size:22px;font-weight:900;color:var(--vermelho)}
         .post-date-month{font-size:9px;color:var(--cinza);text-transform:uppercase}
@@ -70,58 +65,44 @@
         .post-title{font-weight:600;font-size:15px;margin-bottom:4px}
         .post-desc{font-size:12px;color:var(--cinza)}
         .post-format{background:var(--preto3);padding:6px 12px;border-radius:6px;font-size:10px;color:var(--cinza)}
-        .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;overflow-y:auto;backdrop-filter:blur(10px)}
-        .modal-overlay.show{display:block}
-        .modal{max-width:1000px;margin:20px auto;background:var(--preto2);border-radius:16px;border:1px solid #333;overflow:hidden}
-        .modal-header{padding:25px 30px;background:linear-gradient(135deg,var(--preto3),var(--preto2));border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:flex-start}
+        .modal-overlay{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.95);z-index:1000;overflow-y:auto}
+        .modal-overlay.show{display:flex;justify-content:center;align-items:flex-start;padding:20px}
+        .modal{width:100%;max-width:900px;background:var(--preto2);border-radius:16px;border:1px solid #333}
+        .modal-header{padding:25px 30px;background:var(--preto3);border-bottom:1px solid #333;display:flex;justify-content:space-between;align-items:flex-start}
         .modal-header-left{flex:1}
-        .modal-badge{display:inline-block;padding:4px 12px;background:rgba(196,30,58,0.2);border:1px solid var(--vermelho);border-radius:20px;font-size:10px;color:var(--vermelho);font-weight:700;letter-spacing:1px;margin-bottom:12px}
+        .modal-badge{display:inline-block;padding:4px 12px;background:rgba(196,30,58,0.2);border:1px solid var(--vermelho);border-radius:20px;font-size:10px;color:var(--vermelho);font-weight:700;margin-bottom:12px}
         .modal-title-row{display:flex;align-items:center;gap:15px;margin-bottom:8px;flex-wrap:wrap}
-        .modal-date-input{background:var(--preto3);border:1px solid #444;border-radius:6px;padding:8px 12px;color:var(--branco);font-size:14px;width:140px}
+        .modal-date-input{background:var(--preto4);border:1px solid #444;border-radius:6px;padding:8px 12px;color:var(--branco);font-size:14px;width:140px}
         .modal-title-input{flex:1;min-width:200px;background:transparent;border:none;border-bottom:2px solid #333;color:var(--branco);font-size:18px;font-weight:700;padding:5px 0}
         .modal-title-input:focus{outline:none;border-bottom-color:var(--vermelho)}
         .modal-desc{font-size:13px;color:var(--cinza)}
-        .modal-close{width:40px;height:40px;background:var(--preto3);border:1px solid #444;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;transition:all .2s}
-        .modal-close:hover{border-color:var(--vermelho);color:var(--vermelho);transform:rotate(90deg)}
+        .modal-close{width:40px;height:40px;background:var(--preto4);border:1px solid #444;border-radius:50%;color:#fff;font-size:18px;cursor:pointer;transition:all .2s}
+        .modal-close:hover{border-color:var(--vermelho);color:var(--vermelho)}
         .modal-tabs{display:flex;background:var(--preto3);border-bottom:1px solid #333;flex-wrap:wrap}
-        .modal-tab{flex:1;min-width:120px;padding:15px 10px;background:transparent;border:none;color:var(--cinza);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;gap:6px;border-bottom:3px solid transparent}
-        .modal-tab:hover{color:var(--branco);background:rgba(255,255,255,0.03)}
+        .modal-tab{flex:1;min-width:100px;padding:15px 10px;background:transparent;border:none;color:var(--cinza);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s;border-bottom:3px solid transparent}
+        .modal-tab:hover{color:var(--branco)}
         .modal-tab.active{color:var(--vermelho);border-bottom-color:var(--vermelho);background:rgba(196,30,58,0.05)}
-        .modal-tab-icon{font-size:14px}
         .modal-body{padding:25px 30px;max-height:60vh;overflow-y:auto}
-        .prompt-block{margin-bottom:20px;background:var(--preto3);border-radius:12px;overflow:hidden;border:1px solid #333}
-        .prompt-block-header{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--preto4);border-bottom:1px solid #333}
-        .prompt-block-title{font-size:12px;font-weight:700;color:var(--dourado);display:flex;align-items:center;gap:8px}
-        .prompt-block-title .num{background:var(--vermelho);color:#fff;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px}
-        .prompt-block-copy{display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--preto2);border:1px solid #444;border-radius:6px;color:var(--branco);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s}
-        .prompt-block-copy:hover{background:var(--vermelho);border-color:var(--vermelho)}
-        .prompt-block-copy.copied{background:var(--verde);border-color:var(--verde)}
-        .prompt-block-content{padding:15px 18px;font-size:12px;line-height:1.7;white-space:pre-wrap;color:#ccc;font-family:'Courier New',monospace;max-height:250px;overflow-y:auto;background:var(--preto)}
-        .content-section{margin-bottom:20px;background:var(--preto3);border-radius:12px;overflow:hidden}
-        .section-header{display:flex;justify-content:space-between;align-items:center;padding:12px 18px;background:var(--preto4);border-bottom:1px solid #333}
-        .section-title{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:1px}
-        .section-icon{font-size:14px}
-        .section-title.narrativa{color:var(--azul)}
-        .section-title.imagem{color:var(--roxo)}
-        .section-title.video{color:var(--laranja)}
-        .section-title.legenda{color:var(--verde)}
-        .section-title.tela{color:var(--dourado)}
-        .copy-all-btn{display:flex;align-items:center;gap:6px;padding:6px 14px;background:var(--preto2);border:1px solid #444;border-radius:6px;color:var(--branco);font-size:10px;font-weight:600;cursor:pointer;transition:all .2s}
-        .copy-all-btn:hover{background:var(--vermelho);border-color:var(--vermelho)}
-        .copy-all-btn.copied{background:var(--verde);border-color:var(--verde)}
-        .section-body{padding:18px}
-        .content-text{font-size:13px;line-height:1.8;white-space:pre-wrap;color:#ddd;font-family:'Courier New',monospace;background:var(--preto);padding:15px;border-radius:8px;max-height:300px;overflow-y:auto}
-        .toast{position:fixed;bottom:30px;right:30px;padding:15px 25px;background:var(--verde);color:#fff;border-radius:10px;font-weight:600;font-size:13px;transform:translateY(100px);opacity:0;transition:all .3s;z-index:2000;display:flex;align-items:center;gap:10px;box-shadow:0 10px 40px rgba(34,197,94,0.3)}
+        .content-section{background:var(--preto3);border-radius:12px;overflow:hidden}
+        .section-header{display:flex;justify-content:space-between;align-items:center;padding:15px 20px;background:var(--preto4);border-bottom:1px solid #333}
+        .section-title{font-size:12px;font-weight:700;letter-spacing:1px;color:var(--dourado)}
+        .copy-btn{padding:8px 16px;background:var(--preto2);border:1px solid #444;border-radius:6px;color:var(--branco);font-size:11px;font-weight:600;cursor:pointer;transition:all .2s}
+        .copy-btn:hover{background:var(--vermelho);border-color:var(--vermelho)}
+        .copy-btn.copied{background:var(--verde);border-color:var(--verde)}
+        .section-body{padding:20px}
+        .content-text{font-size:13px;line-height:1.8;white-space:pre-wrap;color:#ddd;font-family:'Courier New',monospace;background:var(--preto);padding:15px;border-radius:8px;max-height:400px;overflow-y:auto}
+        .prompt-block{margin-bottom:15px;background:var(--preto);border-radius:10px;border:1px solid #333;overflow:hidden}
+        .prompt-block-header{display:flex;justify-content:space-between;align-items:center;padding:12px 15px;background:var(--preto4);border-bottom:1px solid #333}
+        .prompt-block-num{width:28px;height:28px;background:var(--vermelho);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-right:10px}
+        .prompt-block-title{font-size:12px;font-weight:600;color:var(--dourado);flex:1}
+        .prompt-block-content{padding:15px;font-size:12px;line-height:1.7;white-space:pre-wrap;color:#ccc;font-family:'Courier New',monospace;max-height:200px;overflow-y:auto}
+        .toast{position:fixed;bottom:30px;right:30px;padding:15px 25px;background:var(--verde);color:#fff;border-radius:10px;font-weight:600;font-size:13px;transform:translateY(100px);opacity:0;transition:all .3s;z-index:2000}
         .toast.show{transform:translateY(0);opacity:1}
         .empty-state{text-align:center;padding:80px 40px;color:var(--cinza)}
-        .empty-state h3{font-size:20px;margin-bottom:10px;color:var(--cinza2)}
+        .empty-state h3{font-size:20px;margin-bottom:10px}
         .backup-info{padding:15px;background:var(--preto3);border-radius:8px;margin-top:15px;font-size:11px;color:var(--cinza)}
         .backup-info strong{color:var(--verde)}
-        ::-webkit-scrollbar{width:6px}
-        ::-webkit-scrollbar-track{background:var(--preto2)}
-        ::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
-        ::-webkit-scrollbar-thumb:hover{background:var(--vermelho)}
-        @media(max-width:768px){.sidebar{display:none}.layout{flex-direction:column}.main{padding:15px}}
+        @media(max-width:768px){.sidebar{display:none}.main{padding:15px}}
     </style>
 </head>
 <body>
@@ -138,7 +119,7 @@
         <button class="header-btn" onclick="exportData()">💾 Backup</button>
         <button class="header-btn" onclick="document.getElementById('importFile').click()">📂 Importar</button>
         <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
-        <button class="header-btn primary" onclick="saveToStorage()">✓ Salvar</button>
+        <button class="header-btn primary" onclick="saveData()">✓ Salvar</button>
     </div>
 </header>
 
@@ -147,7 +128,7 @@
         <div class="month-filter">
             <div class="month-filter-title">SELECIONAR MÊS</div>
             <div class="month-selector">
-                <button class="month-selector-btn" id="monthSelectorBtn" onclick="toggleDropdown()">
+                <button class="month-selector-btn" onclick="toggleDropdown()">
                     <div class="month-selector-left">
                         <div class="month-selector-num" id="selectorNum">01</div>
                         <div class="month-selector-info">
@@ -155,7 +136,7 @@
                             <span id="selectorTheme">Planejamento</span>
                         </div>
                     </div>
-                    <div class="month-selector-arrow">▼</div>
+                    <span>▼</span>
                 </button>
                 <div class="month-dropdown" id="monthDropdown"></div>
             </div>
@@ -176,12 +157,11 @@
             <div class="month-theme-card">
                 <div class="month-theme-label">TEMA DO MÊS</div>
                 <div class="month-theme-title" id="themeTitle">Planejamento</div>
-                <div class="month-theme-desc" id="themeDesc">Foco em organização e preparação para o ano.</div>
+                <div class="month-theme-desc" id="themeDesc">Foco em organização e preparação.</div>
             </div>
             <div class="backup-info">
                 <strong>✓ Auto-save ativo</strong><br>
-                Dados salvos em localStorage.<br>
-                Use "Backup" para exportar JSON.
+                Dados salvos automaticamente.
             </div>
         </div>
     </aside>
@@ -194,26 +174,20 @@
     </main>
 </div>
 
-<div class="modal-overlay" id="modalOverlay">
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
     <div class="modal">
         <div class="modal-header">
             <div class="modal-header-left">
                 <div class="modal-badge" id="modalBadge">POST #01</div>
                 <div class="modal-title-row">
-                    <input type="date" class="modal-date-input" id="modalDate" onchange="updatePostDate()">
-                    <input type="text" class="modal-title-input" id="modalTitle" placeholder="Título..." onchange="updatePostTitle()">
+                    <input type="date" class="modal-date-input" id="modalDate" onchange="updateDate()">
+                    <input type="text" class="modal-title-input" id="modalTitle" onchange="updateTitle()">
                 </div>
-                <div class="modal-desc" id="modalDesc">Descrição</div>
+                <div class="modal-desc" id="modalDesc"></div>
             </div>
             <button class="modal-close" onclick="closeModal()">✕</button>
         </div>
-        <div class="modal-tabs">
-            <button class="modal-tab active" data-tab="narrativa" onclick="switchTab('narrativa')"><span class="modal-tab-icon">📝</span> NARRATIVA</button>
-            <button class="modal-tab" data-tab="imagem" onclick="switchTab('imagem')"><span class="modal-tab-icon">🖼️</span> PROMPT IMAGEM</button>
-            <button class="modal-tab" data-tab="video" onclick="switchTab('video')"><span class="modal-tab-icon">🎬</span> PROMPT VÍDEO</button>
-            <button class="modal-tab" data-tab="tela" onclick="switchTab('tela')"><span class="modal-tab-icon">📺</span> TEXTO TELA</button>
-            <button class="modal-tab" data-tab="legenda" onclick="switchTab('legenda')"><span class="modal-tab-icon">📱</span> LEGENDA</button>
-        </div>
+        <div class="modal-tabs" id="modalTabs"></div>
         <div class="modal-body" id="modalBody"></div>
     </div>
 </div>
@@ -221,1061 +195,270 @@
 <div class="toast" id="toast">✓ Copiado!</div>
 
 <script>
-const MONTHS_DATA = [
-    {id:1,name:'Janeiro',theme:'Planejamento e Organização',shortTheme:'Planejamento',posts:13,stories:3,desc:'Foco em organização de obras, compra de materiais e preparação para o ano.'},
-    {id:2,name:'Fevereiro',theme:'Segurança no Canteiro',shortTheme:'Segurança',posts:11,stories:5,desc:'EPIs, normas de segurança, prevenção de acidentes e boas práticas.'},
-    {id:3,name:'Março',theme:'Mulheres na Construção',shortTheme:'Mulheres',posts:12,stories:0,desc:'Celebração do Dia da Mulher e destaque para profissionais femininas.'},
-    {id:4,name:'Abril',theme:'Mês Nacional do Aço',shortTheme:'Mês do Aço',posts:13,stories:6,desc:'Dia Nacional do Aço (09/04), Sexta Santa, Tiradentes.'},
-    {id:5,name:'Maio',theme:'Indústria e Produtividade',shortTheme:'Indústria',posts:13,stories:3,desc:'Dia da Indústria, Dia do Trabalho, processos produtivos.'},
-    {id:6,name:'Junho',theme:'Sustentabilidade',shortTheme:'Sustentável',posts:12,stories:3,desc:'Meio ambiente, Corpus Christi, reciclagem de aço.'},
-    {id:7,name:'Julho',theme:'Construção Civil',shortTheme:'Construção',posts:13,stories:0,desc:'Técnicas construtivas, inovações e tendências.'},
-    {id:8,name:'Agosto',theme:'Mês do Soldador',shortTheme:'Soldador',posts:13,stories:0,desc:'Dia do Soldador (25/08), homenagens e técnicas.'},
-    {id:9,name:'Setembro',theme:'Setembro Amarelo',shortTheme:'Set. Amarelo',posts:13,stories:3,desc:'Saúde mental, Independência do Brasil.'},
-    {id:10,name:'Outubro',theme:'Outubro Rosa',shortTheme:'Out. Rosa',posts:13,stories:3,desc:'Nossa Senhora Aparecida, conscientização.'},
-    {id:11,name:'Novembro',theme:'Black Friday',shortTheme:'Black Friday',posts:13,stories:6,desc:'Promoções, Finados, Consciência Negra.'},
-    {id:12,name:'Dezembro',theme:'Retrospectiva',shortTheme:'Retrospectiva',posts:13,stories:5,desc:'Balanço do ano, Natal, Ano Novo.'}
+var MONTHS = [
+    {id:1,name:'Janeiro',theme:'Planejamento',posts:13,stories:3,desc:'Organização e preparação para o ano.'},
+    {id:2,name:'Fevereiro',theme:'Segurança',posts:11,stories:5,desc:'EPIs, normas e prevenção.'},
+    {id:3,name:'Março',theme:'Mulheres',posts:12,stories:0,desc:'Dia da Mulher na construção.'},
+    {id:4,name:'Abril',theme:'Mês do Aço',posts:13,stories:6,desc:'Dia Nacional do Aço.'},
+    {id:5,name:'Maio',theme:'Indústria',posts:13,stories:3,desc:'Dia da Indústria.'},
+    {id:6,name:'Junho',theme:'Sustentável',posts:12,stories:3,desc:'Meio ambiente.'},
+    {id:7,name:'Julho',theme:'Construção',posts:13,stories:0,desc:'Técnicas construtivas.'},
+    {id:8,name:'Agosto',theme:'Soldador',posts:13,stories:0,desc:'Dia do Soldador.'},
+    {id:9,name:'Setembro',theme:'Set. Amarelo',posts:13,stories:3,desc:'Saúde mental.'},
+    {id:10,name:'Outubro',theme:'Out. Rosa',posts:13,stories:3,desc:'Conscientização.'},
+    {id:11,name:'Novembro',theme:'Black Friday',posts:13,stories:6,desc:'Promoções.'},
+    {id:12,name:'Dezembro',theme:'Retrospectiva',posts:13,stories:5,desc:'Balanço do ano.'}
 ];
 
-const INITIAL_POSTS = {
-1: [
-{id:1,date:'2026-01-01',type:'DATA ESPECIAL',format:'Carrossel 5 slides',title:'🎆 Feliz 2026! O ano de construir grandes projetos',desc:'Mensagem de ano novo + retrospectiva Manchester',
-narrativa:`SLIDE 1 — CAPA (IMPACTO)
-═══════════════════════════════════════
-TEXTO PRINCIPAL:
-"2026 CHEGOU!"
-
-SUBTEXTO:
-"E com ele, novas fundações."
-
-INSTRUÇÃO VISUAL:
-Texto centralizado sobre fundo dramático com fogos de artifício dourados. Silhueta de obras ao fundo. Logo Manchester pequeno no canto inferior.
-
-SLIDE 2 — RETROSPECTIVA
-═══════════════════════════════════════
-TEXTO:
-"Em 2025, entregamos mais de 500 toneladas de aço."
-"Para obras em todo Rio de Janeiro e Minas Gerais."
-
-NÚMEROS EM DESTAQUE:
-• 500+ toneladas
-• 200+ obras atendidas
-• 30+ anos de mercado
-
-SLIDE 3 — AGRADECIMENTO
-═══════════════════════════════════════
-TEXTO:
-"Obrigado a cada engenheiro, construtora e parceiro."
-"Vocês fazem a Manchester existir."
-
-SLIDE 4 — COMPROMISSO 2026
-═══════════════════════════════════════
-TEXTO:
-"Em 2026, seguimos com o mesmo compromisso:"
-
-CHECKLIST:
-✓ Qualidade certificada
-✓ Prazo respeitado
-✓ Preço justo
-
-SLIDE 5 — CTA
-═══════════════════════════════════════
-TEXTO:
-"Bora construir juntos?"
-"Qual é seu maior projeto para 2026?"
-
-CTA:
-"Comenta aqui 👇"`,
-imagem:`PROMPT SLIDE 1 — CAPA
-═══════════════════════════════════════
-Ultra-realistic commercial photography of New Year 2026 celebration for steel/construction company.
-
-COMPOSITION:
-- Golden fireworks exploding in dark night sky
-- Silhouette of buildings under construction in background
-- Steel bars subtly forming "2026" number
-- Manchester logo positioned bottom-right corner
-- Negative space for text overlay in upper third
-
-COLOR PALETTE:
-- Primary: Deep red (#C41E3A)
-- Secondary: Black (#0a0a0a)
-- Accent: Gold (#C9A227)
-
-CAMERA: Sony A7R IV, 35mm f/1.8, Wide angle, ISO 800
-STYLE: Cinematic, epic, celebratory, premium corporate
-ASPECT: 1:1 for Instagram feed, 2048x2048 pixels
-
----
-
-PROMPT SLIDE 2 — RETROSPECTIVA
-═══════════════════════════════════════
-Clean infographic-style commercial image for construction company retrospective.
-
-COMPOSITION:
-- Dark background with subtle geometric grid pattern
-- Large numbers "500+" prominently displayed in bold red
-- Secondary statistics arranged in clear visual hierarchy
-- Small construction photos in rounded rectangular frames
-
-TYPOGRAPHY:
-- Main numbers: Bold sans-serif, 72pt equivalent
-- Body text: Clean sans-serif, white
-- High contrast between text and background
-
-COLOR PALETTE:
-- Background: #0a0a0a to #1a1a1a gradient
-- Primary text: White (#ffffff)
-- Accent numbers: Red (#C41E3A)
-
-STYLE: Modern corporate infographic, data visualization
-ASPECT: 1:1 for Instagram
-
----
-
-PROMPT SLIDE 3 — AGRADECIMENTO
-═══════════════════════════════════════
-Emotional collage photography celebrating construction professionals.
-
-COMPOSITION:
-- Grid layout of 4-6 candid professional photographs
-- Engineers, construction workers, team members
-- All shots captured in golden hour lighting
-- Warm, human, authentic emotional feeling
-
-SUBJECTS:
-- Engineer analyzing tablet on construction site
-- Construction workers smiling during break
-- Professional handshake between partners
-- Team photo at completed project site
-
-MOOD: Gratitude, pride, partnership, warm emotional connection
-LIGHTING: Golden hour throughout, soft, flattering
-COLOR GRADING: Warm orange/gold tones, slight vintage film look
-
----
-
-PROMPT SLIDE 5 — CTA
-═══════════════════════════════════════
-Strong call-to-action closing slide for maximum engagement.
-
-COMPOSITION:
-- Solid red background (#C41E3A)
-- White text, centered layout
-- Manchester logo prominently displayed
-- Contact information clearly visible
-
-TYPOGRAPHY:
-- Question: Bold sans-serif, white, large
-- Logo: Full Manchester branding
-- Contact: Regular weight, white
-
-STYLE: Bold, confident, action-oriented, brand-forward
-ASPECT: 1:1 for Instagram`,
-video:`DIREÇÃO DE VÍDEO — 15 SEGUNDOS
-═══════════════════════════════════════
-
-TAKE 1 (0:00-0:03) — ABERTURA ÉPICA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL:
-- Drone shot rising slowly over construction site at dawn
-- Golden sunlight breaking over steel structures
-- Text "2026" fades in with metallic chrome texture
-
-CAMERA: Slow push-up, gimbal stabilized, 15% slow-mo
-LIGHTING: Golden hour, lens flare permitted
-SOUND: Epic orchestral swell, metallic shimmer on text
-
----
-
-TAKE 2 (0:03-0:08) — MONTAGEM DINÂMICA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SEQUENCE:
-1. (0.8s) Sparks flying from welding - close-up
-2. (0.8s) CNC machine cutting steel - slow motion
-3. (1.0s) Manchester truck driving - tracking shot
-4. (1.2s) Steel framework being positioned by crane
-5. (0.7s) Worker giving thumbs up - medium shot
-
-CAMERA: Mix of angles, all stabilized, 24fps cinema look
-TRANSITIONS: Quick cuts synced to music beat
-SOUND: Industrial sounds synced to cuts, building intensity
-
----
-
-TAKE 3 (0:08-0:12) — EQUIPE HUMANA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL:
-- Slow motion montage of team members smiling
-- Pride and satisfaction visible in expressions
-- Natural, candid moments captured
-
-CAMERA: 50mm portrait lens, f/1.8, slight push-in
-LIGHTING: Soft golden hour continuation
-TEXT OVERLAY: "OBRIGADO POR CONSTRUIR COM A GENTE"
-
----
-
-TAKE 4 (0:12-0:15) — FECHAMENTO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL:
-- Manchester logo reveal animation
-- Metallic/chrome texture on logo
-- Clean black background
-
-TEXT: "2026 — Construindo o futuro" in gold
-SOUND: Music resolves, subtle whoosh on logo reveal`,
-tela:`SLIDE 1:
-"2026 CHEGOU!"
-"E com ele, novas fundações."
-
-SLIDE 2:
-"500+ toneladas entregues"
-"200+ obras atendidas"
-"30+ anos de mercado"
-
-SLIDE 3:
-"OBRIGADO"
-"A cada engenheiro, construtora e parceiro"
-
-SLIDE 4:
-"Nosso compromisso:"
-"✓ Qualidade certificada"
-"✓ Prazo respeitado"
-"✓ Preço justo"
-
-SLIDE 5:
-"Bora construir juntos?"
-"Qual é seu maior projeto para 2026?"
-"Comenta aqui 👇"`,
-legenda:`🎆 FELIZ 2026!
-
-Mais um ano começa e com ele a certeza de que vamos continuar construindo juntos.
-
-Em 2025, entregamos mais de 500 toneladas de aço para obras por todo Rio de Janeiro e Minas Gerais.
-
-Cada barra cortada. Cada armadura montada. Cada entrega no prazo.
-
-Obrigado a cada engenheiro, arquiteto, mestre de obras e parceiro que confiou na Manchester.
-
-Em 2026, seguimos firmes:
-✅ Mesmo compromisso com qualidade
-✅ Mesmo foco em prazo
-✅ Mesmo preço justo
-
-E você? Qual é o seu maior projeto para 2026?
-
-Conta pra gente nos comentários! 👇
-
-📞 (21) 3214-1300
-📱 WhatsApp na bio
-
-#Manchester #AnoNovo2026 #ConstruçãoCivil #Aço #Engenharia #RioDeJaneiro`},
-
-{id:2,date:'2026-01-05',type:'PROBLEMA → SOLUÇÃO',format:'Reels 30s',title:'😤 "Comprei aço e veio com medida errada"',desc:'Problema comum de obra resolvido com conferência Manchester',
-narrativa:`ROTEIRO REELS 30 SEGUNDOS
-═══════════════════════════════════════
-
-[0:00-0:03] HOOK
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ÁUDIO: "Cara, o aço chegou errado. Minha obra parou."
-TEXTO: "ISSO JÁ ACONTECEU COM VOCÊ?"
-VISUAL: Close no rosto do engenheiro frustrado ao telefone.
-
-[0:03-0:10] PROBLEMA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NARRAÇÃO: "Pediu 10mm, veio 8mm. Pediu 6 metros, veio 5.80."
-TEXTO: "2 SEMANAS PERDIDAS" / "R$ MILHARES EM PREJUÍZO"
-VISUAL: B-roll do canteiro de obras parado.
-
-[0:10-0:13] TRANSIÇÃO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TEXTO: "E SE EXISTISSE UMA FORMA DE EVITAR ISSO?"
-VISUAL: Tela escurece, texto surge letra por letra.
-
-[0:13-0:23] SOLUÇÃO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NARRAÇÃO: "Na Manchester, antes de cortar uma barra sequer, nossa equipe confere seu projeto inteiro."
-TEXTO: "CONFERÊNCIA → CORTE PRECISO → ENTREGA CERTA"
-VISUAL: Técnico analisando projeto, CNC cortando, peças etiquetadas.
-
-[0:23-0:30] CTA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NARRAÇÃO: "Zero erro. Zero atraso. Zero dor de cabeça."
-TEXTO: "ZERO ERRO. ZERO ATRASO."
-CTA: Logo Manchester + "(21) 3214-1300"`,
-imagem:`PROMPT THUMBNAIL/CAPA REELS
-═══════════════════════════════════════
-Split comparison image showing BEFORE vs AFTER for construction steel delivery.
-
-LEFT SIDE (PROBLEM):
-- Messy, chaotic construction site
-- Steel bars scattered incorrectly, wrong sizes visible
-- Frustrated engineer checking papers
-- Color grading: cold, desaturated, blue/grey tint
-- Text overlay: "MEDIDA ERRADA" in red
-
-RIGHT SIDE (SOLUTION):
-- Clean, organized construction site
-- Steel bars properly arranged with visible labels
-- Satisfied engineer giving thumbs up
-- Color grading: warm, vibrant, golden tint
-- Text overlay: "MEDIDA CERTA" in green
-
-COMPOSITION: Vertical split, red diagonal line separating
-STYLE: Before/after transformation, high contrast
-ASPECT: 9:16 for Reels cover`,
-video:`DIREÇÃO COMPLETA — REELS 30s
-═══════════════════════════════════════
-
-CENA 1 — HOOK (0:00-0:03)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Extreme close-up on engineer's face, phone to ear
-CAMERA: 85mm portrait lens, shallow DOF, slight push-in
-LIGHTING: Natural window light from left
-ACTING: Start neutral → visible shock reaction
-SOUND: Muffled phone audio, dramatic hit on reaction
-
----
-
-CENA 2 — PROBLEMA (0:03-0:10)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SHOTS:
-1. (2s) Drone descending over idle construction site
-2. (1.5s) Close-up steel bars with wrong measurements
-3. (1.5s) Workers standing around waiting
-4. (2s) Calendar pages flipping showing days passing
-
-COLOR: Heavily desaturated, cold blue/grey tones
-SOUND: Tense music, clock ticking, heartbeat building
-
----
-
-CENA 3 — TRANSIÇÃO (0:10-0:13)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Fade to black, text types on character by character
-TEXT: "E SE DESSE PRA EVITAR?"
-SOUND: All music drops, single heartbeat, key clicks
-
----
-
-CENA 4 — SOLUÇÃO (0:13-0:23)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-SHOTS:
-1. (2s) Computer screen showing project analysis
-2. (2s) Technician reviewing blueprints
-3. (3s) CNC machine cutting steel (slow-mo sparks)
-4. (2s) Labeling machine applying tags
-5. (2s) Organized steel bundles ready
-
-COLOR: Warm, vibrant, saturated, high contrast
-SOUND: Uplifting music builds, industrial sounds synced
-
----
-
-CENA 5 — RESULTADO (0:23-0:30)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Wide shot organized site, satisfied engineer
-TEXT: "ZERO ERRO. ZERO ATRASO."
-LOGO: Manchester logo + contact info
-SOUND: Music resolves, success chime`,
-tela:`[0:00-0:03]
-"ISSO JÁ ACONTECEU COM VOCÊ?"
-
-[0:03-0:10]
-"2 SEMANAS PERDIDAS"
-"R$ MILHARES EM PREJUÍZO"
-
-[0:10-0:13]
-"E SE EXISTISSE UMA FORMA DE EVITAR ISSO?"
-
-[0:13-0:23]
-"CONFERÊNCIA → CORTE PRECISO → ENTREGA CERTA"
-
-[0:23-0:30]
-"ZERO ERRO. ZERO ATRASO."
-"(21) 3214-1300"`,
-legenda:`😤 "O aço chegou errado. Minha obra parou."
-
-Quantas vezes você já ouviu isso?
-Ou pior: quantas vezes você VIVEU isso?
-
-Pediu 10mm, veio 8mm.
-Pediu 6 metros, veio 5.80.
-Especificou CA-50, veio CA-60.
-
-Resultado?
-⏱️ 2 semanas de obra parada
-💸 Milhares em prejuízo
-😤 Estresse desnecessário
-
-Na Manchester é diferente.
-
-Antes de cortar UMA barra sequer, nossa equipe:
-✅ Confere seu projeto inteiro
-✅ Valida medida por medida
-✅ Verifica bitola por bitola
-✅ Identifica cada peça com etiqueta
-
-Zero erro. Zero atraso. Zero dor de cabeça.
-
-Já passou por isso? Conta sua história 👇
-
-📞 (21) 3214-1300
-📱 WhatsApp na bio
-
-#Manchester #ConstruçãoCivil #BelgoPronto #Engenharia #AçoCorteDobra`},
-
-{id:3,date:'2026-01-07',type:'EDUCATIVO',format:'Carrossel 8 slides',title:'📋 Checklist: Como planejar a compra de aço para 2026',desc:'5 passos essenciais para não errar na compra de aço',
-narrativa:`CARROSSEL 8 SLIDES — CHECKLIST COMPRA DE AÇO
-═══════════════════════════════════════════════════════════════
-
-SLIDE 1 — CAPA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TÍTULO: "CHECKLIST 2026"
-SUBTÍTULO: "Como planejar a compra de aço sem erro"
-BADGE: "SALVA ESSE POST 📌"
-
-SLIDE 2 — PASSO 1
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📐 REVISAR O PROJETO ESTRUTURAL
-"Projeto atualizado? Última revisão aprovada?"
-💡 "Peça sempre o arquivo digital (.dwg) atualizado"
-
-SLIDE 3 — PASSO 2
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🧮 CALCULAR QUANTITATIVOS
-"Nada de chutar. Use software de cálculo."
-💡 "Erro no quantitativo = sobra ou falta de material"
-
-SLIDE 4 — PASSO 3
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-📅 CONSIDERAR PRAZO DE ENTREGA
-• Corte e dobra: 3-7 dias úteis
-• Armadura pronta: 5-10 dias úteis
-• Telas soldadas: 2-5 dias úteis
-💡 "Sempre peça com antecedência."
-
-SLIDE 5 — PASSO 4
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-✅ VERIFICAR NORMAS TÉCNICAS
-• Conformidade com NBR 7480
-• Certificação de qualidade
-• Laudos de ensaio disponíveis
-💡 "Aço sem certificação = risco estrutural"
-
-SLIDE 6 — PASSO 5
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-🔄 ALINHAR CRONOGRAMA DE OBRA
-• Entrega única ou programada?
-• Onde armazenar na obra?
-• Quem vai receber o material?
-💡 "Entregas programadas evitam acúmulo"
-
-SLIDE 7 — DICA BÔNUS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-💡 ANTECIPE A COMPRA
-"Preço do aço varia com o mercado."
-• Trava preço atual
-• Garante prazo de entrega
-• Evita imprevistos de estoque
-
-SLIDE 8 — CTA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-"PRECISA DE AJUDA COM SEU PROJETO?"
-"A Manchester confere seu projeto gratuitamente."
-📞 (21) 3214-1300
-"SALVA ESSE POST! 📌"`,
-imagem:`PROMPT SLIDE 1 — CAPA
-═══════════════════════════════════════
-Clean modern infographic cover for construction checklist.
-
-COMPOSITION:
-- Centered layout with strong visual hierarchy
-- Large checklist icon at top (white outline on dark)
-- Title "CHECKLIST 2026" bold, impactful
-- Badge "SALVA ESSE POST 📌" in corner
-
-BACKGROUND: Gradient red (#C41E3A) to black (#0a0a0a)
-TYPOGRAPHY: Bold sans-serif, white, extra large
-STYLE: Modern corporate infographic
-ASPECT: 1:1 for Instagram, 1080x1080px
-
----
-
-PROMPT SLIDES 2-6 — CONTEÚDO (TEMPLATE)
-═══════════════════════════════════════
-Consistent infographic slide design for checklist content.
-
-LAYOUT:
-- Dark background (#0a0a0a to #111111)
-- Step number: Extra large, red (#C41E3A), top-left
-- Icon: White outline style, right of number
-- Title: Bold white text below number
-- Body text: Light grey (#cccccc)
-- Red accent line on left edge (4px width)
-
-ICONS PER SLIDE:
-- Slide 2: Blueprint/document icon
-- Slide 3: Calculator icon
-- Slide 4: Calendar icon
-- Slide 5: Certificate/badge icon
-- Slide 6: Sync arrows icon
-
-TIP BOX: Darker background (#1a1a1a), rounded corners, lightbulb emoji
-
----
-
-PROMPT SLIDE 7 — DICA BÔNUS
-═══════════════════════════════════════
-Special highlight slide for bonus tip.
-
-BACKGROUND: Dark with gold (#C9A227) gradient accent
-ICON: Lightbulb prominently featured
-LABEL: "DICA BÔNUS" in gold
-STYLE: Premium, special, exclusive feeling
-
----
-
-PROMPT SLIDE 8 — CTA
-═══════════════════════════════════════
-Strong call-to-action closing slide.
-
-BACKGROUND: Solid red (#C41E3A)
-TEXT: White, centered
-LOGO: Manchester branding prominent
-STYLE: Bold, confident, action-oriented`,
-video:`ALTERNATIVA REELS — 25 SEGUNDOS
-═══════════════════════════════════════
-
-[0:00-0:02] HOOK
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TEXT: "5 PASSOS pra não errar na compra de aço"
-VISUAL: Text animates in dramatically
-
----
-
-[0:02-0:05] PASSO 1
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ICON: Blueprint animates in
-TEXT: "01 REVISE O PROJETO"
-
----
-
-[0:05-0:08] PASSO 2
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ICON: Calculator
-TEXT: "02 CALCULE QUANTITATIVOS"
-
----
-
-[0:08-0:11] PASSO 3
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ICON: Calendar
-TEXT: "03 CONSIDERE O PRAZO"
-
----
-
-[0:11-0:14] PASSO 4
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ICON: Certificate
-TEXT: "04 VERIFIQUE NORMAS"
-
----
-
-[0:14-0:17] PASSO 5
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ICON: Sync arrows
-TEXT: "05 ALINHE CRONOGRAMA"
-
----
-
-[0:17-0:22] DICA BÔNUS
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-ICON: Lightbulb with glow
-TEXT: "💡 ANTECIPE A COMPRA"
-VISUAL: Graph showing price variation
-
----
-
-[0:22-0:25] CTA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TEXT: "SALVA ESSE VÍDEO 📌"
-LOGO: Manchester + contact`,
-tela:`SLIDE 1:
-"CHECKLIST 2026"
-"Como planejar a compra de aço sem erro"
-"SALVA ESSE POST 📌"
-
-SLIDE 2:
-"01" "📐 REVISAR O PROJETO ESTRUTURAL"
-"💡 Peça o arquivo .dwg atualizado"
-
-SLIDE 3:
-"02" "🧮 CALCULAR QUANTITATIVOS"
-"💡 Chutar sai caro"
-
-SLIDE 4:
-"03" "📅 CONSIDERAR PRAZO"
-"Corte/dobra: 3-7 dias"
-"💡 Antecedência evita urgência"
-
-SLIDE 5:
-"04" "✅ VERIFICAR NORMAS"
-"NBR 7480 | Certificação | Laudos"
-
-SLIDE 6:
-"05" "🔄 ALINHAR CRONOGRAMA"
-"💡 Programar evita acúmulo"
-
-SLIDE 7:
-"💡 DICA BÔNUS: ANTECIPE A COMPRA"
-
-SLIDE 8:
-"PRECISA DE AJUDA?"
-"📞 (21) 3214-1300"`,
-legenda:`📋 CHECKLIST 2026: Como planejar a compra de aço
-
-Começou o ano e você já tem obras pra tocar?
-Antes de sair pedindo orçamento, confere essa lista:
-
-✅ PASSO 1: REVISE O PROJETO
-Versão atualizada? Pranchas completas?
-
-✅ PASSO 2: CALCULE QUANTITATIVOS
-Use software ou peça ao engenheiro. Chutar sai caro.
-
-✅ PASSO 3: CONSIDERE O PRAZO
-• Corte e dobra: 3-7 dias úteis
-• Armadura pronta: 5-10 dias úteis
-
-✅ PASSO 4: VERIFIQUE NORMAS
-NBR 7480, certificação, laudos. Exija sempre.
-
-✅ PASSO 5: ALINHE O CRONOGRAMA
-Entrega única ou programada?
-
-💡 DICA BÔNUS: ANTECIPE A COMPRA
-Preço do aço varia. Fechar antes garante melhor condição.
-
-SALVA ESSE POST! 📌
-
-📞 (21) 3214-1300
-
-#Manchester #Checklist #PlanejamentoDeObra #Aço #ConstruçãoCivil`},
-
-{id:4,date:'2026-01-10',type:'DATA ESPECIAL',format:'Vídeo 30s',title:'👷 Dia do Engenheiro Civil: Os arquitetos do Brasil',desc:'Homenagem ao Dia do Engenheiro Civil (10/01)',
-narrativa:`ROTEIRO VÍDEO 30s — DIA DO ENGENHEIRO CIVIL
-═══════════════════════════════════════════════════════════════
-
-[0:00-0:05] ABERTURA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Montagem de obras icônicas brasileiras
-TEXT: "10 DE JANEIRO" / "DIA DO ENGENHEIRO CIVIL"
-MUSIC: Emocional, inspiradora (piano + orquestra)
-
-[0:05-0:15] HOMENAGEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Engenheiros trabalhando em campo
-TEXT: "Vocês transformam números em estruturas"
-      "Projetos em realidade"
-      "Sonhos em concreto"
-
-[0:15-0:25] MENSAGEM MANCHESTER
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Parceria Manchester + engenheiros
-TEXT: "A Manchester tem orgulho de construir ao lado de vocês há mais de 30 anos"
-
-[0:25-0:30] FECHAMENTO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Logo Manchester, engenheiro sorrindo
-TEXT: "FELIZ DIA DO ENGENHEIRO CIVIL! 👷"`,
-imagem:`PROMPT IMAGEM — DIA DO ENGENHEIRO
-═══════════════════════════════════════
-Inspirational tribute image celebrating Civil Engineer Day.
-
-COMPOSITION:
-- Brazilian civil engineer in foreground (confident pose)
-- Construction site background with impressive structure
-- Golden hour lighting creating heroic atmosphere
-- Text overlay space in upper portion
-
-SUBJECT:
-- Engineer 35-50 years old
-- Safety vest, hard hat, holding blueprints/tablet
-- Professional, proud expression
-- Looking towards construction/future
-
-BACKGROUND:
-- Major construction project (bridge, building)
-- Cranes, steel structures visible
-- Clear sky with golden light
-
-LIGHTING: Golden hour, backlit, rim light creating heroic silhouette
-MOOD: Pride, achievement, inspiration
-STYLE: Cinematic commercial photography
-ASPECT: 1:1 and 9:16 versions`,
-video:`DIREÇÃO DE VÍDEO — 30s HOMENAGEM
-═══════════════════════════════════════
-
-[0:00-0:05] ABERTURA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Drone shots of impressive Brazilian construction
-- Time-lapse of building rising
-- Text: "10 DE JANEIRO - DIA DO ENGENHEIRO CIVIL"
-- Music: Emotional piano building
-
----
-
-[0:05-0:15] MONTAGEM HOMENAGEM
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Engineers reviewing plans (close-up hands)
-- Site supervision (medium shot)
-- Team coordination (wide shot)
-- Text overlays: inspirational messages
-
----
-
-[0:15-0:25] PARCERIA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Manchester delivery arriving at site
-- Engineer receiving materials
-- Handshake between team members
-
----
-
-[0:25-0:30] FECHAMENTO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-- Logo reveal
-- "FELIZ DIA DO ENGENHEIRO CIVIL!"
-- Contact info`,
-tela:`[0:00-0:05]
-"10 DE JANEIRO"
-"DIA DO ENGENHEIRO CIVIL"
-
-[0:05-0:15]
-"Vocês transformam números em estruturas"
-"Projetos em realidade"
-"Sonhos em concreto"
-
-[0:15-0:25]
-"A Manchester tem orgulho de construir"
-"ao lado de vocês há mais de 30 anos"
-
-[0:25-0:30]
-"FELIZ DIA DO ENGENHEIRO CIVIL! 👷"`,
-legenda:`👷 FELIZ DIA DO ENGENHEIRO CIVIL!
-
-10 de janeiro.
-
-Hoje é o dia de celebrar quem transforma:
-📐 Números em estruturas
-📋 Projetos em realidade
-🏗️ Sonhos em concreto
-
-Vocês são os verdadeiros arquitetos do Brasil.
-
-A Manchester tem orgulho de estar ao lado de vocês há mais de 30 anos.
-
-Obrigado por confiar na gente.
-Obrigado por construir o Brasil.
-
-FELIZ DIA DO ENGENHEIRO CIVIL! 🎉
-
-Marca aquele engenheiro que você admira 👇
-
-📞 (21) 3214-1300
-
-#DiaDoEngenheiroCivil #Engenharia #ConstruçãoCivil #Manchester #10DeJaneiro`}
-],
-2: [
-{id:1,date:'2026-02-02',type:'PROBLEMA → SOLUÇÃO',format:'Reels 30s',title:'😰 "Operário caiu da laje. Não tinha linha de vida."',desc:'Problema real de segurança → Solução: planejamento',
-narrativa:`ROTEIRO REELS 30s — ACIDENTE DE TRABALHO
-═══════════════════════════════════════════════════════════════
-
-[0:00-0:03] HOOK IMPACTANTE
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TEXTO: "ISSO ACONTECEU ONTEM EM UMA OBRA"
-VISUAL: Tela preta, texto surge dramaticamente.
-SOM: Sirene ao fundo (sutil).
-
-[0:03-0:10] O PROBLEMA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NARRAÇÃO: "Operário trabalhando na laje. Sem cinto. Sem linha de vida. Um passo em falso. Queda de 4 metros."
-TEXTO: "SEM CINTO" / "SEM LINHA DE VIDA" / "QUEDA DE 4 METROS"
-VISUAL: B-roll de canteiro (genérico, sem acidente real).
-
-[0:10-0:15] A CONSEQUÊNCIA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TEXTO: "Fraturas múltiplas" / "6 meses afastado" / "Família sem renda"
-VISUAL: Capacete no chão, família preocupada.
-
-[0:15-0:23] A SOLUÇÃO
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-NARRAÇÃO: "Segurança não é custo. É investimento."
-TEXTO: "✓ LINHA DE VIDA" / "✓ CINTO DE SEGURANÇA" / "✓ TREINAMENTO"
-VISUAL: Obra organizada com EPCs e EPIs corretos.
-
-[0:23-0:30] CTA
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TEXTO: "SUA OBRA TEM LINHA DE VIDA?"
-LOGO: Manchester + "Segurança primeiro. Sempre."`,
-imagem:`PROMPT THUMBNAIL — SEGURANÇA
-═══════════════════════════════════════
-Impactful safety awareness thumbnail showing contrast.
-
-LEFT SIDE (DANGER):
-- Worker near edge without protection
-- Desaturated, red warning tint
-- Text: "SEM PROTEÇÃO"
-
-RIGHT SIDE (SAFE):
-- Same worker with full PPE and safety line
-- Normal colors, green accent
-- Text: "COM PROTEÇÃO"
-
-COMPOSITION: Split screen, high visual impact
-MOOD: Urgency, awareness, responsibility
-STYLE: Commercial safety campaign aesthetic
-ASPECT: 9:16 for Reels cover`,
-video:`DIREÇÃO DE VÍDEO COMPLETA — 30s
-═══════════════════════════════════════
-
-CENA 1 — HOOK (0:00-0:03)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Tela preta, texto surge dramaticamente
-TEXT: "ISSO ACONTECEU ONTEM EM UMA OBRA"
-SOUND: Sirene sutil, impacto dramático
-
----
-
-CENA 2 — PROBLEMA (0:03-0:10)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: B-roll canteiro, altura, bordas de laje
-TEXT SEQUENCE: "SEM CINTO" → "SEM LINHA DE VIDA" → "QUEDA DE 4 METROS"
-COLOR: Desaturado, frio, tenso
-SOUND: Música tensa, heartbeat
-
----
-
-CENA 3 — CONSEQUÊNCIA (0:10-0:15)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Capacete no chão, hospital (sugestivo)
-TEXT: "Fraturas múltiplas" / "6 meses afastado"
-MOOD: Emocional, impactante
-
----
-
-CENA 4 — SOLUÇÃO (0:15-0:23)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-VISUAL: Obra organizada, EPIs corretos
-TEXT: "✓ LINHA DE VIDA" / "✓ CINTO" / "✓ TREINAMENTO"
-COLOR: Vibrante, positivo
-SOUND: Música esperançosa
-
----
-
-CENA 5 — CTA (0:23-0:30)
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-TEXT: "SUA OBRA TEM LINHA DE VIDA?"
-LOGO: Manchester
-TAGLINE: "Segurança primeiro. Sempre."`,
-tela:`[0:00-0:03]
-"ISSO ACONTECEU ONTEM EM UMA OBRA"
-
-[0:03-0:10]
-"SEM CINTO"
-"SEM LINHA DE VIDA"
-"QUEDA DE 4 METROS"
-
-[0:10-0:15]
-"Fraturas múltiplas"
-"6 meses afastado"
-"Família sem renda"
-
-[0:15-0:23]
-"✓ LINHA DE VIDA"
-"✓ CINTO DE SEGURANÇA"
-"✓ TREINAMENTO"
-"✓ PROTEÇÃO COLETIVA"
-
-[0:23-0:30]
-"SUA OBRA TEM LINHA DE VIDA?"`,
-legenda:`😰 Isso aconteceu ontem em uma obra.
-
-Operário trabalhando na laje.
-Sem cinto. Sem linha de vida.
-Um passo em falso.
-Queda de 4 metros.
-
-Resultado:
-💔 Fraturas múltiplas
-⏰ 6 meses afastado
-👨‍👩‍👧 Família sem renda
-
-Isso NÃO precisava acontecer.
-
-Segurança não é custo. É INVESTIMENTO.
-
-✅ Linha de vida instalada
-✅ Cinto de segurança obrigatório
-✅ Treinamento antes de subir
-✅ Proteção coletiva primeiro
-
-SUA OBRA TEM LINHA DE VIDA?
-
-#SegurançaNoTrabalho #NR18 #Manchester #ObraSegura`}
-]
+var POSTS_DATA = {
+    1: [
+        {
+            id: 1,
+            date: '2026-01-01',
+            type: 'DATA ESPECIAL',
+            format: 'Carrossel 5 slides',
+            title: '🎆 Feliz 2026! O ano de construir grandes projetos',
+            desc: 'Mensagem de ano novo + retrospectiva Manchester',
+            narrativa: 'SLIDE 1 — CAPA\n═══════════════════\nTEXTO: "2026 CHEGOU!"\nSUBTEXTO: "E com ele, novas fundações."\n\nSLIDE 2 — RETROSPECTIVA\n═══════════════════\nTEXTO: "Em 2025, entregamos mais de 500 toneladas de aço."\nNÚMEROS:\n• 500+ toneladas\n• 200+ obras\n• 30+ anos\n\nSLIDE 3 — AGRADECIMENTO\n═══════════════════\nTEXTO: "Obrigado a cada engenheiro, construtora e parceiro."\n\nSLIDE 4 — COMPROMISSO\n═══════════════════\nTEXTO: "Em 2026, seguimos com o mesmo compromisso:"\n✓ Qualidade certificada\n✓ Prazo respeitado\n✓ Preço justo\n\nSLIDE 5 — CTA\n═══════════════════\nTEXTO: "Bora construir juntos?"\nCTA: "Comenta aqui 👇"',
+            imagem: 'PROMPT SLIDE 1 — CAPA\n═══════════════════\nUltra-realistic commercial photography of New Year 2026 celebration for steel company.\n\nCOMPOSITION:\n- Golden fireworks in dark night sky\n- Silhouette of buildings under construction\n- Steel bars forming "2026"\n- Manchester logo bottom-right\n\nCOLOR: Red (#C41E3A), Black (#0a0a0a), Gold (#C9A227)\nCAMERA: Sony A7R IV, 35mm f/1.8\nSTYLE: Cinematic, epic, premium\nASPECT: 1:1 Instagram\n\n---\n\nPROMPT SLIDE 2 — RETROSPECTIVA\n═══════════════════\nClean infographic for construction retrospective.\n\nLAYOUT:\n- Dark background with grid\n- Large "500+" in red\n- Secondary stats below\n\nTYPOGRAPHY: Bold sans-serif\nSTYLE: Modern corporate infographic\n\n---\n\nPROMPT SLIDE 3 — AGRADECIMENTO\n═══════════════════\nEmotional collage of construction professionals.\n\nSUBJECTS:\n- Engineers with tablets\n- Workers smiling\n- Team handshakes\n\nLIGHTING: Golden hour\nMOOD: Gratitude, pride\n\n---\n\nPROMPT SLIDE 5 — CTA\n═══════════════════\nStrong call-to-action slide.\n\nBACKGROUND: Solid red (#C41E3A)\nTEXT: White, centered\nLOGO: Manchester branding\nSTYLE: Bold, action-oriented',
+            video: 'DIREÇÃO DE VÍDEO — 15 SEGUNDOS\n═══════════════════\n\nTAKE 1 (0:00-0:03) — ABERTURA\n━━━━━━━━━━━━━━━━━\nVISUAL: Drone shot rising over construction at dawn\nCAMERA: Slow push-up, gimbal stabilized\nSOUND: Epic orchestral swell\n\n---\n\nTAKE 2 (0:03-0:08) — MONTAGEM\n━━━━━━━━━━━━━━━━━\nSEQUENCE:\n1. Sparks from welding\n2. CNC cutting steel\n3. Manchester truck\n4. Steel framework crane\n5. Worker thumbs up\n\nTRANSITIONS: Quick cuts synced to beat\n\n---\n\nTAKE 3 (0:08-0:12) — EQUIPE\n━━━━━━━━━━━━━━━━━\nVISUAL: Slow-mo team members smiling\nCAMERA: 50mm portrait, f/1.8\nTEXT: "OBRIGADO POR CONSTRUIR COM A GENTE"\n\n---\n\nTAKE 4 (0:12-0:15) — FECHAMENTO\n━━━━━━━━━━━━━━━━━\nVISUAL: Manchester logo reveal\nTEXT: "2026 — Construindo o futuro"\nSOUND: Music resolves',
+            tela: 'SLIDE 1:\n"2026 CHEGOU!"\n"E com ele, novas fundações."\n\nSLIDE 2:\n"500+ toneladas entregues"\n"200+ obras atendidas"\n\nSLIDE 3:\n"OBRIGADO"\n\nSLIDE 4:\n"✓ Qualidade certificada"\n"✓ Prazo respeitado"\n"✓ Preço justo"\n\nSLIDE 5:\n"Qual é seu maior projeto para 2026?"\n"Comenta aqui 👇"',
+            legenda: '🎆 FELIZ 2026!\n\nMais um ano começa e com ele a certeza de que vamos continuar construindo juntos.\n\nEm 2025, entregamos mais de 500 toneladas de aço para obras por todo Rio de Janeiro.\n\nObrigado a cada engenheiro, arquiteto e parceiro que confiou na Manchester.\n\nE você? Qual é o seu maior projeto para 2026?\n\nConta pra gente nos comentários! 👇\n\n📞 (21) 3214-1300\n\n#Manchester #AnoNovo2026 #ConstruçãoCivil #Aço'
+        },
+        {
+            id: 2,
+            date: '2026-01-05',
+            type: 'PROBLEMA → SOLUÇÃO',
+            format: 'Reels 30s',
+            title: '😤 "Comprei aço e veio com medida errada"',
+            desc: 'Problema comum de obra resolvido',
+            narrativa: 'ROTEIRO REELS 30s\n═══════════════════\n\n[0:00-0:03] HOOK\n━━━━━━━━━━━━━━━━━\nÁUDIO: "Cara, o aço chegou errado."\nTEXTO: "ISSO JÁ ACONTECEU COM VOCÊ?"\n\n[0:03-0:10] PROBLEMA\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Pediu 10mm, veio 8mm."\nTEXTO: "2 SEMANAS PERDIDAS"\n\n[0:10-0:13] TRANSIÇÃO\n━━━━━━━━━━━━━━━━━\nTEXTO: "E SE DESSE PRA EVITAR?"\n\n[0:13-0:23] SOLUÇÃO\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Na Manchester, conferimos seu projeto inteiro."\nTEXTO: "CONFERÊNCIA → CORTE → ENTREGA"\n\n[0:23-0:30] CTA\n━━━━━━━━━━━━━━━━━\nTEXTO: "ZERO ERRO. ZERO ATRASO."\nLOGO: Manchester',
+            imagem: 'PROMPT THUMBNAIL\n═══════════════════\nSplit comparison BEFORE vs AFTER.\n\nLEFT (PROBLEM):\n- Messy construction site\n- Wrong steel bars\n- Frustrated engineer\n- Cold, desaturated colors\n- Text: "MEDIDA ERRADA"\n\nRIGHT (SOLUTION):\n- Clean, organized site\n- Labeled steel bars\n- Satisfied engineer\n- Warm, vibrant colors\n- Text: "MEDIDA CERTA"\n\nSTYLE: Before/after, high contrast\nASPECT: 9:16 for Reels',
+            video: 'DIREÇÃO REELS 30s\n═══════════════════\n\nCENA 1 — HOOK (0:00-0:03)\n━━━━━━━━━━━━━━━━━\nVISUAL: Close-up engineer frustrated\nCAMERA: 85mm, shallow DOF\nSOUND: Dramatic hit\n\n---\n\nCENA 2 — PROBLEMA (0:03-0:10)\n━━━━━━━━━━━━━━━━━\nSHOTS:\n- Drone over idle site\n- Wrong measurements\n- Workers waiting\nCOLOR: Desaturated, cold\n\n---\n\nCENA 3 — TRANSIÇÃO (0:10-0:13)\n━━━━━━━━━━━━━━━━━\nVISUAL: Fade to black\nTEXT: Types on character by character\n\n---\n\nCENA 4 — SOLUÇÃO (0:13-0:23)\n━━━━━━━━━━━━━━━━━\nSHOTS:\n- Computer analysis\n- CNC cutting (slow-mo)\n- Labeling\n- Organized bundles\nCOLOR: Warm, vibrant\n\n---\n\nCENA 5 — CTA (0:23-0:30)\n━━━━━━━━━━━━━━━━━\nVISUAL: Satisfied engineer\nTEXT: "ZERO ERRO"\nLOGO: Manchester',
+            tela: '[0:00-0:03]\n"ISSO JÁ ACONTECEU COM VOCÊ?"\n\n[0:03-0:10]\n"2 SEMANAS PERDIDAS"\n\n[0:10-0:13]\n"E SE DESSE PRA EVITAR?"\n\n[0:13-0:23]\n"CONFERÊNCIA → CORTE → ENTREGA"\n\n[0:23-0:30]\n"ZERO ERRO. ZERO ATRASO."',
+            legenda: '😤 "O aço chegou errado. Minha obra parou."\n\nQuantas vezes você já viveu isso?\n\nPediu 10mm, veio 8mm.\nResultado? 2 semanas perdidas.\n\nNa Manchester é diferente.\n\nAntes de cortar UMA barra:\n✅ Conferimos seu projeto\n✅ Validamos medida por medida\n✅ Identificamos cada peça\n\nZero erro. Zero atraso.\n\n📞 (21) 3214-1300\n\n#Manchester #ConstruçãoCivil #BelgoPronto'
+        },
+        {
+            id: 3,
+            date: '2026-01-07',
+            type: 'EDUCATIVO',
+            format: 'Carrossel 8 slides',
+            title: '📋 Checklist: Como planejar compra de aço 2026',
+            desc: '5 passos essenciais',
+            narrativa: 'CARROSSEL 8 SLIDES\n═══════════════════\n\nSLIDE 1 — CAPA\n━━━━━━━━━━━━━━━━━\nTÍTULO: "CHECKLIST 2026"\nBADGE: "SALVA ESSE POST 📌"\n\nSLIDE 2 — PASSO 1\n━━━━━━━━━━━━━━━━━\n📐 REVISAR PROJETO ESTRUTURAL\n💡 "Peça o arquivo .dwg atualizado"\n\nSLIDE 3 — PASSO 2\n━━━━━━━━━━━━━━━━━\n🧮 CALCULAR QUANTITATIVOS\n💡 "Erro no quantitativo = prejuízo"\n\nSLIDE 4 — PASSO 3\n━━━━━━━━━━━━━━━━━\n📅 PRAZO DE ENTREGA\n• Corte/dobra: 3-7 dias\n• Armadura: 5-10 dias\n\nSLIDE 5 — PASSO 4\n━━━━━━━━━━━━━━━━━\n✅ NORMAS TÉCNICAS\n• NBR 7480\n• Certificação\n\nSLIDE 6 — PASSO 5\n━━━━━━━━━━━━━━━━━\n🔄 ALINHAR CRONOGRAMA\n💡 "Entregas programadas"\n\nSLIDE 7 — DICA BÔNUS\n━━━━━━━━━━━━━━━━━\n💡 ANTECIPE A COMPRA\n"Preço do aço varia"\n\nSLIDE 8 — CTA\n━━━━━━━━━━━━━━━━━\n"PRECISA DE AJUDA?"\n📞 (21) 3214-1300',
+            imagem: 'PROMPT SLIDE 1 — CAPA\n═══════════════════\nClean infographic cover.\n\nCOMPOSITION:\n- Checklist icon (white on dark)\n- Title "CHECKLIST 2026" bold\n- Badge "SALVA ESSE POST"\n\nBACKGROUND: Red to black gradient\nSTYLE: Modern corporate\n\n---\n\nPROMPT SLIDES 2-6 — TEMPLATE\n═══════════════════\nConsistent infographic design.\n\nLAYOUT:\n- Dark background\n- Step number: Large, red\n- Icon: White outline\n- Title: Bold white\n- Tip box: Darker bg\n\n---\n\nPROMPT SLIDE 7 — BÔNUS\n═══════════════════\nSpecial highlight slide.\n\nBACKGROUND: Dark + gold accent\nICON: Lightbulb\nLABEL: "DICA BÔNUS" gold\n\n---\n\nPROMPT SLIDE 8 — CTA\n═══════════════════\nBACKGROUND: Solid red\nTEXT: White, centered\nLOGO: Manchester',
+            video: 'ALTERNATIVA REELS 25s\n═══════════════════\n\n[0:00-0:02] HOOK\n━━━━━━━━━━━━━━━━━\nTEXT: "5 PASSOS pra não errar"\n\n[0:02-0:05] PASSO 1\n━━━━━━━━━━━━━━━━━\nICON: Blueprint\nTEXT: "01 REVISE O PROJETO"\n\n[0:05-0:08] PASSO 2\n━━━━━━━━━━━━━━━━━\nICON: Calculator\nTEXT: "02 CALCULE QUANTITATIVOS"\n\n[0:08-0:11] PASSO 3\n━━━━━━━━━━━━━━━━━\nICON: Calendar\nTEXT: "03 CONSIDERE PRAZO"\n\n[0:11-0:14] PASSO 4\n━━━━━━━━━━━━━━━━━\nICON: Certificate\nTEXT: "04 VERIFIQUE NORMAS"\n\n[0:14-0:17] PASSO 5\n━━━━━━━━━━━━━━━━━\nICON: Sync\nTEXT: "05 ALINHE CRONOGRAMA"\n\n[0:17-0:22] BÔNUS\n━━━━━━━━━━━━━━━━━\nICON: Lightbulb\nTEXT: "💡 ANTECIPE A COMPRA"\n\n[0:22-0:25] CTA\n━━━━━━━━━━━━━━━━━\nTEXT: "SALVA ESSE VÍDEO 📌"',
+            tela: 'SLIDE 1:\n"CHECKLIST 2026"\n"SALVA ESSE POST 📌"\n\nSLIDE 2:\n"01 📐 REVISAR PROJETO"\n\nSLIDE 3:\n"02 🧮 CALCULAR QUANTITATIVOS"\n\nSLIDE 4:\n"03 📅 PRAZO DE ENTREGA"\n\nSLIDE 5:\n"04 ✅ NORMAS TÉCNICAS"\n\nSLIDE 6:\n"05 🔄 ALINHAR CRONOGRAMA"\n\nSLIDE 7:\n"💡 DICA BÔNUS: ANTECIPE"\n\nSLIDE 8:\n"📞 (21) 3214-1300"',
+            legenda: '📋 CHECKLIST 2026: Como planejar compra de aço\n\n✅ PASSO 1: REVISE O PROJETO\n✅ PASSO 2: CALCULE QUANTITATIVOS\n✅ PASSO 3: CONSIDERE O PRAZO\n✅ PASSO 4: VERIFIQUE NORMAS\n✅ PASSO 5: ALINHE CRONOGRAMA\n\n💡 DICA: ANTECIPE A COMPRA\n\nSALVA ESSE POST! 📌\n\n📞 (21) 3214-1300\n\n#Manchester #Checklist #PlanejamentoDeObra'
+        },
+        {
+            id: 4,
+            date: '2026-01-10',
+            type: 'DATA ESPECIAL',
+            format: 'Vídeo 30s',
+            title: '👷 Dia do Engenheiro Civil',
+            desc: 'Homenagem 10/01',
+            narrativa: 'ROTEIRO 30s\n═══════════════════\n\n[0:00-0:05] ABERTURA\n━━━━━━━━━━━━━━━━━\nVISUAL: Obras icônicas\nTEXT: "10 DE JANEIRO"\nMUSIC: Emocional\n\n[0:05-0:15] HOMENAGEM\n━━━━━━━━━━━━━━━━━\nVISUAL: Engenheiros trabalhando\nTEXT: "Vocês transformam"\n"números em estruturas"\n\n[0:15-0:25] MANCHESTER\n━━━━━━━━━━━━━━━━━\nVISUAL: Parceria\nTEXT: "30 anos construindo juntos"\n\n[0:25-0:30] FECHAMENTO\n━━━━━━━━━━━━━━━━━\nLOGO: Manchester\nTEXT: "FELIZ DIA! 👷"',
+            imagem: 'PROMPT IMAGEM\n═══════════════════\nInspirational tribute image.\n\nCOMPOSITION:\n- Engineer in foreground\n- Construction site background\n- Golden hour lighting\n\nSUBJECT:\n- Engineer 35-50 years\n- Safety vest, hard hat\n- Proud expression\n\nLIGHTING: Golden hour, heroic\nSTYLE: Cinematic commercial\nASPECT: 1:1 and 9:16',
+            video: 'DIREÇÃO 30s\n═══════════════════\n\n[0:00-0:05] ABERTURA\n━━━━━━━━━━━━━━━━━\n- Drone shots Brazilian construction\n- Time-lapse building rising\n- Music: Emotional piano\n\n[0:05-0:15] MONTAGEM\n━━━━━━━━━━━━━━━━━\n- Engineers reviewing plans\n- Site supervision\n- Team coordination\n\n[0:15-0:25] PARCERIA\n━━━━━━━━━━━━━━━━━\n- Manchester delivery\n- Handshake\n\n[0:25-0:30] FECHAMENTO\n━━━━━━━━━━━━━━━━━\n- Logo reveal\n- "FELIZ DIA!"',
+            tela: '[0:00-0:05]\n"10 DE JANEIRO"\n"DIA DO ENGENHEIRO CIVIL"\n\n[0:05-0:15]\n"Vocês transformam"\n"números em estruturas"\n\n[0:15-0:25]\n"30 anos construindo juntos"\n\n[0:25-0:30]\n"FELIZ DIA! 👷"',
+            legenda: '👷 FELIZ DIA DO ENGENHEIRO CIVIL!\n\n10 de janeiro.\n\nVocês transformam:\n📐 Números em estruturas\n📋 Projetos em realidade\n🏗️ Sonhos em concreto\n\nA Manchester tem orgulho de estar ao lado de vocês há 30 anos.\n\nFELIZ DIA! 🎉\n\n📞 (21) 3214-1300\n\n#DiaDoEngenheiroCivil #Manchester'
+        }
+    ],
+    2: [
+        {
+            id: 1,
+            date: '2026-02-02',
+            type: 'PROBLEMA → SOLUÇÃO',
+            format: 'Reels 30s',
+            title: '😰 "Operário caiu da laje. Não tinha linha de vida."',
+            desc: 'Segurança no canteiro',
+            narrativa: 'ROTEIRO 30s\n═══════════════════\n\n[0:00-0:03] HOOK\n━━━━━━━━━━━━━━━━━\nTEXTO: "ISSO ACONTECEU ONTEM"\nVISUAL: Tela preta\nSOM: Sirene sutil\n\n[0:03-0:10] PROBLEMA\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Operário na laje. Sem cinto."\nTEXTO: "SEM LINHA DE VIDA"\n\n[0:10-0:15] CONSEQUÊNCIA\n━━━━━━━━━━━━━━━━━\nTEXTO: "Fraturas múltiplas"\n"6 meses afastado"\n\n[0:15-0:23] SOLUÇÃO\n━━━━━━━━━━━━━━━━━\nNARRAÇÃO: "Segurança é investimento"\nTEXTO: "✓ LINHA DE VIDA"\n\n[0:23-0:30] CTA\n━━━━━━━━━━━━━━━━━\nTEXTO: "SUA OBRA TEM?"\nLOGO: Manchester',
+            imagem: 'PROMPT THUMBNAIL\n═══════════════════\nSafety awareness split image.\n\nLEFT (DANGER):\n- Worker near edge, no protection\n- Red warning tint\n- Text: "SEM PROTEÇÃO"\n\nRIGHT (SAFE):\n- Worker with PPE and safety line\n- Normal colors, green accent\n- Text: "COM PROTEÇÃO"\n\nSTYLE: Commercial safety campaign\nASPECT: 9:16',
+            video: 'DIREÇÃO 30s\n═══════════════════\n\nCENA 1 — HOOK (0:00-0:03)\n━━━━━━━━━━━━━━━━━\nVISUAL: Tela preta, texto surge\nSOUND: Sirene, impacto\n\nCENA 2 — PROBLEMA (0:03-0:10)\n━━━━━━━━━━━━━━━━━\nVISUAL: B-roll canteiro, altura\nCOLOR: Desaturado, frio\n\nCENA 3 — CONSEQUÊNCIA (0:10-0:15)\n━━━━━━━━━━━━━━━━━\nVISUAL: Capacete no chão\nMOOD: Emocional\n\nCENA 4 — SOLUÇÃO (0:15-0:23)\n━━━━━━━━━━━━━━━━━\nVISUAL: Obra organizada, EPIs\nCOLOR: Vibrante, positivo\n\nCENA 5 — CTA (0:23-0:30)\n━━━━━━━━━━━━━━━━━\nTEXT: "SUA OBRA TEM?"\nLOGO: Manchester',
+            tela: '[0:00-0:03]\n"ISSO ACONTECEU ONTEM"\n\n[0:03-0:10]\n"SEM CINTO"\n"SEM LINHA DE VIDA"\n\n[0:10-0:15]\n"Fraturas múltiplas"\n"6 meses afastado"\n\n[0:15-0:23]\n"✓ LINHA DE VIDA"\n"✓ CINTO"\n"✓ TREINAMENTO"\n\n[0:23-0:30]\n"SUA OBRA TEM?"',
+            legenda: '😰 Isso aconteceu ontem em uma obra.\n\nOperário na laje.\nSem cinto. Sem linha de vida.\nQueda de 4 metros.\n\nResultado:\n💔 Fraturas múltiplas\n⏰ 6 meses afastado\n\nIsso NÃO precisava acontecer.\n\nSegurança não é custo. É INVESTIMENTO.\n\n✅ Linha de vida\n✅ Cinto obrigatório\n✅ Treinamento\n\nSUA OBRA TEM?\n\n#SegurançaNoTrabalho #NR18 #Manchester'
+        }
+    ]
 };
 
-let currentMonth = 1;
-let currentTab = 'narrativa';
-let currentPost = null;
-let dropdownOpen = false;
-let POSTS = {};
+var currentMonth = 1;
+var currentTab = 'narrativa';
+var currentPost = null;
+var dropdownOpen = false;
+var allPosts = {};
 
-function loadFromStorage() {
+function init() {
+    loadData();
+    renderMonthNav();
+    renderPosts();
+}
+
+function loadData() {
     try {
-        const saved = localStorage.getItem('manchester_posts_2026_v2');
+        var saved = localStorage.getItem('manchester_v3');
         if (saved) {
-            POSTS = JSON.parse(saved);
+            allPosts = JSON.parse(saved);
         } else {
-            POSTS = JSON.parse(JSON.stringify(INITIAL_POSTS));
-            saveToStorage();
+            allPosts = JSON.parse(JSON.stringify(POSTS_DATA));
         }
     } catch(e) {
-        POSTS = JSON.parse(JSON.stringify(INITIAL_POSTS));
+        allPosts = JSON.parse(JSON.stringify(POSTS_DATA));
     }
 }
 
-function saveToStorage() {
+function saveData() {
     try {
-        localStorage.setItem('manchester_posts_2026_v2', JSON.stringify(POSTS));
+        localStorage.setItem('manchester_v3', JSON.stringify(allPosts));
         showToast('✓ Salvo!');
     } catch(e) {
-        showToast('❌ Erro ao salvar');
+        showToast('Erro ao salvar');
     }
 }
 
 function exportData() {
-    const data = {version:'2.0',exportDate:new Date().toISOString(),posts:POSTS};
-    const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'});
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    var data = {version: '3.0', date: new Date().toISOString(), posts: allPosts};
+    var blob = new Blob([JSON.stringify(data, null, 2)], {type: 'application/json'});
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
     a.href = url;
-    a.download = `manchester_backup_${new Date().toISOString().split('T')[0]}.json`;
+    a.download = 'manchester_backup_' + new Date().toISOString().split('T')[0] + '.json';
     a.click();
     showToast('✓ Backup exportado!');
 }
 
 function importData(event) {
-    const file = event.target.files[0];
+    var file = event.target.files[0];
     if (!file) return;
-    const reader = new FileReader();
+    var reader = new FileReader();
     reader.onload = function(e) {
         try {
-            const data = JSON.parse(e.target.result);
+            var data = JSON.parse(e.target.result);
             if (data.posts) {
-                POSTS = data.posts;
-                saveToStorage();
+                allPosts = data.posts;
+                localStorage.setItem('manchester_v3', JSON.stringify(allPosts));
                 renderPosts();
-                showToast('✓ Dados importados!');
+                showToast('✓ Importado!');
             }
         } catch(err) {
-            showToast('❌ Arquivo inválido');
+            showToast('Arquivo inválido');
         }
     };
     reader.readAsText(file);
 }
 
-function renderMonthSelector() {
-    const month = MONTHS_DATA.find(m => m.id === currentMonth);
+function renderMonthNav() {
+    var month = MONTHS[currentMonth - 1];
     document.getElementById('selectorNum').textContent = String(month.id).padStart(2, '0');
     document.getElementById('selectorName').textContent = month.name;
-    document.getElementById('selectorTheme').textContent = month.shortTheme;
-    
-    document.getElementById('monthDropdown').innerHTML = MONTHS_DATA.map(m => `
-        <div class="month-dropdown-item ${m.id === currentMonth ? 'active' : ''}" onclick="selectMonth(${m.id})">
-            <div class="month-dropdown-num">${String(m.id).padStart(2, '0')}</div>
-            <div class="month-dropdown-info"><h4>${m.name}</h4><span>${m.shortTheme}</span></div>
-            <div class="month-dropdown-posts">${m.posts} posts</div>
-        </div>
-    `).join('');
-    
-    document.getElementById('monthQuickNav').innerHTML = MONTHS_DATA.map(m => `
-        <button class="month-quick-btn ${m.id === currentMonth ? 'active' : ''}" onclick="selectMonth(${m.id})">
-            ${m.name.substring(0, 3).toUpperCase()}
-        </button>
-    `).join('');
-    
+    document.getElementById('selectorTheme').textContent = month.theme;
     document.getElementById('statPosts').textContent = month.posts;
     document.getElementById('statStories').textContent = month.stories;
-    document.getElementById('themeTitle').textContent = month.shortTheme;
+    document.getElementById('themeTitle').textContent = month.theme;
     document.getElementById('themeDesc').textContent = month.desc;
+    
+    var dropdownHtml = '';
+    for (var i = 0; i < MONTHS.length; i++) {
+        var m = MONTHS[i];
+        dropdownHtml += '<div class="month-dropdown-item' + (m.id === currentMonth ? ' active' : '') + '" onclick="selectMonth(' + m.id + ')">' +
+            '<div class="month-dropdown-num">' + String(m.id).padStart(2, '0') + '</div>' +
+            '<div class="month-dropdown-info"><h4>' + m.name + '</h4><span>' + m.theme + '</span></div>' +
+            '</div>';
+    }
+    document.getElementById('monthDropdown').innerHTML = dropdownHtml;
+    
+    var quickHtml = '';
+    for (var i = 0; i < MONTHS.length; i++) {
+        var m = MONTHS[i];
+        quickHtml += '<button class="month-quick-btn' + (m.id === currentMonth ? ' active' : '') + '" onclick="selectMonth(' + m.id + ')">' +
+            m.name.substring(0, 3).toUpperCase() + '</button>';
+    }
+    document.getElementById('monthQuickNav').innerHTML = quickHtml;
 }
 
 function toggleDropdown() {
     dropdownOpen = !dropdownOpen;
-    document.getElementById('monthSelectorBtn').classList.toggle('open', dropdownOpen);
     document.getElementById('monthDropdown').classList.toggle('open', dropdownOpen);
 }
 
 function selectMonth(id) {
     currentMonth = id;
     dropdownOpen = false;
-    document.getElementById('monthSelectorBtn').classList.remove('open');
     document.getElementById('monthDropdown').classList.remove('open');
-    renderMonthSelector();
+    renderMonthNav();
     renderPosts();
 }
 
 function renderPosts() {
-    const month = MONTHS_DATA.find(m => m.id === currentMonth);
-    document.getElementById('mainTitle').innerHTML = `${month.name.toUpperCase()} — <span>${month.shortTheme}</span>`;
+    var month = MONTHS[currentMonth - 1];
+    document.getElementById('mainTitle').innerHTML = month.name.toUpperCase() + ' — <span>' + month.theme + '</span>';
     
-    const container = document.getElementById('postsList');
-    const posts = POSTS[currentMonth] || [];
+    var posts = allPosts[currentMonth] || [];
+    var container = document.getElementById('postsList');
     
     if (posts.length === 0) {
-        container.innerHTML = `<div class="empty-state"><h3>🚧 Em desenvolvimento</h3><p>Posts de ${month.name} serão adicionados em breve.</p></div>`;
+        container.innerHTML = '<div class="empty-state"><h3>🚧 Em desenvolvimento</h3><p>Posts de ' + month.name + ' serão adicionados.</p></div>';
         return;
     }
     
-    const sorted = [...posts].sort((a, b) => new Date(a.date) - new Date(b.date));
-    const monthNames = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+    posts.sort(function(a, b) { return new Date(a.date) - new Date(b.date); });
     
-    container.innerHTML = sorted.map(p => {
-        const d = new Date(p.date);
-        return `
-            <div class="post-card" onclick="openModal(${p.id})">
-                <div class="post-date">
-                    <div class="post-date-day">${String(d.getDate()).padStart(2, '0')}</div>
-                    <div class="post-date-month">${monthNames[d.getMonth()]}</div>
-                </div>
-                <div class="post-info">
-                    <div class="post-type">${p.type}</div>
-                    <div class="post-title">${p.title}</div>
-                    <div class="post-desc">${p.desc}</div>
-                </div>
-                <div class="post-format">${p.format}</div>
-            </div>
-        `;
-    }).join('');
+    var monthNames = ['JAN','FEV','MAR','ABR','MAI','JUN','JUL','AGO','SET','OUT','NOV','DEZ'];
+    var html = '';
+    
+    for (var i = 0; i < posts.length; i++) {
+        var p = posts[i];
+        var d = new Date(p.date);
+        html += '<div class="post-card" onclick="openModal(' + p.id + ')">' +
+            '<div class="post-date">' +
+            '<div class="post-date-day">' + String(d.getDate()).padStart(2, '0') + '</div>' +
+            '<div class="post-date-month">' + monthNames[d.getMonth()] + '</div>' +
+            '</div>' +
+            '<div class="post-info">' +
+            '<div class="post-type">' + p.type + '</div>' +
+            '<div class="post-title">' + p.title + '</div>' +
+            '<div class="post-desc">' + p.desc + '</div>' +
+            '</div>' +
+            '<div class="post-format">' + p.format + '</div>' +
+            '</div>';
+    }
+    
+    container.innerHTML = html;
 }
 
 function openModal(id) {
-    const posts = POSTS[currentMonth] || [];
-    currentPost = posts.find(p => p.id === id);
+    var posts = allPosts[currentMonth] || [];
+    currentPost = null;
+    for (var i = 0; i < posts.length; i++) {
+        if (posts[i].id === id) {
+            currentPost = posts[i];
+            break;
+        }
+    }
     if (!currentPost) return;
     
-    document.getElementById('modalBadge').textContent = `POST #${String(currentPost.id).padStart(2, '0')} · ${currentPost.format.toUpperCase()}`;
+    document.getElementById('modalBadge').textContent = 'POST #' + String(currentPost.id).padStart(2, '0') + ' · ' + currentPost.format.toUpperCase();
     document.getElementById('modalDate').value = currentPost.date;
     document.getElementById('modalTitle').value = currentPost.title;
     document.getElementById('modalDesc').textContent = currentPost.desc;
     
-    currentTab = 'narrativa';
-    updateTabs();
-    renderTabContent();
+    var tabs = [
+        {key: 'narrativa', icon: '📝', label: 'NARRATIVA'},
+        {key: 'imagem', icon: '🖼️', label: 'IMAGEM'},
+        {key: 'video', icon: '🎬', label: 'VÍDEO'},
+        {key: 'tela', icon: '📺', label: 'TELA'},
+        {key: 'legenda', icon: '📱', label: 'LEGENDA'}
+    ];
     
+    var tabsHtml = '';
+    for (var i = 0; i < tabs.length; i++) {
+        var t = tabs[i];
+        tabsHtml += '<button class="modal-tab' + (t.key === currentTab ? ' active' : '') + '" onclick="switchTab(\'' + t.key + '\')">' +
+            t.icon + ' ' + t.label + '</button>';
+    }
+    document.getElementById('modalTabs').innerHTML = tabsHtml;
+    
+    renderTabContent();
     document.getElementById('modalOverlay').classList.add('show');
 }
 
@@ -1285,195 +468,161 @@ function closeModal() {
 
 function switchTab(tab) {
     currentTab = tab;
-    updateTabs();
+    var tabs = document.querySelectorAll('.modal-tab');
+    for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove('active');
+        if (tabs[i].textContent.toLowerCase().indexOf(tab) > -1 || 
+            (tab === 'narrativa' && tabs[i].textContent.indexOf('NARRATIVA') > -1) ||
+            (tab === 'imagem' && tabs[i].textContent.indexOf('IMAGEM') > -1) ||
+            (tab === 'video' && tabs[i].textContent.indexOf('VÍDEO') > -1) ||
+            (tab === 'tela' && tabs[i].textContent.indexOf('TELA') > -1) ||
+            (tab === 'legenda' && tabs[i].textContent.indexOf('LEGENDA') > -1)) {
+            tabs[i].classList.add('active');
+        }
+    }
+    
+    var allTabs = document.querySelectorAll('.modal-tab');
+    for (var i = 0; i < allTabs.length; i++) {
+        allTabs[i].classList.remove('active');
+    }
+    allTabs[['narrativa','imagem','video','tela','legenda'].indexOf(tab)].classList.add('active');
+    
     renderTabContent();
 }
 
-function updateTabs() {
-    document.querySelectorAll('.modal-tab').forEach(t => {
-        t.classList.toggle('active', t.dataset.tab === currentTab);
-    });
-}
-
-// FUNÇÃO PRINCIPAL: SEPARAR PROMPTS E RENDERIZAR COM BOTÃO INDIVIDUAL
-function parsePromptBlocks(content, type) {
-    if (!content) return [];
-    
-    const blocks = [];
-    let separator;
-    
-    // Detectar separadores baseado no tipo de conteúdo
-    if (type === 'imagem') {
-        // Separar por "PROMPT SLIDE" ou "---" ou linhas de ═
-        const parts = content.split(/(?=PROMPT SLIDE|\n---\n|\n═{30,}\n(?=PROMPT))/gi);
-        parts.forEach((part, idx) => {
-            const trimmed = part.trim();
-            if (trimmed.length > 50) {
-                // Extrair título do bloco
-                const titleMatch = trimmed.match(/^(PROMPT[^\n]*|SLIDE[^\n]*)/i);
-                const title = titleMatch ? titleMatch[1].trim() : `PROMPT ${idx + 1}`;
-                blocks.push({ title, content: trimmed });
-            }
-        });
-    } else if (type === 'video') {
-        // Separar por "TAKE", "CENA" ou "---"
-        const parts = content.split(/(?=TAKE \d|CENA \d|\n---\n|\[[\d:]+)/gi);
-        parts.forEach((part, idx) => {
-            const trimmed = part.trim();
-            if (trimmed.length > 30) {
-                const titleMatch = trimmed.match(/^(TAKE[^\n]*|CENA[^\n]*|\[[\d:]+[^\]]*\][^\n]*)/i);
-                const title = titleMatch ? titleMatch[1].trim() : `CENA ${idx + 1}`;
-                blocks.push({ title, content: trimmed });
-            }
-        });
-    } else if (type === 'narrativa') {
-        // Separar por SLIDE ou seções com ━ ou [timestamps]
-        const parts = content.split(/(?=SLIDE \d|\[[\d:]+|━{20,}(?=\n[A-Z]))/gi);
-        parts.forEach((part, idx) => {
-            const trimmed = part.trim();
-            if (trimmed.length > 30) {
-                const titleMatch = trimmed.match(/^(SLIDE[^\n]*|\[[\d:]+[^\]]*\][^\n]*|[A-Z][A-Z\s]+(?=\n━))/i);
-                const title = titleMatch ? titleMatch[1].trim() : `SEÇÃO ${idx + 1}`;
-                blocks.push({ title, content: trimmed });
-            }
-        });
-    }
-    
-    // Se não conseguiu separar, retorna como bloco único
-    if (blocks.length === 0 && content.trim().length > 0) {
-        blocks.push({ title: 'CONTEÚDO COMPLETO', content: content.trim() });
-    }
-    
-    return blocks;
-}
-
 function renderTabContent() {
-    const body = document.getElementById('modalBody');
-    const content = currentPost[currentTab] || 'Conteúdo não disponível';
-    const titles = {narrativa:'NARRATIVA/ROTEIRO',imagem:'PROMPTS DE IMAGEM',video:'DIREÇÃO DE VÍDEO',tela:'TEXTO NA TELA',legenda:'LEGENDA INSTAGRAM'};
-    const icons = {narrativa:'📝',imagem:'🖼️',video:'🎬',tela:'📺',legenda:'📱'};
-    const colors = {narrativa:'azul',imagem:'roxo',video:'laranja',tela:'dourado',legenda:'verde'};
+    var content = currentPost[currentTab] || 'Conteúdo não disponível';
+    var body = document.getElementById('modalBody');
     
-    // Para imagem e vídeo, separar em blocos copiáveis individualmente
-    if ((currentTab === 'imagem' || currentTab === 'video') && content.length > 200) {
-        const blocks = parsePromptBlocks(content, currentTab);
+    var titles = {
+        narrativa: '📝 NARRATIVA / ROTEIRO',
+        imagem: '🖼️ PROMPTS DE IMAGEM',
+        video: '🎬 DIREÇÃO DE VÍDEO',
+        tela: '📺 TEXTO NA TELA',
+        legenda: '📱 LEGENDA INSTAGRAM'
+    };
+    
+    // Para imagem e vídeo, separar blocos
+    if ((currentTab === 'imagem' || currentTab === 'video') && content.length > 100) {
+        var blocks = splitIntoBlocks(content);
         
         if (blocks.length > 1) {
-            let html = `
-                <div class="section-header" style="background:var(--preto4);border-radius:12px 12px 0 0;margin-bottom:0;">
-                    <div class="section-title ${colors[currentTab]}">
-                        <span class="section-icon">${icons[currentTab]}</span> ${titles[currentTab]}
-                        <span style="color:var(--cinza);font-weight:400;margin-left:10px;">(${blocks.length} blocos)</span>
-                    </div>
-                    <button class="copy-all-btn" onclick="copyAllContent()">📋 Copiar Tudo</button>
-                </div>
-            `;
+            var html = '<div class="content-section"><div class="section-header">' +
+                '<div class="section-title">' + titles[currentTab] + ' (' + blocks.length + ' blocos)</div>' +
+                '<button class="copy-btn" onclick="copyAll()">📋 Copiar Tudo</button></div></div>';
             
-            blocks.forEach((block, idx) => {
-                html += `
-                    <div class="prompt-block">
-                        <div class="prompt-block-header">
-                            <div class="prompt-block-title">
-                                <span class="num">${idx + 1}</span>
-                                ${block.title}
-                            </div>
-                            <button class="prompt-block-copy" onclick="copyBlock(${idx}, this)">📋 Copiar</button>
-                        </div>
-                        <div class="prompt-block-content" id="block-${idx}">${block.content}</div>
-                    </div>
-                `;
-            });
+            for (var i = 0; i < blocks.length; i++) {
+                html += '<div class="prompt-block">' +
+                    '<div class="prompt-block-header">' +
+                    '<div style="display:flex;align-items:center">' +
+                    '<div class="prompt-block-num">' + (i + 1) + '</div>' +
+                    '<div class="prompt-block-title">' + blocks[i].title + '</div>' +
+                    '</div>' +
+                    '<button class="copy-btn" onclick="copyBlock(' + i + ')">📋 Copiar</button>' +
+                    '</div>' +
+                    '<div class="prompt-block-content" id="block' + i + '">' + escapeHtml(blocks[i].content) + '</div>' +
+                    '</div>';
+            }
             
             body.innerHTML = html;
             return;
         }
     }
     
-    // Renderização padrão para outros tipos ou conteúdo curto
-    body.innerHTML = `
-        <div class="content-section">
-            <div class="section-header">
-                <div class="section-title ${colors[currentTab]}"><span class="section-icon">${icons[currentTab]}</span> ${titles[currentTab]}</div>
-                <button class="copy-all-btn" onclick="copyAllContent()">📋 Copiar</button>
-            </div>
-            <div class="section-body">
-                <div class="content-text" id="contentText">${content}</div>
-            </div>
-        </div>
-    `;
+    // Renderização padrão
+    body.innerHTML = '<div class="content-section">' +
+        '<div class="section-header">' +
+        '<div class="section-title">' + titles[currentTab] + '</div>' +
+        '<button class="copy-btn" onclick="copyAll()">📋 Copiar</button>' +
+        '</div>' +
+        '<div class="section-body">' +
+        '<div class="content-text" id="contentText">' + escapeHtml(content) + '</div>' +
+        '</div></div>';
 }
 
-function copyBlock(idx, btn) {
-    const block = document.getElementById(`block-${idx}`);
-    if (block) {
-        navigator.clipboard.writeText(block.textContent).then(() => {
-            btn.classList.add('copied');
-            btn.innerHTML = '✓ Copiado!';
-            showToast('✓ Bloco copiado!');
-            setTimeout(() => {
-                btn.classList.remove('copied');
-                btn.innerHTML = '📋 Copiar';
-            }, 2000);
+function splitIntoBlocks(content) {
+    var blocks = [];
+    var parts = content.split(/\n---\n|\n={10,}\n/);
+    
+    for (var i = 0; i < parts.length; i++) {
+        var part = parts[i].trim();
+        if (part.length > 20) {
+            var lines = part.split('\n');
+            var title = lines[0].replace(/[═━─]/g, '').trim() || 'BLOCO ' + (i + 1);
+            if (title.length > 50) title = title.substring(0, 50) + '...';
+            blocks.push({title: title, content: part});
+        }
+    }
+    
+    if (blocks.length === 0) {
+        blocks.push({title: 'CONTEÚDO', content: content});
+    }
+    
+    return blocks;
+}
+
+function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+function copyBlock(index) {
+    var el = document.getElementById('block' + index);
+    if (el) {
+        navigator.clipboard.writeText(el.textContent).then(function() {
+            showToast('✓ Bloco ' + (index + 1) + ' copiado!');
         });
     }
 }
 
-function copyAllContent() {
-    const content = currentPost[currentTab];
-    navigator.clipboard.writeText(content).then(() => {
-        const btn = document.querySelector('.copy-all-btn');
-        if (btn) {
-            btn.classList.add('copied');
-            btn.innerHTML = '✓ Copiado!';
-            showToast('✓ Todo conteúdo copiado!');
-            setTimeout(() => {
-                btn.classList.remove('copied');
-                btn.innerHTML = '📋 Copiar Tudo';
-            }, 2000);
-        }
+function copyAll() {
+    var content = currentPost[currentTab];
+    navigator.clipboard.writeText(content).then(function() {
+        showToast('✓ Copiado!');
     });
 }
 
-function updatePostDate() {
-    const newDate = document.getElementById('modalDate').value;
+function updateDate() {
+    var newDate = document.getElementById('modalDate').value;
     if (currentPost && newDate) {
         currentPost.date = newDate;
-        saveToStorage();
+        saveData();
         renderPosts();
     }
 }
 
-function updatePostTitle() {
-    const newTitle = document.getElementById('modalTitle').value;
+function updateTitle() {
+    var newTitle = document.getElementById('modalTitle').value;
     if (currentPost && newTitle) {
         currentPost.title = newTitle;
-        saveToStorage();
+        saveData();
         renderPosts();
     }
 }
 
 function showToast(msg) {
-    const toast = document.getElementById('toast');
+    var toast = document.getElementById('toast');
     toast.textContent = msg;
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 2000);
+    setTimeout(function() {
+        toast.classList.remove('show');
+    }, 2000);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-    loadFromStorage();
-    renderMonthSelector();
-    renderPosts();
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
 });
 
-document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-document.getElementById('modalOverlay').addEventListener('click', e => { if (e.target.id === 'modalOverlay') closeModal(); });
-document.addEventListener('click', e => {
-    if (!e.target.closest('.month-selector') && dropdownOpen) {
+document.addEventListener('click', function(e) {
+    if (dropdownOpen && !e.target.closest('.month-selector')) {
         dropdownOpen = false;
-        document.getElementById('monthSelectorBtn').classList.remove('open');
         document.getElementById('monthDropdown').classList.remove('open');
     }
 });
+
+init();
 </script>
+
 </body>
 </html>
